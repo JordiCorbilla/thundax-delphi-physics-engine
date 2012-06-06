@@ -29,64 +29,19 @@
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *)
-unit tdpe.lib.particle.abstract.restriction;
+program ThundaxBallsDemo;
 
-interface
+uses
+  Forms,
+  uBallsDemo in 'uBallsDemo.pas' {fBalls},
+  ufrmlog in 'ufrmlog.pas' {FLog};
 
-Uses tdpe.lib.particle.abstractElement, tdpe.lib.render,
-  tdpe.lib.writer.contract;
+{$R *.res}
 
-type
-
-  TAbstractRestriction = Class(TAbstractElement)
-  Private
-    Fstiffness: double;
-    FRenderer: TAbstractRenderer;
-    FLogger: IWriter;
-  Public
-    constructor Create(Stiffness: double); Reintroduce;
-    Function Stiffness: double; Overload;
-    Procedure Stiffness(Value: double); Overload;
-    Procedure Init; Override;
-    Procedure SetRenderer(aRenderer: TAbstractRenderer);
-    procedure setLog(const Value: IWriter);
-    Procedure Resolve; Virtual; Abstract;
-    property Renderer: TAbstractRenderer read FRenderer;
-  end;
-
-implementation
-
-{ AbstractRestriction }
-
-constructor TAbstractRestriction.Create(Stiffness: double);
 begin
-  Inherited Create;
-  Self.Stiffness(Stiffness);
-end;
-
-function TAbstractRestriction.Stiffness: double;
-begin
-  Result := Fstiffness;
-end;
-
-procedure TAbstractRestriction.Init;
-begin
-  inherited;
-end;
-
-procedure TAbstractRestriction.SetRenderer(aRenderer: TAbstractRenderer);
-begin
-  FRenderer := aRenderer;
-end;
-
-procedure TAbstractRestriction.Stiffness(Value: double);
-begin
-  Fstiffness := Value;
-end;
-
-procedure TAbstractRestriction.setLog(const Value: IWriter);
-begin
-  FLogger := Value;
-end;
-
+  Application.Initialize;
+  ReportMemoryLeaksOnShutdown := true;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TfBalls, fBalls);
+  Application.Run;
 end.
