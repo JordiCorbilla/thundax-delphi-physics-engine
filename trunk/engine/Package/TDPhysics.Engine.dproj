@@ -1,0 +1,149 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{43CA7BB9-B8FB-47B0-B07E-04B757C906BE}</ProjectGuid>
+			<MainSource>TDPhysics.Engine.dpk</MainSource>
+			<ProjectVersion>12.0</ProjectVersion>
+			<Config Condition="'$(Config)'==''">Debug</Config>
+			<DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_1)'!=''">
+			<Cfg_1>true</Cfg_1>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_2)'!=''">
+			<Cfg_2>true</Cfg_2>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base)'!=''">
+			<DesignOnlyPackage>false</DesignOnlyPackage>
+			<DCC_DcuOutput>..\dcu\</DCC_DcuOutput>
+			<DCC_UnitAlias>WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;$(DCC_UnitAlias)</DCC_UnitAlias>
+			<DCC_DependencyCheckOutputName>C:\Users\Public\Documents\RAD Studio\7.0\Bpl\TDPhysics.Engine.bpl</DCC_DependencyCheckOutputName>
+			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+			<GenDll>true</GenDll>
+			<GenPackage>true</GenPackage>
+			<DCC_ImageBase>00400000</DCC_ImageBase>
+			<DCC_Platform>x86</DCC_Platform>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_1)'!=''">
+			<DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
+			<DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+			<DCC_DebugInformation>false</DCC_DebugInformation>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_2)'!=''">
+			<DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+		</PropertyGroup>
+		<ItemGroup>
+			<DelphiCompile Include="TDPhysics.Engine.dpk">
+				<MainSource>MainSource</MainSource>
+			</DelphiCompile>
+			<DCCReference Include="rtl.dcp"/>
+			<DCCReference Include="..\Lib\Array\tdpe.lib.force.contract.pas"/>
+			<DCCReference Include="..\Lib\Array\tdpe.lib.force.list.pas"/>
+			<DCCReference Include="..\Lib\Array\tdpe.lib.force.pas"/>
+			<DCCReference Include="..\Lib\Array\tdpe.lib.structures.pas"/>
+			<DCCReference Include="..\Lib\Array\tdpe.lib.vector.pas"/>
+			<DCCReference Include="..\Lib\Colour\tdpe.lib.colour.helper.pas"/>
+			<DCCReference Include="..\Lib\Math\tdpe.lib.math.helper.pas"/>
+			<DCCReference Include="..\Lib\Math\tdpe.lib.math.interval.pas"/>
+			<DCCReference Include="..\Lib\Math\tdpe.lib.math.pas"/>
+			<DCCReference Include="..\Lib\Math\tdpe.lib.math.rotator.pas"/>
+			<DCCReference Include="..\Lib\Math\tdpe.lib.math.types.pas"/>
+			<DCCReference Include="..\Lib\Render\tdpe.lib.render.contract.pas"/>
+			<DCCReference Include="..\Lib\Render\tdpe.lib.render.gdi.pas"/>
+			<DCCReference Include="..\Lib\Render\tdpe.lib.render.pas"/>
+			<DCCReference Include="..\Lib\writer\tdpe.lib.richedit.writer.pas"/>
+			<DCCReference Include="..\Lib\writer\tdpe.lib.writer.contract.pas"/>
+			<DCCReference Include="..\Lib\Engine\tdpe.lib.engine.contract.pas"/>
+			<DCCReference Include="..\Lib\Engine\tdpe.lib.engine.pas"/>
+			<DCCReference Include="..\Lib\Log\tdpe.lib.logging.pas"/>
+			<DCCReference Include="..\Lib\Styles\tdpe.lib.styles.pas"/>
+			<DCCReference Include="..\Lib\Collisions\tdpe.lib.collision.contract.pas"/>
+			<DCCReference Include="..\Lib\Collisions\tdpe.lib.collision.detector.contract.pas"/>
+			<DCCReference Include="..\Lib\Collisions\tdpe.lib.collision.pas"/>
+			<DCCReference Include="..\Lib\Collisions\tdpe.lib.collision.resolver.contract.pas"/>
+			<DCCReference Include="..\Lib\particles\tdpe.lib.particle.abstract.collection.pas"/>
+			<DCCReference Include="..\Lib\particles\tdpe.lib.particle.abstract.restriction.pas"/>
+			<DCCReference Include="..\Lib\particles\tdpe.lib.particle.abstractElement.contract.pas"/>
+			<DCCReference Include="..\Lib\particles\tdpe.lib.particle.abstractElement.pas"/>
+			<DCCReference Include="..\Lib\particles\tdpe.lib.particle.abstractparticle.pas"/>
+			<DCCReference Include="..\Lib\particles\tdpe.lib.particle.body.solid.pas"/>
+			<DCCReference Include="..\Lib\particles\tdpe.lib.particle.box.pas"/>
+			<DCCReference Include="..\Lib\particles\tdpe.lib.particle.box.solid.pas"/>
+			<DCCReference Include="..\Lib\particles\tdpe.lib.particle.circle.mass.pas"/>
+			<DCCReference Include="..\Lib\particles\tdpe.lib.particle.circle.pas"/>
+			<DCCReference Include="..\Lib\particles\tdpe.lib.particle.circle.solid.pas"/>
+			<DCCReference Include="..\Lib\particles\tdpe.lib.particle.group.list.pas"/>
+			<DCCReference Include="..\Lib\particles\tdpe.lib.particle.group.pas"/>
+			<DCCReference Include="..\Lib\particles\tdpe.lib.particle.item.solid.pas"/>
+			<DCCReference Include="..\Lib\particles\tdpe.lib.particle.pattern.composite.pas"/>
+			<DCCReference Include="..\Lib\particles\tdpe.lib.particle.physicElement.pas"/>
+			<DCCReference Include="..\Lib\particles\tdpe.lib.particle.spring.pas"/>
+			<DCCReference Include="..\Lib\particles\tdpe.lib.particle.spring.restriction.pas"/>
+			<DCCReference Include="..\Lib\particles\tdpe.lib.particle.sprite.pas"/>
+			<DCCReference Include="..\Lib\particles\tdpe.lib.particle.wheel.pas"/>
+			<DCCReference Include="..\Lib\particles\tdpe.lib.particle.wheel.rim.pas"/>
+			<BuildConfiguration Include="Base">
+				<Key>Base</Key>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Debug">
+				<Key>Cfg_2</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Release">
+				<Key>Cfg_1</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+		</ItemGroup>
+		<Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
+		<ProjectExtensions>
+			<Borland.Personality>Delphi.Personality.12</Borland.Personality>
+			<Borland.ProjectType>Package</Borland.ProjectType>
+			<BorlandProject>
+				<Delphi.Personality>
+					<Source>
+						<Source Name="MainSource">TDPhysics.Engine.dpk</Source>
+					</Source>
+					<Parameters>
+						<Parameters Name="UseLauncher">False</Parameters>
+						<Parameters Name="LoadAllSymbols">True</Parameters>
+						<Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
+					</Parameters>
+					<VersionInfo>
+						<VersionInfo Name="IncludeVerInfo">True</VersionInfo>
+						<VersionInfo Name="AutoIncBuild">False</VersionInfo>
+						<VersionInfo Name="MajorVer">1</VersionInfo>
+						<VersionInfo Name="MinorVer">0</VersionInfo>
+						<VersionInfo Name="Release">0</VersionInfo>
+						<VersionInfo Name="Build">0</VersionInfo>
+						<VersionInfo Name="Debug">False</VersionInfo>
+						<VersionInfo Name="PreRelease">False</VersionInfo>
+						<VersionInfo Name="Special">False</VersionInfo>
+						<VersionInfo Name="Private">False</VersionInfo>
+						<VersionInfo Name="DLL">False</VersionInfo>
+						<VersionInfo Name="Locale">3082</VersionInfo>
+						<VersionInfo Name="CodePage">1252</VersionInfo>
+					</VersionInfo>
+					<VersionInfoKeys>
+						<VersionInfoKeys Name="CompanyName"/>
+						<VersionInfoKeys Name="FileDescription"/>
+						<VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="InternalName"/>
+						<VersionInfoKeys Name="LegalCopyright"/>
+						<VersionInfoKeys Name="LegalTrademarks"/>
+						<VersionInfoKeys Name="OriginalFilename"/>
+						<VersionInfoKeys Name="ProductName"/>
+						<VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="Comments"/>
+					</VersionInfoKeys>
+				</Delphi.Personality>
+			</BorlandProject>
+			<ProjectFileVersion>12</ProjectFileVersion>
+		</ProjectExtensions>
+	</Project>
