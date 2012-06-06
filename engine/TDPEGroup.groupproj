@@ -1,0 +1,36 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{F768A138-FBC6-4DA4-ACB8-0F75065C2AD6}</ProjectGuid>
+		</PropertyGroup>
+		<ItemGroup>
+			<Projects Include="Package\TDPhysics.Engine.dproj">
+				<Dependencies/>
+			</Projects>
+		</ItemGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Default.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Default.Personality/>
+			</BorlandProject>
+		</ProjectExtensions>
+		<Target Name="TDPhysics_Engine">
+			<MSBuild Projects="Package\TDPhysics.Engine.dproj"/>
+		</Target>
+		<Target Name="TDPhysics_Engine:Clean">
+			<MSBuild Targets="Clean" Projects="Package\TDPhysics.Engine.dproj"/>
+		</Target>
+		<Target Name="TDPhysics_Engine:Make">
+			<MSBuild Targets="Make" Projects="Package\TDPhysics.Engine.dproj"/>
+		</Target>
+		<Target Name="Build">
+			<CallTarget Targets="TDPhysics_Engine"/>
+		</Target>
+		<Target Name="Clean">
+			<CallTarget Targets="TDPhysics_Engine:Clean"/>
+		</Target>
+		<Target Name="Make">
+			<CallTarget Targets="TDPhysics_Engine:Make"/>
+		</Target>
+		<Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+	</Project>

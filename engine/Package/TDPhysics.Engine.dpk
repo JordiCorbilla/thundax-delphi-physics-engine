@@ -1,0 +1,99 @@
+(*
+  *  This file is part of TDPE (Thundax Delphi Physics Engine) an open source
+  *  2D physics Engine. Copyright 2012, Jordi Coll Corbilla
+  *
+  *  TDPE (Thundax Delphi Physics Engine) is free development platform software:
+  *  you can redistribute it and/or modify
+  *  it under the terms of the GNU Lesser General Public License as published by
+  *  the Free Software Foundation, either version 3 of the License, or
+  *  (at your option) any later version.
+  *
+  *  TDPE (Thundax Delphi Physics Engine) is distributed in the hope that it will
+  *  be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  *  GNU Lesser General Public License for more details.
+  *
+  *  You should have received a copy of the GNU Lesser General Public License
+  *  along with TDPE (Thundax Delphi Physics Engine).  If not,
+  *  see <http://www.gnu.org/licenses/>.
+  *
+  *  Copyright     2010,2012     Jordi Corbilla
+  *)
+package TDPhysics.Engine;
+
+{$R *.res}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO OFF}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$IMPLICITBUILD ON}
+
+requires
+  rtl;
+
+contains
+  tdpe.lib.force.contract in '..\Lib\Array\tdpe.lib.force.contract.pas',
+  tdpe.lib.force.list in '..\Lib\Array\tdpe.lib.force.list.pas',
+  tdpe.lib.force in '..\Lib\Array\tdpe.lib.force.pas',
+  tdpe.lib.structures in '..\Lib\Array\tdpe.lib.structures.pas',
+  tdpe.lib.vector in '..\Lib\Array\tdpe.lib.vector.pas',
+  tdpe.lib.colour.helper in '..\Lib\Colour\tdpe.lib.colour.helper.pas',
+  tdpe.lib.math.helper in '..\Lib\Math\tdpe.lib.math.helper.pas',
+  tdpe.lib.math.interval in '..\Lib\Math\tdpe.lib.math.interval.pas',
+  tdpe.lib.math in '..\Lib\Math\tdpe.lib.math.pas',
+  tdpe.lib.math.rotator in '..\Lib\Math\tdpe.lib.math.rotator.pas',
+  tdpe.lib.math.types in '..\Lib\Math\tdpe.lib.math.types.pas',
+  tdpe.lib.render.contract in '..\Lib\Render\tdpe.lib.render.contract.pas',
+  tdpe.lib.render.gdi in '..\Lib\Render\tdpe.lib.render.gdi.pas',
+  tdpe.lib.render in '..\Lib\Render\tdpe.lib.render.pas',
+  tdpe.lib.richedit.writer in '..\Lib\writer\tdpe.lib.richedit.writer.pas',
+  tdpe.lib.writer.contract in '..\Lib\writer\tdpe.lib.writer.contract.pas',
+  tdpe.lib.engine.contract in '..\Lib\Engine\tdpe.lib.engine.contract.pas',
+  tdpe.lib.engine in '..\Lib\Engine\tdpe.lib.engine.pas',
+  tdpe.lib.logging in '..\Lib\Log\tdpe.lib.logging.pas',
+  tdpe.lib.styles in '..\Lib\Styles\tdpe.lib.styles.pas',
+  tdpe.lib.collision.contract in '..\Lib\Collisions\tdpe.lib.collision.contract.pas',
+  tdpe.lib.collision.detector.contract in '..\Lib\Collisions\tdpe.lib.collision.detector.contract.pas',
+  tdpe.lib.collision in '..\Lib\Collisions\tdpe.lib.collision.pas',
+  tdpe.lib.collision.resolver.contract in '..\Lib\Collisions\tdpe.lib.collision.resolver.contract.pas',
+  tdpe.lib.particle.abstract.collection in '..\Lib\particles\tdpe.lib.particle.abstract.collection.pas',
+  tdpe.lib.particle.abstract.restriction in '..\Lib\particles\tdpe.lib.particle.abstract.restriction.pas',
+  tdpe.lib.particle.abstractElement.contract in '..\Lib\particles\tdpe.lib.particle.abstractElement.contract.pas',
+  tdpe.lib.particle.abstractElement in '..\Lib\particles\tdpe.lib.particle.abstractElement.pas',
+  tdpe.lib.particle.abstractparticle in '..\Lib\particles\tdpe.lib.particle.abstractparticle.pas',
+  tdpe.lib.particle.body.solid in '..\Lib\particles\tdpe.lib.particle.body.solid.pas',
+  tdpe.lib.particle.box in '..\Lib\particles\tdpe.lib.particle.box.pas',
+  tdpe.lib.particle.box.solid in '..\Lib\particles\tdpe.lib.particle.box.solid.pas',
+  tdpe.lib.particle.circle.mass in '..\Lib\particles\tdpe.lib.particle.circle.mass.pas',
+  tdpe.lib.particle.circle in '..\Lib\particles\tdpe.lib.particle.circle.pas',
+  tdpe.lib.particle.circle.solid in '..\Lib\particles\tdpe.lib.particle.circle.solid.pas',
+  tdpe.lib.particle.group.list in '..\Lib\particles\tdpe.lib.particle.group.list.pas',
+  tdpe.lib.particle.group in '..\Lib\particles\tdpe.lib.particle.group.pas',
+  tdpe.lib.particle.item.solid in '..\Lib\particles\tdpe.lib.particle.item.solid.pas',
+  tdpe.lib.particle.pattern.composite in '..\Lib\particles\tdpe.lib.particle.pattern.composite.pas',
+  tdpe.lib.particle.physicElement in '..\Lib\particles\tdpe.lib.particle.physicElement.pas',
+  tdpe.lib.particle.spring in '..\Lib\particles\tdpe.lib.particle.spring.pas',
+  tdpe.lib.particle.spring.restriction in '..\Lib\particles\tdpe.lib.particle.spring.restriction.pas',
+  tdpe.lib.particle.sprite in '..\Lib\particles\tdpe.lib.particle.sprite.pas',
+  tdpe.lib.particle.wheel in '..\Lib\particles\tdpe.lib.particle.wheel.pas',
+  tdpe.lib.particle.wheel.rim in '..\Lib\particles\tdpe.lib.particle.wheel.rim.pas';
+
+end.
+
