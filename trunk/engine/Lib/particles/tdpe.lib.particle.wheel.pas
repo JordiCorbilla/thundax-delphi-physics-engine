@@ -33,12 +33,12 @@ unit tdpe.lib.particle.wheel;
 
 interface
 
-Uses tdpe.lib.particle.wheel.rim, tdpe.lib.particle.circle, tdpe.lib.engine, tdpe.lib.vector,
+Uses tdpe.lib.particle.wheel.rim, tdpe.lib.particle.circle.solid, tdpe.lib.engine, tdpe.lib.vector,
   Math, tdpe.lib.Math.helper, tdpe.lib.force.list,
   tdpe.lib.particle.abstractparticle, Classes, tdpe.lib.force.contract;
 
 Type
-  TWheelParticle = class(TCircleParticle)
+  TWheelParticle = class(TSolidCircle)
   Private
     FRimParticle: TRimParticle;
     Ftangent: IVector;
@@ -55,6 +55,7 @@ Type
     function GetAngle: Double;
   Public
     Constructor Create(aEngine: TEngine; x, y, Radius: Double; fixed: Boolean = False; Mass: Double = 1; Elasticity: Double = 0.3; Friction: Double = 0; Traction: Double = 1); reintroduce;
+    destructor Destroy(); override;
     Procedure UpdateGeometricState(deltaTime: Double; MassLessForce: TForceList; Damping: Double); Override;
     Procedure ResolveCollision(mtd, velocity, normal: IVector; d: Double; o: Integer; particle: TAbstractParticle); Override;
     Procedure Resolve(normal: IVector);
@@ -82,6 +83,12 @@ begin
   FRimParticle := TRimParticle.Create(aEngine, Radius, 2);
   Self.Traction := Traction;
   Forientation := TVector.New;
+end;
+
+destructor TWheelParticle.Destroy;
+begin
+  FreeAndNil(FRimParticle);
+  inherited;
 end;
 
 function TWheelParticle.GetAngle: Double;

@@ -42,7 +42,7 @@ uses
   tdpe.lib.structures.bridge, tdpe.lib.particle.box, tdpe.lib.structures.surface.static,
   tdpe.lib.structures.dispenser.box, tdpe.lib.structures.dispenser.circle,
   StdCtrls, tdpe.lib.richedit.writer, Direct2D, tdpe.lib.particle.circle.solid,
-  tdpe.lib.writer.contract;
+  tdpe.lib.writer.contract, tdpe.lib.structures.cloth, tdpe.lib.structures.car;
 
 type
   TfBalls = class(TForm)
@@ -66,6 +66,8 @@ type
     CircleDispenser: TCircleDispenser;
     richEditwriter: IWriter;
     ActiveDirect2D: Boolean;
+    cloth : TCloth;
+    car : TCar;
   end;
 
 var
@@ -104,11 +106,19 @@ begin
   CircleDispenser := TCircleDispenser.Create(render, engine, 800, 100, clred);
   CircleDispenser.setLog(richEditwriter);
   engine.addGroup(CircleDispenser);
+
   bridge := TCustomBridge.Create(render, engine, 170, 140);
   bridge.setLog(richEditwriter);
   engine.addGroup(bridge);
 
+  cloth := TCloth.Create(render, engine, 170, 300);
+  engine.addGroup(cloth);
+
+  car := TCar.create(render, engine);
+  engine.addGroup(car);
+
   //Define surfaces that collide
+  surface.AddCollidable(car);
   surface.AddCollidable(BoxDispenser);
   surface.AddCollidable(CircleDispenser);
   CircleDispenser.AddCollidable(BoxDispenser);
@@ -119,6 +129,7 @@ begin
   CircleDispenser.AddCollidable(surface);
   BoxDispenser.AddCollidable(bridge);
   CircleDispenser.AddCollidable(bridge);
+  car.AddCollidable(surface);
 
   DoubleBuffered := True;
   FLog.Show;
@@ -132,6 +143,8 @@ begin
   FreeAndNil(CircleDispenser);
   FreeAndNil(render);
   FreeAndNil(engine);
+  FreeAndNil(cloth);
+  FreeAndNil(car);
   richEditwriter := nil;
   if Assigned(FLog) then
     FLog.Free;
@@ -147,6 +160,13 @@ begin
     CircleDispenser.AddCircle;
   if (Key = 'q') or (Key = 'Q') then
     ActiveDirect2D := not ActiveDirect2D;
+
+  if (Key = 'b') or (Key = 'B') then
+    car.Speed := - 0.01;
+  if (Key = 'n') or (Key = 'N') then
+    car.Speed := 0;
+  if (Key = 'm') or (Key = 'M') then
+    car.Speed := 0.01;
 end;
 
 procedure TfBalls.FormMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
@@ -159,6 +179,8 @@ begin
     BoxDispenser.Activate(pos);
   if CircleDispenser.isInside(X, Y, pos) then
     CircleDispenser.Activate(pos);
+  if cloth.isInside(X, Y, pos) then
+    cloth.Activate(pos);
 end;
 
 procedure TfBalls.FormMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
@@ -166,6 +188,7 @@ begin
   bridge.Move(X, Y);
   BoxDispenser.Move(X, Y);
   CircleDispenser.Move(X, Y);
+  cloth.Move(X,Y);
 end;
 
 procedure TfBalls.FormMouseUp(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
@@ -173,6 +196,7 @@ begin
   bridge.DeActivate();
   BoxDispenser.DeActivate();
   CircleDispenser.DeActivate();
+  cloth.Deactivate();
 end;
 
 procedure TfBalls.FormPaint(Sender: TObject);
