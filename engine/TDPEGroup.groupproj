@@ -6,6 +6,12 @@
 			<Projects Include="Package\TDPhysics.Engine.dproj">
 				<Dependencies/>
 			</Projects>
+			<Projects Include="Projects\ThundaxTDPETests\TDPETests.dproj">
+				<Dependencies>Package\TDPhysics.Engine.dproj</Dependencies>
+			</Projects>
+			<Projects Include="Projects\ThundaxBallsDemo\ThundaxBallsDemo.dproj">
+				<Dependencies>Package\TDPhysics.Engine.dproj</Dependencies>
+			</Projects>
 		</ItemGroup>
 		<ProjectExtensions>
 			<Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -23,14 +29,32 @@
 		<Target Name="TDPhysics_Engine:Make">
 			<MSBuild Targets="Make" Projects="Package\TDPhysics.Engine.dproj"/>
 		</Target>
+		<Target DependsOnTargets="TDPhysics.Engine" Name="TDPETests">
+			<MSBuild Projects="Projects\ThundaxTDPETests\TDPETests.dproj"/>
+		</Target>
+		<Target DependsOnTargets="TDPhysics.Engine:Clean" Name="TDPETests:Clean">
+			<MSBuild Targets="Clean" Projects="Projects\ThundaxTDPETests\TDPETests.dproj"/>
+		</Target>
+		<Target DependsOnTargets="TDPhysics.Engine:Make" Name="TDPETests:Make">
+			<MSBuild Targets="Make" Projects="Projects\ThundaxTDPETests\TDPETests.dproj"/>
+		</Target>
+		<Target DependsOnTargets="TDPhysics.Engine" Name="ThundaxBallsDemo">
+			<MSBuild Projects="Projects\ThundaxBallsDemo\ThundaxBallsDemo.dproj"/>
+		</Target>
+		<Target DependsOnTargets="TDPhysics.Engine:Clean" Name="ThundaxBallsDemo:Clean">
+			<MSBuild Targets="Clean" Projects="Projects\ThundaxBallsDemo\ThundaxBallsDemo.dproj"/>
+		</Target>
+		<Target DependsOnTargets="TDPhysics.Engine:Make" Name="ThundaxBallsDemo:Make">
+			<MSBuild Targets="Make" Projects="Projects\ThundaxBallsDemo\ThundaxBallsDemo.dproj"/>
+		</Target>
 		<Target Name="Build">
-			<CallTarget Targets="TDPhysics_Engine"/>
+			<CallTarget Targets="TDPhysics_Engine;TDPETests;ThundaxBallsDemo"/>
 		</Target>
 		<Target Name="Clean">
-			<CallTarget Targets="TDPhysics_Engine:Clean"/>
+			<CallTarget Targets="TDPhysics_Engine:Clean;TDPETests:Clean;ThundaxBallsDemo:Clean"/>
 		</Target>
 		<Target Name="Make">
-			<CallTarget Targets="TDPhysics_Engine:Make"/>
+			<CallTarget Targets="TDPhysics_Engine:Make;TDPETests:Make;ThundaxBallsDemo:Make"/>
 		</Target>
 		<Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 	</Project>

@@ -29,64 +29,28 @@
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *)
-unit tdpe.lib.particle.abstract.restriction;
+unit ufrmlog;
 
 interface
 
-Uses tdpe.lib.particle.abstractElement, tdpe.lib.render,
-  tdpe.lib.writer.contract;
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, ComCtrls;
 
 type
-
-  TAbstractRestriction = Class(TAbstractElement)
-  Private
-    Fstiffness: double;
-    FRenderer: TAbstractRenderer;
-    FLogger: IWriter;
-  Public
-    constructor Create(Stiffness: double); Reintroduce;
-    Function Stiffness: double; Overload;
-    Procedure Stiffness(Value: double); Overload;
-    Procedure Init; Override;
-    Procedure SetRenderer(aRenderer: TAbstractRenderer);
-    procedure setLog(const Value: IWriter);
-    Procedure Resolve; Virtual; Abstract;
-    property Renderer: TAbstractRenderer read FRenderer;
+  TFLog = class(TForm)
+    reLog: TRichEdit;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
   end;
+
+var
+  FLog: TFLog;
 
 implementation
 
-{ AbstractRestriction }
-
-constructor TAbstractRestriction.Create(Stiffness: double);
-begin
-  Inherited Create;
-  Self.Stiffness(Stiffness);
-end;
-
-function TAbstractRestriction.Stiffness: double;
-begin
-  Result := Fstiffness;
-end;
-
-procedure TAbstractRestriction.Init;
-begin
-  inherited;
-end;
-
-procedure TAbstractRestriction.SetRenderer(aRenderer: TAbstractRenderer);
-begin
-  FRenderer := aRenderer;
-end;
-
-procedure TAbstractRestriction.Stiffness(Value: double);
-begin
-  Fstiffness := Value;
-end;
-
-procedure TAbstractRestriction.setLog(const Value: IWriter);
-begin
-  FLogger := Value;
-end;
+{$R *.dfm}
 
 end.

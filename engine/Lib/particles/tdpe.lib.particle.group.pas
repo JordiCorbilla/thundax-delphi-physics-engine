@@ -147,6 +147,7 @@ destructor TGroup.Destroy;
 begin
   FreeAndNil(FComposites);
   FreeAndNil(FCollisionList);
+  inherited;
 end;
 
 function TGroup.GetAll: TList;
