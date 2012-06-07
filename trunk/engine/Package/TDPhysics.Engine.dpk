@@ -93,7 +93,22 @@ contains
   tdpe.lib.particle.spring.restriction in '..\Lib\particles\tdpe.lib.particle.spring.restriction.pas',
   tdpe.lib.particle.sprite in '..\Lib\particles\tdpe.lib.particle.sprite.pas',
   tdpe.lib.particle.wheel in '..\Lib\particles\tdpe.lib.particle.wheel.pas',
-  tdpe.lib.particle.wheel.rim in '..\Lib\particles\tdpe.lib.particle.wheel.rim.pas';
+  tdpe.lib.particle.wheel.rim in '..\Lib\particles\tdpe.lib.particle.wheel.rim.pas',
+  tdpe.lib.structures.box.simulation in '..\Lib\structures\compositions\tdpe.lib.structures.box.simulation.pas',
+  tdpe.lib.structures.bridge in '..\Lib\structures\compositions\tdpe.lib.structures.bridge.pas',
+  tdpe.lib.structures.car in '..\Lib\structures\compositions\tdpe.lib.structures.car.pas',
+  tdpe.lib.structures.cloth in '..\Lib\structures\compositions\tdpe.lib.structures.cloth.pas',
+  tdpe.lib.structures.dispenser.box in '..\Lib\structures\compositions\tdpe.lib.structures.dispenser.box.pas',
+  tdpe.lib.structures.dispenser.circle in '..\Lib\structures\compositions\tdpe.lib.structures.dispenser.circle.pas',
+  tdpe.lib.automation.product in '..\Lib\structures\Automation\tdpe.lib.automation.product.pas',
+  tdpe.lib.automation.rotator in '..\Lib\structures\Automation\tdpe.lib.automation.rotator.pas',
+  tdpe.lib.automation.scale in '..\Lib\structures\Automation\tdpe.lib.automation.scale.pas',
+  tdpe.lib.automation.silo in '..\Lib\structures\Automation\tdpe.lib.automation.silo.pas',
+  tdpe.lib.automation.swingdoor in '..\Lib\structures\Automation\tdpe.lib.automation.swingdoor.pas',
+  tdpe.lib.automation.valve in '..\Lib\structures\Automation\tdpe.lib.automation.valve.pas',
+  tdpe.lib.structures.boxcomposite in '..\Lib\structures\General\tdpe.lib.structures.boxcomposite.pas',
+  tdpe.lib.structures.capsule in '..\Lib\structures\General\tdpe.lib.structures.capsule.pas',
+  tdpe.lib.structures.surface.static in '..\Lib\structures\General\tdpe.lib.structures.surface.static.pas';
 
 end.
 

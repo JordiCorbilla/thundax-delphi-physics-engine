@@ -29,65 +29,55 @@
   * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
   * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   *)
-unit tdpe.lib.structures.car;
+unit tdpe.lib.structures.capsule;
 
 interface
 
-Uses tdpe.lib.particle.group, tdpe.lib.particle.wheel, tdpe.lib.particle.spring.restriction,
-  tdpe.lib.engine, tdpe.lib.render;
+Uses tdpe.lib.particle.group, tdpe.lib.particle.circle.solid,
+  tdpe.lib.particle.spring.restriction, tdpe.lib.engine, tdpe.lib.render;
 
-type
-  TCar = class(TGroup)
-  private
-    FwheelparticleA: TWheelParticle;
-    FwheelparticleB: TWheelParticle;
-    Fwheelconnector: TSpringRestriction;
-    function GetSpeed: Double;
-    procedure SetSpeed(const Value: Double);
-  public
-    Constructor Create(aRenderer: TAbstractRenderer; aEngine: TEngine); Reintroduce;
+Type
+  TCapsule = class(TGroup)
+  Private
+    capsuleP1: TSolidCircle;
+    capsuleP2: TSolidCircle;
+    capsule: TSpringRestriction;
+  Public
+    Constructor Create(render: TAbstractRenderer; aEngine: TEngine); reintroduce; Virtual;
     destructor Destroy(); override;
-    property Speed: Double read GetSpeed Write SetSpeed;
-  end;
+  End;
 
 implementation
 
-uses tdpe.lib.particle.abstract.collection, SysUtils;
+uses
+  SysUtils, Graphics;
 
-{ Car }
+{ TCapsule }
 
-constructor TCar.Create(aRenderer: TAbstractRenderer; aEngine: TEngine);
+constructor TCapsule.Create(render: TAbstractRenderer; aEngine: TEngine);
 begin
-  inherited Create(True);
-  FwheelparticleA := TWheelParticle.Create(aEngine, 240, 500, 30, False, 2);
-  FwheelparticleA.SetRenderer(aRenderer);
-  FwheelparticleB := TWheelParticle.Create(aEngine, 300, 500, 14, False, 2);
-  FwheelparticleB.SetRenderer(aRenderer);
-  Fwheelconnector := TSpringRestriction.Create(FwheelparticleA, FwheelparticleB, 0.5, True, 8);
-  Fwheelconnector.SetRenderer(aRenderer);
+  inherited Create;
+  capsuleP1 := TSolidCircle.Create(300, 10, 14, false, 1.3, 0.4);
+  capsuleP1.SetParticleColor(clRed);
+  capsuleP1.SetRenderer(render);
+  addParticle(capsuleP1);
 
-  AddParticle(FwheelparticleA);
-  AddParticle(FwheelparticleB);
-  AddRestriction(Fwheelconnector);
+  capsuleP2 := TSolidCircle.Create(325, 35, 14, false, 1.3, 0.4);
+  capsuleP2.SetParticleColor(clRed);
+  capsuleP2.SetRenderer(render);
+  addParticle(capsuleP2);
+
+  capsule := TSpringRestriction.Create(capsuleP1, capsuleP2, 1, true, 24);
+  capsule.SetRenderer(render);
+  addRestriction(capsule);
 end;
 
-destructor TCar.Destroy;
+destructor TCapsule.Destroy;
 begin
-  FreeAndNil(FwheelparticleA);
-  FreeAndNil(FwheelparticleB);
-  FreeAndNil(Fwheelconnector);
+  FreeAndNil(capsuleP1);
+  FreeAndNil(capsuleP2);
+  FreeAndNil(capsule);
   inherited;
-end;
-
-function TCar.GetSpeed: Double;
-begin
-  result := (FwheelparticleA.AngularVelocity + FwheelparticleB.AngularVelocity) / 2;
-end;
-
-procedure TCar.SetSpeed(const Value: Double);
-begin
-  FwheelparticleA.AngularVelocity := Value;
-  FwheelparticleB.AngularVelocity := Value;
 end;
 
 end.

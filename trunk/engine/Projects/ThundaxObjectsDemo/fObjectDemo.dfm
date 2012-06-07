@@ -1,15 +1,15 @@
-object fBalls: TfBalls
-  Left = 0
-  Top = 0
+object FormMainCarDemo: TFormMainCarDemo
+  Left = 137
+  Top = 50
   BorderStyle = bsSingle
-  Caption = 'Thundax Ball Demo'
-  ClientHeight = 716
-  ClientWidth = 1164
-  Color = clBlack
+  Caption = 'Objects Demo'
+  ClientHeight = 652
+  ClientWidth = 1131
+  Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
-  Font.Name = 'Tahoma'
+  Font.Name = 'MS Sans Serif'
   Font.Style = []
   Icon.Data = {
     0000010005000000000001002000282004005600000080800000010020002808
@@ -11050,11 +11050,8 @@ object fBalls: TfBalls
   OldCreateOrder = False
   Position = poScreenCenter
   OnCreate = FormCreate
-  OnDestroy = FormDestroy
   OnKeyPress = FormKeyPress
-  OnMouseDown = FormMouseDown
-  OnMouseMove = FormMouseMove
-  OnMouseUp = FormMouseUp
+  OnKeyUp = FormKeyUp
   OnPaint = FormPaint
   PixelsPerInch = 96
   TextHeight = 13

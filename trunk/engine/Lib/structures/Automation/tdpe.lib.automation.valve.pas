@@ -29,65 +29,83 @@
   * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
   * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   *)
-unit tdpe.lib.structures.car;
+unit tdpe.lib.automation.valve;
 
 interface
 
-Uses tdpe.lib.particle.group, tdpe.lib.particle.wheel, tdpe.lib.particle.spring.restriction,
-  tdpe.lib.engine, tdpe.lib.render;
+Uses tdpe.lib.particle.group, tdpe.lib.particle.box.solid, tdpe.lib.particle.spring.restriction,
+  tdpe.lib.engine, tdpe.lib.render, Graphics;
 
 type
-  TCar = class(TGroup)
+
+  TValve = class(TGroup)
   private
-    FwheelparticleA: TWheelParticle;
-    FwheelparticleB: TWheelParticle;
-    Fwheelconnector: TSpringRestriction;
-    function GetSpeed: Double;
-    procedure SetSpeed(const Value: Double);
+    Fbox: TSolidBox;
+    Fdosification: Boolean;
+    Fopen: Boolean;
+    FClose: Boolean;
+    Finitial: Double;
+    Flimit: integer;
   public
-    Constructor Create(aRenderer: TAbstractRenderer; aEngine: TEngine); Reintroduce;
-    destructor Destroy(); override;
-    property Speed: Double read GetSpeed Write SetSpeed;
+    Constructor Create(aRenderer: TAbstractRenderer; aEngine: TEngine; ini: Double; color: TColor); Reintroduce;
+    Destructor Destroy(); override;
+    procedure Dosification();
+    procedure Open();
+    procedure Close();
   end;
 
 implementation
 
 uses tdpe.lib.particle.abstract.collection, SysUtils;
 
-{ Car }
+{ TValve }
 
-constructor TCar.Create(aRenderer: TAbstractRenderer; aEngine: TEngine);
+procedure TValve.Close;
 begin
-  inherited Create(True);
-  FwheelparticleA := TWheelParticle.Create(aEngine, 240, 500, 30, False, 2);
-  FwheelparticleA.SetRenderer(aRenderer);
-  FwheelparticleB := TWheelParticle.Create(aEngine, 300, 500, 14, False, 2);
-  FwheelparticleB.SetRenderer(aRenderer);
-  Fwheelconnector := TSpringRestriction.Create(FwheelparticleA, FwheelparticleB, 0.5, True, 8);
-  Fwheelconnector.SetRenderer(aRenderer);
-
-  AddParticle(FwheelparticleA);
-  AddParticle(FwheelparticleB);
-  AddRestriction(Fwheelconnector);
+  if Fbox.px <= Finitial + Flimit then
+    FClose := true;
+  if Fbox.px = Finitial then
+    FClose := false;
+  if FClose then
+    Fbox.px := Fbox.px - 0.5;
 end;
 
-destructor TCar.Destroy;
+constructor TValve.Create(aRenderer: TAbstractRenderer; aEngine: TEngine; ini: Double; color: TColor);
 begin
-  FreeAndNil(FwheelparticleA);
-  FreeAndNil(FwheelparticleB);
-  FreeAndNil(Fwheelconnector);
+  inherited Create(true);
+  Finitial := ini;
+  Flimit := 28;
+  Fbox := TSolidBox.Create(Finitial, 112, Flimit, 6, 0, true, 1, 0.3, 0.3, 0, color);
+  Fbox.SetRenderer(aRenderer);
+  addParticle(Fbox);
+end;
+
+destructor TValve.Destroy;
+begin
+  FreeAndNil(Fbox);
   inherited;
 end;
 
-function TCar.GetSpeed: Double;
+procedure TValve.Dosification;
 begin
-  result := (FwheelparticleA.AngularVelocity + FwheelparticleB.AngularVelocity) / 2;
+  if Fbox.px = Finitial then
+    Fdosification := true;
+  if Fbox.px = Finitial + Flimit then
+    Fdosification := false;
+  if Fdosification then
+    Fbox.px := Fbox.px + 0.5
+  else
+    Fbox.px := Fbox.px - 0.5;
 end;
 
-procedure TCar.SetSpeed(const Value: Double);
+procedure TValve.Open;
 begin
-  FwheelparticleA.AngularVelocity := Value;
-  FwheelparticleB.AngularVelocity := Value;
+  if Fbox.px >= Finitial then
+    Fopen := true;
+  if Fbox.px = Finitial + Flimit then
+    Fopen := false;
+  if Fopen then
+    Fbox.px := Fbox.px + 0.5;
 end;
 
 end.
