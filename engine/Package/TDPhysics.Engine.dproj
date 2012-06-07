@@ -89,6 +89,21 @@
 			<DCCReference Include="..\Lib\particles\tdpe.lib.particle.sprite.pas"/>
 			<DCCReference Include="..\Lib\particles\tdpe.lib.particle.wheel.pas"/>
 			<DCCReference Include="..\Lib\particles\tdpe.lib.particle.wheel.rim.pas"/>
+			<DCCReference Include="..\Lib\structures\compositions\tdpe.lib.structures.box.simulation.pas"/>
+			<DCCReference Include="..\Lib\structures\compositions\tdpe.lib.structures.bridge.pas"/>
+			<DCCReference Include="..\Lib\structures\compositions\tdpe.lib.structures.car.pas"/>
+			<DCCReference Include="..\Lib\structures\compositions\tdpe.lib.structures.cloth.pas"/>
+			<DCCReference Include="..\Lib\structures\compositions\tdpe.lib.structures.dispenser.box.pas"/>
+			<DCCReference Include="..\Lib\structures\compositions\tdpe.lib.structures.dispenser.circle.pas"/>
+			<DCCReference Include="..\Lib\structures\Automation\tdpe.lib.automation.product.pas"/>
+			<DCCReference Include="..\Lib\structures\Automation\tdpe.lib.automation.rotator.pas"/>
+			<DCCReference Include="..\Lib\structures\Automation\tdpe.lib.automation.scale.pas"/>
+			<DCCReference Include="..\Lib\structures\Automation\tdpe.lib.automation.silo.pas"/>
+			<DCCReference Include="..\Lib\structures\Automation\tdpe.lib.automation.swingdoor.pas"/>
+			<DCCReference Include="..\Lib\structures\Automation\tdpe.lib.automation.valve.pas"/>
+			<DCCReference Include="..\Lib\structures\General\tdpe.lib.structures.boxcomposite.pas"/>
+			<DCCReference Include="..\Lib\structures\General\tdpe.lib.structures.capsule.pas"/>
+			<DCCReference Include="..\Lib\structures\General\tdpe.lib.structures.surface.static.pas"/>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>

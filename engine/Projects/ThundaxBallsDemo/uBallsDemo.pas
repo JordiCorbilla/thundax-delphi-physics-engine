@@ -42,7 +42,8 @@ uses
   tdpe.lib.structures.bridge, tdpe.lib.particle.box, tdpe.lib.structures.surface.static,
   tdpe.lib.structures.dispenser.box, tdpe.lib.structures.dispenser.circle,
   StdCtrls, tdpe.lib.richedit.writer, Direct2D, tdpe.lib.particle.circle.solid,
-  tdpe.lib.writer.contract, tdpe.lib.structures.cloth, tdpe.lib.structures.car;
+  tdpe.lib.writer.contract, tdpe.lib.structures.cloth, tdpe.lib.structures.car,
+  tdpe.lib.structures.box.simulation;
 
 type
   TfBalls = class(TForm)
@@ -68,6 +69,7 @@ type
     ActiveDirect2D: Boolean;
     cloth : TCloth;
     car : TCar;
+    brick : TBrick;
   end;
 
 var
@@ -117,7 +119,11 @@ begin
   car := TCar.create(render, engine);
   engine.addGroup(car);
 
+  brick := TBrick.create(render, engine, 300, 600, clwhite);
+  engine.AddGroup(brick);
+
   //Define surfaces that collide
+  surface.AddCollidable(brick);
   surface.AddCollidable(car);
   surface.AddCollidable(BoxDispenser);
   surface.AddCollidable(CircleDispenser);
@@ -137,6 +143,7 @@ end;
 
 procedure TfBalls.FormDestroy(Sender: TObject);
 begin
+  FreeAndNil(brick);
   FreeAndNil(bridge);
   FreeAndNil(surface);
   FreeAndNil(BoxDispenser);
@@ -181,6 +188,8 @@ begin
     CircleDispenser.Activate(pos);
   if cloth.isInside(X, Y, pos) then
     cloth.Activate(pos);
+  if brick.isInside(X, Y, pos) then
+    brick.Activate(pos);
 end;
 
 procedure TfBalls.FormMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
@@ -189,6 +198,7 @@ begin
   BoxDispenser.Move(X, Y);
   CircleDispenser.Move(X, Y);
   cloth.Move(X,Y);
+  brick.Move(X, Y);
 end;
 
 procedure TfBalls.FormMouseUp(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
@@ -197,6 +207,7 @@ begin
   BoxDispenser.DeActivate();
   CircleDispenser.DeActivate();
   cloth.Deactivate();
+  brick.Deactivate();
 end;
 
 procedure TfBalls.FormPaint(Sender: TObject);

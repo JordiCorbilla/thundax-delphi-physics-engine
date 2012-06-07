@@ -29,65 +29,58 @@
   * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
   * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   *)
-unit tdpe.lib.structures.car;
+unit tdpe.lib.automation.product;
 
 interface
 
-Uses tdpe.lib.particle.group, tdpe.lib.particle.wheel, tdpe.lib.particle.spring.restriction,
-  tdpe.lib.engine, tdpe.lib.render;
+Uses tdpe.lib.particle.group, tdpe.lib.particle.circle.solid, tdpe.lib.particle.spring.restriction,
+  tdpe.lib.engine, tdpe.lib.render, Contnrs, Generics.Collections, Graphics;
 
 type
-  TCar = class(TGroup)
+  TProduct = class(TGroup)
   private
-    FwheelparticleA: TWheelParticle;
-    FwheelparticleB: TWheelParticle;
-    Fwheelconnector: TSpringRestriction;
-    function GetSpeed: Double;
-    procedure SetSpeed(const Value: Double);
+    FCircles: TObjectList<TSolidCircle>;
+    FRenderer: TAbstractRenderer;
+    FProductColor: TColor;
+    Fpos: integer;
   public
-    Constructor Create(aRenderer: TAbstractRenderer; aEngine: TEngine); Reintroduce;
+    Constructor Create(aRenderer: TAbstractRenderer; aEngine: TEngine; px: integer; color: TColor); Reintroduce;
     destructor Destroy(); override;
-    property Speed: Double read GetSpeed Write SetSpeed;
+    procedure AddProduct();
   end;
 
 implementation
 
 uses tdpe.lib.particle.abstract.collection, SysUtils;
 
-{ Car }
+{ TProduct }
 
-constructor TCar.Create(aRenderer: TAbstractRenderer; aEngine: TEngine);
+procedure TProduct.AddProduct;
+var
+  rawMaterial: TSolidCircle;
+begin
+  if FCircles.Count < 300 then
+  begin
+    rawMaterial := TSolidCircle.Create(Fpos + Random(30), 10, 3, false, 1, 0.3, 0.2, 0, 0, FProductColor);
+    rawMaterial.SetRenderer(FRenderer);
+    AddParticle(rawMaterial);
+    FCircles.Add(rawMaterial);
+  end;
+end;
+
+constructor TProduct.Create(aRenderer: TAbstractRenderer; aEngine: TEngine; px: integer; color: TColor);
 begin
   inherited Create(True);
-  FwheelparticleA := TWheelParticle.Create(aEngine, 240, 500, 30, False, 2);
-  FwheelparticleA.SetRenderer(aRenderer);
-  FwheelparticleB := TWheelParticle.Create(aEngine, 300, 500, 14, False, 2);
-  FwheelparticleB.SetRenderer(aRenderer);
-  Fwheelconnector := TSpringRestriction.Create(FwheelparticleA, FwheelparticleB, 0.5, True, 8);
-  Fwheelconnector.SetRenderer(aRenderer);
-
-  AddParticle(FwheelparticleA);
-  AddParticle(FwheelparticleB);
-  AddRestriction(Fwheelconnector);
+  FRenderer := aRenderer;
+  FProductColor := color;
+  Fpos := px;
+  FCircles := TObjectList<TSolidCircle>.Create;
 end;
 
-destructor TCar.Destroy;
+destructor TProduct.Destroy;
 begin
-  FreeAndNil(FwheelparticleA);
-  FreeAndNil(FwheelparticleB);
-  FreeAndNil(Fwheelconnector);
+  FreeAndNil(FCircles);
   inherited;
-end;
-
-function TCar.GetSpeed: Double;
-begin
-  result := (FwheelparticleA.AngularVelocity + FwheelparticleB.AngularVelocity) / 2;
-end;
-
-procedure TCar.SetSpeed(const Value: Double);
-begin
-  FwheelparticleA.AngularVelocity := Value;
-  FwheelparticleB.AngularVelocity := Value;
 end;
 
 end.
