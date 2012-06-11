@@ -44,6 +44,7 @@
 				<MainSource>MainSource</MainSource>
 			</DelphiCompile>
 			<DCCReference Include="rtl.dcp"/>
+			<DCCReference Include="vcl.dcp"/>
 			<DCCReference Include="..\Lib\Array\tdpe.lib.force.contract.pas"/>
 			<DCCReference Include="..\Lib\Array\tdpe.lib.force.list.pas"/>
 			<DCCReference Include="..\Lib\Array\tdpe.lib.force.pas"/>
@@ -64,10 +65,6 @@
 			<DCCReference Include="..\Lib\Engine\tdpe.lib.engine.pas"/>
 			<DCCReference Include="..\Lib\Log\tdpe.lib.logging.pas"/>
 			<DCCReference Include="..\Lib\Styles\tdpe.lib.styles.pas"/>
-			<DCCReference Include="..\Lib\Collisions\tdpe.lib.collision.contract.pas"/>
-			<DCCReference Include="..\Lib\Collisions\tdpe.lib.collision.detector.contract.pas"/>
-			<DCCReference Include="..\Lib\Collisions\tdpe.lib.collision.pas"/>
-			<DCCReference Include="..\Lib\Collisions\tdpe.lib.collision.resolver.contract.pas"/>
 			<DCCReference Include="..\Lib\particles\tdpe.lib.particle.abstract.collection.pas"/>
 			<DCCReference Include="..\Lib\particles\tdpe.lib.particle.abstract.restriction.pas"/>
 			<DCCReference Include="..\Lib\particles\tdpe.lib.particle.abstractElement.contract.pas"/>
@@ -110,6 +107,14 @@
 			<DCCReference Include="..\Lib\Jansen\tdpe.lib.jansen.motor.pas"/>
 			<DCCReference Include="..\Lib\Jansen\tdpe.lib.jansen.robot.pas"/>
 			<DCCReference Include="..\Lib\Jansen\tdpe.lib.jansen.scenery.pas"/>
+			<DCCReference Include="..\Lib\Styles\tdpe.lib.styles.contract.pas"/>
+			<DCCReference Include="..\Lib\Collisions\tdpe.lib.collision.contract.pas"/>
+			<DCCReference Include="..\Lib\Collisions\tdpe.lib.collision.detector.contract.pas"/>
+			<DCCReference Include="..\Lib\Collisions\tdpe.lib.collision.detector.pas"/>
+			<DCCReference Include="..\Lib\Collisions\tdpe.lib.collision.pas"/>
+			<DCCReference Include="..\Lib\Collisions\tdpe.lib.collision.resolver.contract.pas"/>
+			<DCCReference Include="..\Lib\Collisions\tdpe.lib.collision.resolver.pas"/>
+			<DCCReference Include="..\Lib\Collisions\tdpe.lib.collision.resolver.solid.pas"/>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>

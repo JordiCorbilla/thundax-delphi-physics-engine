@@ -46,7 +46,8 @@ package TDPhysics.Engine;
 {$IMPLICITBUILD ON}
 
 requires
-  rtl;
+  rtl,
+  vcl;
 
 contains
   tdpe.lib.force.contract in '..\Lib\Array\tdpe.lib.force.contract.pas',
@@ -69,10 +70,6 @@ contains
   tdpe.lib.engine in '..\Lib\Engine\tdpe.lib.engine.pas',
   tdpe.lib.logging in '..\Lib\Log\tdpe.lib.logging.pas',
   tdpe.lib.styles in '..\Lib\Styles\tdpe.lib.styles.pas',
-  tdpe.lib.collision.contract in '..\Lib\Collisions\tdpe.lib.collision.contract.pas',
-  tdpe.lib.collision.detector.contract in '..\Lib\Collisions\tdpe.lib.collision.detector.contract.pas',
-  tdpe.lib.collision in '..\Lib\Collisions\tdpe.lib.collision.pas',
-  tdpe.lib.collision.resolver.contract in '..\Lib\Collisions\tdpe.lib.collision.resolver.contract.pas',
   tdpe.lib.particle.abstract.collection in '..\Lib\particles\tdpe.lib.particle.abstract.collection.pas',
   tdpe.lib.particle.abstract.restriction in '..\Lib\particles\tdpe.lib.particle.abstract.restriction.pas',
   tdpe.lib.particle.abstractElement.contract in '..\Lib\particles\tdpe.lib.particle.abstractElement.contract.pas',
@@ -114,7 +111,16 @@ contains
   tdpe.lib.jansen.mechanism in '..\Lib\Jansen\tdpe.lib.jansen.mechanism.pas',
   tdpe.lib.jansen.motor in '..\Lib\Jansen\tdpe.lib.jansen.motor.pas',
   tdpe.lib.jansen.robot in '..\Lib\Jansen\tdpe.lib.jansen.robot.pas',
-  tdpe.lib.jansen.scenery in '..\Lib\Jansen\tdpe.lib.jansen.scenery.pas';
+  tdpe.lib.jansen.scenery in '..\Lib\Jansen\tdpe.lib.jansen.scenery.pas',
+  tdpe.lib.styles.contract in '..\Lib\Styles\tdpe.lib.styles.contract.pas',
+  tdpe.lib.collision.contract in '..\Lib\Collisions\tdpe.lib.collision.contract.pas',
+  tdpe.lib.collision.detector.contract in '..\Lib\Collisions\tdpe.lib.collision.detector.contract.pas',
+  tdpe.lib.collision.detector in '..\Lib\Collisions\tdpe.lib.collision.detector.pas',
+  tdpe.lib.collision in '..\Lib\Collisions\tdpe.lib.collision.pas',
+  tdpe.lib.collision.resolver.contract in '..\Lib\Collisions\tdpe.lib.collision.resolver.contract.pas',
+  tdpe.lib.collision.resolver in '..\Lib\Collisions\tdpe.lib.collision.resolver.pas',
+  tdpe.lib.collision.resolver.solid in '..\Lib\Collisions\tdpe.lib.collision.resolver.solid.pas';
 
 end.
+
 
