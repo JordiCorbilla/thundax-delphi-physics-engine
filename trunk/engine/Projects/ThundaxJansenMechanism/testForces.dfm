@@ -1,15 +1,16 @@
-object FormMainCarDemo: TFormMainCarDemo
-  Left = 137
-  Top = 50
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
-  Caption = 'Objects Demo'
-  ClientHeight = 652
-  ClientWidth = 1131
-  Color = clBtnFace
+  Caption = 'Thundax Jansen Mechanism'
+  ClientHeight = 623
+  ClientWidth = 1252
+  Color = clWindow
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
-  Font.Name = 'MS Sans Serif'
+  Font.Name = 'Tahoma'
   Font.Style = []
   Icon.Data = {
     0000010005000000000001002000282004005600000080800000010020002808
@@ -11050,29 +11051,41 @@ object FormMainCarDemo: TFormMainCarDemo
   OldCreateOrder = False
   Position = poScreenCenter
   OnCreate = FormCreate
+  OnDestroy = FormDestroy
   OnKeyPress = FormKeyPress
-  OnKeyUp = FormKeyUp
   OnPaint = FormPaint
   PixelsPerInch = 96
   TextHeight = 13
+  object Image1: TImage
+    Left = 544
+    Top = 216
+    Width = 217
+    Height = 81
+  end
+  object Image2: TImage
+    Left = 920
+    Top = 547
+    Width = 273
+    Height = 71
+  end
   object Label1: TLabel
-    Left = 880
-    Top = 8
-    Width = 75
+    Left = 872
+    Top = 24
+    Width = 96
     Height = 13
-    Caption = 'Key '#39'A'#39' + Speed'
+    Caption = #39'p'#39' Starts the engine'
   end
   object Label2: TLabel
-    Left = 880
-    Top = 27
-    Width = 72
+    Left = 872
+    Top = 43
+    Width = 91
     Height = 13
-    Caption = 'Key '#39'A'#39' - Speed'
+    Caption = #39'z'#39' change direction'
   end
   object tmr1: TTimer
     Interval = 1
     OnTimer = tmr1Timer
-    Left = 40
-    Top = 32
+    Left = 712
+    Top = 16
   end
 end

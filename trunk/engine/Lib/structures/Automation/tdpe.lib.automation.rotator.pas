@@ -33,9 +33,9 @@ unit tdpe.lib.automation.rotator;
 
 interface
 
-Uses tdpe.lib.particle.group, tdpe.lib.particle.circle.solid,
+Uses tdpe.lib.particle.group, tdpe.lib.particle.circle,
   tdpe.lib.particle.spring.restriction, tdpe.lib.engine,
-  tdpe.lib.particle.box.solid, tdpe.lib.render,
+  tdpe.lib.particle.box, tdpe.lib.render,
   tdpe.lib.structures.boxcomposite, tdpe.lib.vector;
 
 Type
@@ -43,9 +43,9 @@ Type
   Private
     ctr: IVector;
     FBoxComposite: TBoxComposite;
-    circA: TSolidCircle;
-    rectA: TSolidBox;
-    rectB: TSolidBox;
+    circA: TCircleParticle;
+    rectA: TBoxParticle;
+    rectB: TBoxParticle;
     ConnectorA: TSpringRestriction;
     ConnectorB: TSpringRestriction;
   Public
@@ -70,11 +70,11 @@ begin
   FBoxComposite := TBoxComposite.Create(render, aEngine, ctr);
   addComposite(FBoxComposite);
 
-  circA := TSolidCircle.Create(ctr.x, ctr.y, 5, false);
+  circA := TCircleParticle.Create(ctr.x, ctr.y, 5, false);
   circA.SetRenderer(render);
   addParticle(circA);
 
-  rectA := TSolidBox.Create(555, 160, 10, 10, 0, false, 3);
+  rectA := TBoxParticle.Create(555, 160, 10, 10, 0, false, 3);
   rectA.SetRenderer(render);
   addParticle(rectA);
 
@@ -82,7 +82,7 @@ begin
   ConnectorA.SetRenderer(render);
   addRestriction(ConnectorA);
 
-  rectB := TSolidBox.Create(555, 190, 10, 10, 0, false, 3);
+  rectB := TBoxParticle.Create(555, 190, 10, 10, 0, false, 3);
   rectB.SetRenderer(render);
   addParticle(rectB);
 

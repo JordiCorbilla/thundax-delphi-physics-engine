@@ -11058,6 +11058,24 @@ object fBalls: TfBalls
   OnPaint = FormPaint
   PixelsPerInch = 96
   TextHeight = 13
+  object Label1: TLabel
+    Left = 872
+    Top = 16
+    Width = 68
+    Height = 13
+    Caption = #39'd'#39' adds boxes'
+    Color = clWhite
+    ParentColor = False
+  end
+  object Label2: TLabel
+    Left = 872
+    Top = 35
+    Width = 61
+    Height = 13
+    Caption = #39'f'#39' adds cirles'
+    Color = clWhite
+    ParentColor = False
+  end
   object tmr1: TTimer
     Interval = 1
     OnTimer = tmr1Timer

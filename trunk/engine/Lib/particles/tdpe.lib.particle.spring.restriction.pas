@@ -187,8 +187,8 @@ begin
   begin
     if Collidable then
     begin
-      TSpringRestrictionParticle(FRestrictionParticle).Paint;
       FRestrictionParticle.ParticleColor := Self.Fcolor;
+      TSpringRestrictionParticle(FRestrictionParticle).Paint;
     end
     else
       Renderer.Line(particle1.px, particle1.py, particle2.px, particle2.py, Self.Fcolor, Self.FPenWidth);

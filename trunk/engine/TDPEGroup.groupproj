@@ -9,6 +9,9 @@
 			<Projects Include="Projects\ThundaxBallsDemo\ThundaxBallsDemo.dproj">
 				<Dependencies>Package\TDPhysics.Engine.dproj</Dependencies>
 			</Projects>
+			<Projects Include="Projects\ThundaxJansenMechanism\ThundaxJansenMechanism.dproj">
+				<Dependencies>Package\TDPhysics.Engine.dproj</Dependencies>
+			</Projects>
 			<Projects Include="Projects\ThundaxSimulationPlant\ThundaxSimulationPlant.dproj">
 				<Dependencies>Package\TDPhysics.Engine.dproj</Dependencies>
 			</Projects>
@@ -44,6 +47,15 @@
 		<Target DependsOnTargets="TDPhysics.Engine:Make" Name="ThundaxBallsDemo:Make">
 			<MSBuild Targets="Make" Projects="Projects\ThundaxBallsDemo\ThundaxBallsDemo.dproj"/>
 		</Target>
+		<Target DependsOnTargets="TDPhysics.Engine" Name="ThundaxJansenMechanism">
+			<MSBuild Projects="Projects\ThundaxJansenMechanism\ThundaxJansenMechanism.dproj"/>
+		</Target>
+		<Target DependsOnTargets="TDPhysics.Engine:Clean" Name="ThundaxJansenMechanism:Clean">
+			<MSBuild Targets="Clean" Projects="Projects\ThundaxJansenMechanism\ThundaxJansenMechanism.dproj"/>
+		</Target>
+		<Target DependsOnTargets="TDPhysics.Engine:Make" Name="ThundaxJansenMechanism:Make">
+			<MSBuild Targets="Make" Projects="Projects\ThundaxJansenMechanism\ThundaxJansenMechanism.dproj"/>
+		</Target>
 		<Target DependsOnTargets="TDPhysics.Engine" Name="ThundaxSimulationPlant">
 			<MSBuild Projects="Projects\ThundaxSimulationPlant\ThundaxSimulationPlant.dproj"/>
 		</Target>
@@ -72,13 +84,13 @@
 			<MSBuild Targets="Make" Projects="Projects\ThundaxTDPETests\TDPETests.dproj"/>
 		</Target>
 		<Target Name="Build">
-			<CallTarget Targets="TDPhysics_Engine;ThundaxBallsDemo;ThundaxSimulationPlant;ThundaxObjectDemo;TDPETests"/>
+			<CallTarget Targets="TDPhysics_Engine;ThundaxBallsDemo;ThundaxJansenMechanism;ThundaxSimulationPlant;ThundaxObjectDemo;TDPETests"/>
 		</Target>
 		<Target Name="Clean">
-			<CallTarget Targets="TDPhysics_Engine:Clean;ThundaxBallsDemo:Clean;ThundaxSimulationPlant:Clean;ThundaxObjectDemo:Clean;TDPETests:Clean"/>
+			<CallTarget Targets="TDPhysics_Engine:Clean;ThundaxBallsDemo:Clean;ThundaxJansenMechanism:Clean;ThundaxSimulationPlant:Clean;ThundaxObjectDemo:Clean;TDPETests:Clean"/>
 		</Target>
 		<Target Name="Make">
-			<CallTarget Targets="TDPhysics_Engine:Make;ThundaxBallsDemo:Make;ThundaxSimulationPlant:Make;ThundaxObjectDemo:Make;TDPETests:Make"/>
+			<CallTarget Targets="TDPhysics_Engine:Make;ThundaxBallsDemo:Make;ThundaxJansenMechanism:Make;ThundaxSimulationPlant:Make;ThundaxObjectDemo:Make;TDPETests:Make"/>
 		</Target>
 		<Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 	</Project>

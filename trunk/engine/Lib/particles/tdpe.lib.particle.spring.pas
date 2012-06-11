@@ -155,6 +155,8 @@ begin
   Self.RectHeight := RectHeight;
   Self.FscaleToLength := FscaleToLength;
   FixedEndLimit := 0;
+  FBoxCornerA := TVector.New;
+  FBoxCornerB := TVector.New;
 end;
 
 function TSpringRestrictionParticle.GetContactParamPoint(p: TAbstractParticle): Double;

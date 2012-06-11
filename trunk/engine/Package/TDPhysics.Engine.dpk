@@ -108,7 +108,13 @@ contains
   tdpe.lib.automation.valve in '..\Lib\structures\Automation\tdpe.lib.automation.valve.pas',
   tdpe.lib.structures.boxcomposite in '..\Lib\structures\General\tdpe.lib.structures.boxcomposite.pas',
   tdpe.lib.structures.capsule in '..\Lib\structures\General\tdpe.lib.structures.capsule.pas',
-  tdpe.lib.structures.surface.static in '..\Lib\structures\General\tdpe.lib.structures.surface.static.pas';
+  tdpe.lib.structures.surface.static in '..\Lib\structures\General\tdpe.lib.structures.surface.static.pas',
+  tdpe.lib.jansen.body in '..\Lib\Jansen\tdpe.lib.jansen.body.pas',
+  tdpe.lib.jansen.leg in '..\Lib\Jansen\tdpe.lib.jansen.leg.pas',
+  tdpe.lib.jansen.mechanism in '..\Lib\Jansen\tdpe.lib.jansen.mechanism.pas',
+  tdpe.lib.jansen.motor in '..\Lib\Jansen\tdpe.lib.jansen.motor.pas',
+  tdpe.lib.jansen.robot in '..\Lib\Jansen\tdpe.lib.jansen.robot.pas',
+  tdpe.lib.jansen.scenery in '..\Lib\Jansen\tdpe.lib.jansen.scenery.pas';
 
 end.
 
