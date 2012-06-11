@@ -38,11 +38,13 @@ uses
   Dialogs, tdpe.lib.engine, tdpe.lib.vector, tdpe.lib.render.gdi,
   tdpe.lib.structures.car, tdpe.lib.structures.capsule,
   tdpe.lib.automation.swingdoor, tdpe.lib.automation.rotator, ExtCtrls,
-  tdpe.lib.structures.surface.static;
+  tdpe.lib.structures.surface.static, StdCtrls;
 
 type
   TFormMainCarDemo = class(TForm)
     tmr1: TTimer;
+    Label1: TLabel;
+    Label2: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure tmr1Timer(Sender: TObject);
     procedure FormPaint(Sender: TObject);
@@ -89,20 +91,15 @@ begin
   FRotator := TRotator.Create(Render, Engine);
   Engine.addGroup(FRotator);
 
-//  FSwingDoor := TSwingDoor.Create(Render, Engine);
-//  Engine.addGroup(FSwingDoor);
-
   FCar := TCar.Create(Render, Engine);
   Engine.addGroup(FCar);
 
   FCar.AddCollidable(FCapsule);
-//  FCar.AddCollidable(FSwingDoor);
   FCar.AddCollidable(FRotator);
 
   Fsurface.AddCollidable(FCar);
   Fsurface.AddCollidable(FCapsule);
 
-//  FCapsule.AddCollidable(FSwingDoor);
   FCapsule.AddCollidable(FRotator);
 
   DoubleBuffered := true;

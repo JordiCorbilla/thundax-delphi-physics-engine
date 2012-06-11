@@ -33,7 +33,7 @@ unit tdpe.lib.structures.boxcomposite;
 
 interface
 
-Uses tdpe.lib.particle.group, tdpe.lib.particle.circle.solid,
+Uses tdpe.lib.particle.group, tdpe.lib.particle.circle,
   tdpe.lib.particle.spring.restriction, tdpe.lib.engine, tdpe.lib.render,
   tdpe.lib.particle.pattern.composite, tdpe.lib.vector;
 
@@ -41,10 +41,10 @@ Type
   TBoxComposite = class(TComposite)
   Private
   Public
-    CpA: TSolidCircle;
-    CpC: TSolidCircle;
-    cpB: TSolidCircle;
-    cpD: TSolidCircle;
+    CpA: TCircleParticle;
+    CpC: TCircleParticle;
+    cpB: TCircleParticle;
+    cpD: TCircleParticle;
     spra: TSpringRestriction;
     sprb: TSpringRestriction;
     sprc: TSpringRestriction;
@@ -69,20 +69,20 @@ begin
   rh := 18;
   rad := 4;
 
-  CpA := TSolidCircle.Create(Ctr.x - rw / 2, Ctr.y - rh / 2, rad, true, 1, 0.3, 0, 0, 0, clwhite);
-  cpB := TSolidCircle.Create(Ctr.x + rw / 2, Ctr.y - rh / 2, rad, true, 1, 0.3, 0, 0, 0, clwhite);
-  CpC := TSolidCircle.Create(Ctr.x + rw / 2, Ctr.y + rh / 2, rad, true, 1, 0.3, 0, 0, 0, clwhite);
-  cpD := TSolidCircle.Create(Ctr.x - rw / 2, Ctr.y + rh / 2, rad, true, 1, 0.3, 0, 0, 0, clwhite);
+  CpA := TCircleParticle.Create(Ctr.x - rw / 2, Ctr.y - rh / 2, rad, true, 1, 0.3, 0, clwhite);
+  cpB := TCircleParticle.Create(Ctr.x + rw / 2, Ctr.y - rh / 2, rad, true, 1, 0.3, 0, clwhite);
+  CpC := TCircleParticle.Create(Ctr.x + rw / 2, Ctr.y + rh / 2, rad, true, 1, 0.3, 0, clwhite);
+  cpD := TCircleParticle.Create(Ctr.x - rw / 2, Ctr.y + rh / 2, rad, true, 1, 0.3, 0, clwhite);
 
   CpA.SetRenderer(render);
   cpB.SetRenderer(render);
   CpC.SetRenderer(render);
   cpD.SetRenderer(render);
 
-  spra := TSpringRestriction.Create(CpA, cpB, 0.5, true, rad * 2, 1,False, clwhite, clwhite);
-  sprb := TSpringRestriction.Create(cpB, CpC, 0.5, true, rad * 2, 1,False, clwhite, clwhite);
-  sprc := TSpringRestriction.Create(CpC, cpD, 0.5, true, rad * 2, 1,False, clwhite, clwhite);
-  sprd := TSpringRestriction.Create(cpD, CpA, 0.5, true, rad * 2, 1,False, clwhite, clwhite);
+  spra := TSpringRestriction.Create(CpA, cpB, 0.5, true, rad * 2, 1, true, clBlue, 3);
+  sprb := TSpringRestriction.Create(cpB, CpC, 0.5, true, rad * 2, 1, False, clBlue, 3);
+  sprc := TSpringRestriction.Create(CpC, cpD, 0.5, true, rad * 2, 1, False, clBlue, 3);
+  sprd := TSpringRestriction.Create(cpD, CpA, 0.5, true, rad * 2, 1, False, clBlue, 3);
 
   spra.SetRenderer(render);
   sprb.SetRenderer(render);

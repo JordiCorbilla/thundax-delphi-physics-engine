@@ -104,6 +104,12 @@
 			<DCCReference Include="..\Lib\structures\General\tdpe.lib.structures.boxcomposite.pas"/>
 			<DCCReference Include="..\Lib\structures\General\tdpe.lib.structures.capsule.pas"/>
 			<DCCReference Include="..\Lib\structures\General\tdpe.lib.structures.surface.static.pas"/>
+			<DCCReference Include="..\Lib\Jansen\tdpe.lib.jansen.body.pas"/>
+			<DCCReference Include="..\Lib\Jansen\tdpe.lib.jansen.leg.pas"/>
+			<DCCReference Include="..\Lib\Jansen\tdpe.lib.jansen.mechanism.pas"/>
+			<DCCReference Include="..\Lib\Jansen\tdpe.lib.jansen.motor.pas"/>
+			<DCCReference Include="..\Lib\Jansen\tdpe.lib.jansen.robot.pas"/>
+			<DCCReference Include="..\Lib\Jansen\tdpe.lib.jansen.scenery.pas"/>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>

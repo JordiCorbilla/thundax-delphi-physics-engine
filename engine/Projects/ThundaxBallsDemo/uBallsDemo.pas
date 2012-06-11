@@ -48,6 +48,8 @@ uses
 type
   TfBalls = class(TForm)
     tmr1: TTimer;
+    Label1: TLabel;
+    Label2: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure FormPaint(Sender: TObject);
     procedure tmr1Timer(Sender: TObject);
@@ -169,11 +171,11 @@ begin
     ActiveDirect2D := not ActiveDirect2D;
 
   if (Key = 'b') or (Key = 'B') then
-    car.Speed := - 0.01;
+    car.Speed := car.Speed- 0.01;
   if (Key = 'n') or (Key = 'N') then
     car.Speed := 0;
   if (Key = 'm') or (Key = 'M') then
-    car.Speed := 0.01;
+    car.Speed := car.Speed + 0.01;
 end;
 
 procedure TfBalls.FormMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);

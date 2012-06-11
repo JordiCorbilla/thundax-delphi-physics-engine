@@ -62,7 +62,7 @@ begin
     end
     else if MethodComp = '<>' then
     begin
-        bReturn := true;
+        bReturn := false;
         case CompareValue(Value1, Value2, RealMargin) of
             LessThanValue: bReturn := true;
             GreaterThanValue: bReturn := true
