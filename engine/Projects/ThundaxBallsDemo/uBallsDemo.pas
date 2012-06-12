@@ -43,7 +43,7 @@ uses
   tdpe.lib.structures.dispenser.box, tdpe.lib.structures.dispenser.circle,
   StdCtrls, tdpe.lib.richedit.writer, Direct2D, tdpe.lib.particle.circle.solid,
   tdpe.lib.writer.contract, tdpe.lib.structures.cloth, tdpe.lib.structures.car,
-  tdpe.lib.structures.box.simulation;
+  tdpe.lib.structures.box.simulation, tdpe.lib.engine.wrapper;
 
 type
   TfBalls = class(TForm)
@@ -60,7 +60,7 @@ type
     procedure FormDestroy(Sender: TObject);
   private
   public
-    engine: TEngine;
+    engine: TFluentEngine;
     render: TGDIRenderer;
     bridge: TCustomBridge;
     surface: TSurfaces;
@@ -93,50 +93,54 @@ begin
 
   ActiveDirect2D := false;
   richEditwriter := TRichEditWriter.Create(FLog.reLog);
-  engine := TEngine.Create(1 / 4);
+
+  engine := TFluentEngine.New(1 / 4)
+    .AddInitialForce(TForce.Create(false, 0, 1))
+    .AddDamping(1)
+    .AddRestrictionCollitionCycles(1);
+
   render := TGDIRenderer.Create(fBalls.Canvas, ClientRect);
 
-  engine.AddForce(TForce.Create(false, 0, 1));
-  engine.damping := 1;
-  engine.RestrictionCollisionCycles := 1;
-
   surface := TSurfaces.Create(render, engine, richEditwriter);
-  engine.addGroup(surface);
 
   BoxDispenser := TBoxDispenser.Create(render, engine, 800, 200, clred);
   BoxDispenser.setLog(richEditwriter);
-  engine.addGroup(BoxDispenser);
 
   CircleDispenser := TCircleDispenser.Create(render, engine, 800, 100, clred);
   CircleDispenser.setLog(richEditwriter);
-  engine.addGroup(CircleDispenser);
 
   bridge := TCustomBridge.Create(render, engine, 170, 140);
   bridge.setLog(richEditwriter);
-  engine.addGroup(bridge);
 
   cloth := TCloth.Create(render, engine, 170, 300);
-  engine.addGroup(cloth);
-
   car := TCar.create(render, engine);
-  engine.addGroup(car);
-
   brick := TBrick.create(render, engine, 300, 600, clwhite);
-  engine.AddGroup(brick);
+
+  engine.addGroups(surface)
+    .addGroups(BoxDispenser)
+    .addGroups(CircleDispenser)
+    .addGroups(bridge)
+    .addGroups(cloth)
+    .addGroups(car)
+    .AddGroups(brick);
 
   //Define surfaces that collide
   surface.AddCollidable(brick);
   surface.AddCollidable(car);
   surface.AddCollidable(BoxDispenser);
   surface.AddCollidable(CircleDispenser);
+
   CircleDispenser.AddCollidable(BoxDispenser);
+  CircleDispenser.AddCollidable(surface);
+  CircleDispenser.AddCollidable(bridge);
+
   BoxDispenser.AddCollidable(CircleDispenser);
+  BoxDispenser.AddCollidable(surface);
+  BoxDispenser.AddCollidable(bridge);
+
   bridge.AddCollidable(BoxDispenser);
   bridge.AddCollidable(CircleDispenser);
-  BoxDispenser.AddCollidable(surface);
-  CircleDispenser.AddCollidable(surface);
-  BoxDispenser.AddCollidable(bridge);
-  CircleDispenser.AddCollidable(bridge);
+
   car.AddCollidable(surface);
 
   DoubleBuffered := True;

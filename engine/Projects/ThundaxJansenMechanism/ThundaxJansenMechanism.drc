@@ -514,8 +514,8 @@ BEGIN
 	SysConst_SInvalidCast,	"Invalid class typecast"
 END
 
-/* C:\Program Files\Embarcadero\RAD Studio\7.0\lib\Character.res */
-/* C:\Program Files\Embarcadero\RAD Studio\7.0\lib\controls.res */
+/* c:\program files\embarcadero\rad studio\7.0\lib\character.res */
+/* c:\program files\embarcadero\rad studio\7.0\lib\Controls.res */
 /* C:\Google code\TDPE\svn\trunk\engine\Projects\ThundaxJansenMechanism\testForces.dfm */
 /* C:\Google code\TDPE\svn\trunk\engine\Projects\ThundaxJansenMechanism\ThundaxJansenMechanism.res */
-/* C:\Users\JORDIC~1\AppData\Local\Temp\dtfA65F.tmp */
+/* C:\Google code\TDPE\svn\trunk\engine\Projects\ThundaxJansenMechanism\ThundaxJansenMechanism.drf */

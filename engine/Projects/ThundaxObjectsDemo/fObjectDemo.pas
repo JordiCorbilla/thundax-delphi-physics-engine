@@ -38,7 +38,7 @@ uses
   Dialogs, tdpe.lib.engine, tdpe.lib.vector, tdpe.lib.render.gdi,
   tdpe.lib.structures.car, tdpe.lib.structures.capsule,
   tdpe.lib.automation.swingdoor, tdpe.lib.automation.rotator, ExtCtrls,
-  tdpe.lib.structures.surface.static, StdCtrls;
+  tdpe.lib.structures.surface.static, StdCtrls, tdpe.lib.engine.wrapper;
 
 type
   TFormMainCarDemo = class(TForm)
@@ -54,7 +54,7 @@ type
     { Private declarations }
   public
     { Public declarations }
-    Engine: TEngine;
+    Engine: TFluentEngine;
     Render: TGDIRenderer;
     FCar: TCar;
     FCapsule: TCapsule;
@@ -75,31 +75,26 @@ uses
 
 procedure TFormMainCarDemo.FormCreate(Sender: TObject);
 begin
-  Engine := TEngine.Create(1 / 4);
+  Engine := TFluentEngine.New(1 / 4)
+    .AddInitialForce(TForce.Create(false, 0, 1))
+    .AddDamping(1).
+    AddRestrictionCollitionCycles(1);
   Render := TGDIRenderer.Create(FormMainCarDemo.Canvas, ClientRect);
 
-  Engine.AddForce(TForce.Create(false, 0, 1));
-  Engine.damping := 1;
-  Engine.RestrictionCollisionCycles := 1;
-
   Fsurface := TSurfaces.Create(Render, Engine, nil);
-  Engine.addGroup(Fsurface);
-
   FCapsule := TCapsule.Create(Render, Engine);
-  Engine.addGroup(FCapsule);
-
   FRotator := TRotator.Create(Render, Engine);
-  Engine.addGroup(FRotator);
-
   FCar := TCar.Create(Render, Engine);
-  Engine.addGroup(FCar);
+
+  Engine.addGroups(Fsurface)
+    .addGroups(FCapsule)
+    .addGroups(FRotator)
+    .addGroups(FCar);
 
   FCar.AddCollidable(FCapsule);
   FCar.AddCollidable(FRotator);
-
   Fsurface.AddCollidable(FCar);
   Fsurface.AddCollidable(FCapsule);
-
   FCapsule.AddCollidable(FRotator);
 
   DoubleBuffered := true;

@@ -50,7 +50,6 @@
 			<DCCReference Include="..\Lib\Array\tdpe.lib.force.pas"/>
 			<DCCReference Include="..\Lib\Array\tdpe.lib.structures.pas"/>
 			<DCCReference Include="..\Lib\Array\tdpe.lib.vector.pas"/>
-			<DCCReference Include="..\Lib\Colour\tdpe.lib.colour.helper.pas"/>
 			<DCCReference Include="..\Lib\Math\tdpe.lib.math.helper.pas"/>
 			<DCCReference Include="..\Lib\Math\tdpe.lib.math.interval.pas"/>
 			<DCCReference Include="..\Lib\Math\tdpe.lib.math.pas"/>
@@ -115,6 +114,8 @@
 			<DCCReference Include="..\Lib\Collisions\tdpe.lib.collision.resolver.contract.pas"/>
 			<DCCReference Include="..\Lib\Collisions\tdpe.lib.collision.resolver.pas"/>
 			<DCCReference Include="..\Lib\Collisions\tdpe.lib.collision.resolver.solid.pas"/>
+			<DCCReference Include="..\Lib\colors\tdpe.lib.colour.helper.pas"/>
+			<DCCReference Include="..\Lib\Engine\tdpe.lib.engine.wrapper.pas"/>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>

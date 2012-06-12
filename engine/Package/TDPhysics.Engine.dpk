@@ -55,7 +55,6 @@ contains
   tdpe.lib.force in '..\Lib\Array\tdpe.lib.force.pas',
   tdpe.lib.structures in '..\Lib\Array\tdpe.lib.structures.pas',
   tdpe.lib.vector in '..\Lib\Array\tdpe.lib.vector.pas',
-  tdpe.lib.colour.helper in '..\Lib\Colour\tdpe.lib.colour.helper.pas',
   tdpe.lib.math.helper in '..\Lib\Math\tdpe.lib.math.helper.pas',
   tdpe.lib.math.interval in '..\Lib\Math\tdpe.lib.math.interval.pas',
   tdpe.lib.math in '..\Lib\Math\tdpe.lib.math.pas',
@@ -119,7 +118,9 @@ contains
   tdpe.lib.collision in '..\Lib\Collisions\tdpe.lib.collision.pas',
   tdpe.lib.collision.resolver.contract in '..\Lib\Collisions\tdpe.lib.collision.resolver.contract.pas',
   tdpe.lib.collision.resolver in '..\Lib\Collisions\tdpe.lib.collision.resolver.pas',
-  tdpe.lib.collision.resolver.solid in '..\Lib\Collisions\tdpe.lib.collision.resolver.solid.pas';
+  tdpe.lib.collision.resolver.solid in '..\Lib\Collisions\tdpe.lib.collision.resolver.solid.pas',
+  tdpe.lib.colour.helper in '..\Lib\colors\tdpe.lib.colour.helper.pas',
+  tdpe.lib.engine.wrapper in '..\Lib\Engine\tdpe.lib.engine.wrapper.pas';
 
 end.
 
