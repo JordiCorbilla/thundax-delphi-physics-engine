@@ -39,7 +39,7 @@ uses
 
   // TDPE
   tdpe.lib.engine, tdpe.lib.structures.car,
-  tdpe.lib.vector, tdpe.lib.render.gdi,
+  tdpe.lib.vector, tdpe.lib.render.gdi, tdpe.lib.engine.wrapper,
   tdpe.lib.automation.valve, tdpe.lib.automation.product,
   tdpe.lib.automation.silo, tdpe.lib.automation.scale;
 
@@ -144,7 +144,7 @@ type
     { Private declarations }
   public
     { Public declarations }
-    engine: TEngine;
+    engine: TFluentEngine;
     render: TGDIRenderer;
     aValve1, aValve2, aValve3, aValve4, aValve5, aValve6, aValve7, aValve8, aValve9: TValve;
     startv1, openv1, closev1: Boolean;
@@ -405,49 +405,36 @@ end;
 
 procedure TFormMainPlantDemo.FormCreate(Sender: TObject);
 begin
-  engine := TEngine.Create(1 / 4);
+  engine := TFluentEngine.Create(1 / 4)
+    .AddInitialForce(TForce.Create(false, 0, 1))
+    .AddDamping(1)
+    .AddRestrictionCollitionCycles(1);
   render := TGDIRenderer.Create(FormMainPlantDemo.Canvas, ClientRect);
 
-  engine.AddForce(TForce.Create(false, 0, 1));
-  engine.damping := 1;
-  engine.RestrictionCollisionCycles := 1;
-
   aScale1 := TScale.Create(render, engine, 65, 0, clMaroon);
-  engine.addGroup(aScale1);
 
   aScale2 := TScale.Create(render, engine, 365, 0, clMaroon);
-  engine.addGroup(aScale2);
 
   aScale3 := TScale.Create(render, engine, 665, 0, clMaroon);
-  engine.addGroup(aScale3);
 
   aSilo1 := TSilo.Create(render, engine, 50, 50, $00408080);
-  engine.addGroup(aSilo1);
   aValve1 := TValve.Create(render, engine, 77, clRed);
-  engine.addGroup(aValve1);
   aProduct1 := TProduct.Create(render, engine, 60, clYellow);
-  engine.addGroup(aProduct1);
   aSilo1.AddCollidable(aProduct1);
   aValve1.AddCollidable(aProduct1);
   aScale1.AddCollidable(aProduct1);
 
   aSilo2 := TSilo.Create(render, engine, 150, 50, $00408080);
-  engine.addGroup(aSilo2);
   aValve2 := TValve.Create(render, engine, 177, clRed);
-  engine.addGroup(aValve2);
   aProduct2 := TProduct.Create(render, engine, 160, clGreen);
-  engine.addGroup(aProduct2);
   aSilo2.AddCollidable(aProduct2);
   aValve2.AddCollidable(aProduct2);
   aScale1.AddCollidable(aProduct2);
   aProduct2.AddCollidable(aProduct1);
 
   aSilo3 := TSilo.Create(render, engine, 250, 50, $00408080);
-  engine.addGroup(aSilo3);
   aValve3 := TValve.Create(render, engine, 277, clRed);
-  engine.addGroup(aValve3);
   aProduct3 := TProduct.Create(render, engine, 260, clBlue);
-  engine.addGroup(aProduct3);
   aSilo3.AddCollidable(aProduct3);
   aValve3.AddCollidable(aProduct3);
   aScale1.AddCollidable(aProduct3);
@@ -460,32 +447,32 @@ begin
 
   // second group
   aSilo4 := TSilo.Create(render, engine, 350, 50, $00408080);
-  engine.addGroup(aSilo4);
+
   aValve4 := TValve.Create(render, engine, 377, clRed);
-  engine.addGroup(aValve4);
+
   aProduct4 := TProduct.Create(render, engine, 360, clFuchsia);
-  engine.addGroup(aProduct4);
+
   aProduct4.AddCollidable(aSilo4);
   aProduct4.AddCollidable(aValve4);
   aProduct4.AddCollidable(aScale2);
 
   aSilo5 := TSilo.Create(render, engine, 450, 50, $00408080);
-  engine.addGroup(aSilo5);
+
   aValve5 := TValve.Create(render, engine, 477, clRed);
-  engine.addGroup(aValve5);
+
   aProduct5 := TProduct.Create(render, engine, 460, clMaroon);
-  engine.addGroup(aProduct5);
+
   aProduct5.AddCollidable(aSilo5);
   aProduct5.AddCollidable(aValve5);
   aProduct5.AddCollidable(aScale2);
   aProduct5.AddCollidable(aProduct4);
 
   aSilo6 := TSilo.Create(render, engine, 550, 50, $00408080);
-  engine.addGroup(aSilo6);
+
   aValve6 := TValve.Create(render, engine, 577, clRed);
-  engine.addGroup(aValve6);
+
   aProduct6 := TProduct.Create(render, engine, 560, clGray);
-  engine.addGroup(aProduct6);
+
   aProduct6.AddCollidable(aSilo6);
   aProduct6.AddCollidable(aValve6);
   aProduct6.AddCollidable(aScale2);
@@ -498,32 +485,32 @@ begin
 
   // third group
   aSilo7 := TSilo.Create(render, engine, 650, 50, $00408080);
-  engine.addGroup(aSilo7);
+
   aValve7 := TValve.Create(render, engine, 677, clRed);
-  engine.addGroup(aValve7);
+
   aProduct7 := TProduct.Create(render, engine, 660, clOlive);
-  engine.addGroup(aProduct7);
+
   aProduct7.AddCollidable(aSilo7);
   aProduct7.AddCollidable(aValve7);
   aProduct7.AddCollidable(aScale3);
 
   aSilo8 := TSilo.Create(render, engine, 750, 50, $00408080);
-  engine.addGroup(aSilo8);
+
   aValve8 := TValve.Create(render, engine, 777, clRed);
-  engine.addGroup(aValve8);
+
   aProduct8 := TProduct.Create(render, engine, 760, clNavy);
-  engine.addGroup(aProduct8);
+
   aProduct8.AddCollidable(aSilo8);
   aProduct8.AddCollidable(aValve8);
   aProduct8.AddCollidable(aScale3);
   aProduct8.AddCollidable(aProduct7);
 
   aSilo9 := TSilo.Create(render, engine, 850, 50, $00408080);
-  engine.addGroup(aSilo9);
+
   aValve9 := TValve.Create(render, engine, 877, clRed);
-  engine.addGroup(aValve9);
+
   aProduct9 := TProduct.Create(render, engine, 860, clLime);
-  engine.addGroup(aProduct9);
+
   aProduct9.AddCollidable(aSilo9);
   aProduct9.AddCollidable(aValve9);
   aProduct9.AddCollidable(aScale3);
@@ -533,6 +520,37 @@ begin
   aProduct7.AddCollidable(aProduct8);
   aProduct7.AddCollidable(aProduct9);
   aProduct8.AddCollidable(aProduct9);
+
+  Engine.addGroups(aScale1)
+    .addGroups(aScale2)
+    .addGroups(aScale3)
+    .addGroups(aSilo1)
+    .addGroups(aValve1)
+    .addGroups(aProduct1)
+    .addGroups(aSilo2)
+    .addGroups(aValve2)
+    .addGroups(aProduct2)
+    .addGroups(aSilo3)
+    .addGroups(aValve3)
+    .addGroups(aProduct3)
+    .addGroups(aSilo4)
+    .addGroups(aValve4)
+    .addGroups(aProduct4)
+    .addGroups(aSilo5)
+    .addGroups(aValve5)
+    .addGroups(aProduct5)
+    .addGroups(aSilo6)
+    .addGroups(aValve6)
+    .addGroups(aProduct6)
+    .addGroups(aSilo7)
+    .addGroups(aValve7)
+    .addGroups(aProduct7)
+    .addGroups(aSilo8)
+    .addGroups(aValve8)
+    .addGroups(aProduct8)
+    .addGroups(aSilo9)
+    .addGroups(aValve9)
+    .addGroups(aProduct9);
 
   DoubleBuffered := true;
 end;

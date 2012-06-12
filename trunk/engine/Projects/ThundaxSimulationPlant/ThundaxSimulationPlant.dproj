@@ -24,6 +24,7 @@
 			<Base>true</Base>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Base)'!=''">
+			<DCC_UnitSearchPath>..\..\dcu\;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
 			<BRCC_IncludePath>C:\Users\jordi coll\Desktop\TDPhysicsEngine\dcu;$(BRCC_IncludePath)</BRCC_IncludePath>
 			<DCC_ExeOutput>out\</DCC_ExeOutput>
 			<DCC_UnitAlias>WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;$(DCC_UnitAlias)</DCC_UnitAlias>

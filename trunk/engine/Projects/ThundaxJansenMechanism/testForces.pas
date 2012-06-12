@@ -36,7 +36,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, tdpe.lib.engine, tdpe.lib.vector, tdpe.lib.render.gdi,
-  tdpe.lib.jansen.scenery, ExtCtrls,
+  tdpe.lib.jansen.scenery, ExtCtrls, tdpe.lib.engine.wrapper,
   StdCtrls, tdpe.lib.particle.group, tdpe.lib.particle.pattern.composite,
   tdpe.lib.particle.circle, tdpe.lib.particle.spring.restriction,
   tdpe.lib.jansen.mechanism, tdpe.lib.jansen.robot, tdpe.lib.particle.box;
@@ -56,13 +56,10 @@ type
   private
     procedure DrawBackground;
   public
-    Ape: TEngine;
-    R: TGDIRenderer;
-    aGround: TScenery;
-    arobot: TRobot;
-    s: Boolean;
-    n: Boolean;
-
+    Engine: TFluentEngine;
+    Render: TGDIRenderer;
+    FGround: TScenery;
+    FRobot: TRobot;
   end;
 
 var
@@ -106,68 +103,63 @@ end;
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
-  s := false;
-  Ape := TEngine.Create(1 / 4);
-  R := TGDIRenderer.Create(Form1.Canvas);
+  Engine := TFluentEngine.New(1 / 4)
+    .AddInitialForce(TForce.Create(false, 0, 2))
+    .AddDamping(0).
+    AddRestrictionCollitionCycles(10);
 
-  Ape.AddForce(TForce.Create(false, 0, 2));
+  Render := TGDIRenderer.Create(Form1.Canvas);
 
-  aGround := TScenery.Create(R, Ape, clblue);
-  Ape.AddGroup(aGround);
-  Ape.damping := 0; //0.99;
-  Ape.RestrictionCollisionCycles := 10; //10;
+  FGround := TScenery.Create(Render, Engine, clblue);
 
-  arobot := TRobot.Create(R, Ape, 1050, 400, 2, 0.02);
-  Ape.AddGroup(arobot);
-  aGround.AddCollidable(aRobot);
-//  arobot.AddCollidable(aGround);
+  Frobot := TRobot.Create(Render, Engine, 1050, 400, 2, 0.02);
+
+  Engine.AddGroups(FGround)
+    .AddGroups(Frobot);
+
+  FGround.AddCollidable(Frobot);
 
   Image1.Visible := false;
   Image2.Visible := false;
 
-  arobot.togglePower();
+  Frobot.togglePower();
   DoubleBuffered := true;
 end;
 
 procedure TForm1.FormDestroy(Sender: TObject);
 begin
-  FreeAndNil(Ape);
-  FreeAndNil(R);
-  FreeAndNil(aGround);
-  FreeAndNil(arobot);
+  FreeAndNil(Engine);
+  FreeAndNil(Render);
+  FreeAndNil(FGround);
+  FreeAndNil(Frobot);
 end;
 
 procedure TForm1.tmr1Timer(Sender: TObject);
 begin
-  Ape.Run;
-  arobot.Run();
+  Engine.Run;
+  Frobot.Run();
   Repaint;
 end;
 
 procedure TForm1.FormKeyPress(Sender: TObject; var Key: Char);
 begin
-  if Key = 's' then
-    s := not s; // Jensen.Move(-0.2);
   if Key = 'p' then
-    arobot.togglePower(); // s := not s;
+    Frobot.togglePower();
 
   if Key = 'z' then
-    arobot.toggleDirection(); // s := not s;
+    Frobot.toggleDirection();
 
   if Key = 'h' then
-    arobot.toggleLegs();
+    Frobot.toggleLegs();
 
   if Key = 'r' then
-    arobot.Run();
-
-  if Key = 'n' then
-    n := not n;
+    Frobot.Run();
 end;
 
 procedure TForm1.FormPaint(Sender: TObject);
 begin
   DrawBackground;
-  Ape.Paint;
+  Engine.Paint;
 end;
 
 end.
