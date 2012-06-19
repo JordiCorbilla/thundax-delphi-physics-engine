@@ -34,7 +34,8 @@ unit tdpe.lib.collision.resolver.solid;
 interface
 
 uses
-  tdpe.lib.vector, tdpe.lib.particle.box.solid, tdpe.lib.math, tdpe.lib.particle.item.solid, tdpe.lib.collision.resolver.contract;
+  tdpe.lib.vector, tdpe.lib.particle.box.solid, tdpe.lib.math, tdpe.lib.particle.item.solid,
+  tdpe.lib.collision.resolver.contract;
 
 type
   TSolidCollisionResolver = class(TInterfacedObject, ICollisionResolver<TSolidItem>)

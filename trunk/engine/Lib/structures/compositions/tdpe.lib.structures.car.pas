@@ -52,7 +52,7 @@ type
 
 implementation
 
-uses tdpe.lib.particle.abstract.collection, SysUtils;
+uses SysUtils;
 
 { Car }
 
