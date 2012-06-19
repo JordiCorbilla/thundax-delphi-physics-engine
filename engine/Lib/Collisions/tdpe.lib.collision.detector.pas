@@ -73,7 +73,8 @@ var
 implementation
 
 uses
-  SysUtils, tdpe.lib.particle.item.solid, tdpe.lib.collision.resolver.solid, tdpe.lib.math, Graphics, tdpe.lib.logging;
+  SysUtils, tdpe.lib.particle.item.solid, tdpe.lib.collision.resolver.solid, tdpe.lib.math,
+  Graphics, tdpe.lib.logging;
 
 { TCollisionDetector }
 

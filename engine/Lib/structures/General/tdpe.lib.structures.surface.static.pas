@@ -89,7 +89,7 @@ begin
   Floor.setLog(FLog);
   Floor.SetRenderer(render);
   addParticle(Floor);
-//
+
   RampRight := TSolidBox.Create(rampx+700, rampy-185, 350, 10, -0.5, true, 1, 0.3, 0.3, 0, clFuchsia);
   RampRight.setLog(FLog);
   RampRight.SetRenderer(render);
