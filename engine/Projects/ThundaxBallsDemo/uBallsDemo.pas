@@ -34,15 +34,15 @@ unit uBallsDemo;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ComCtrls, ExtCtrls,
+  Windows, Messages, SysUtils, Variants, Classes, Controls, Forms,
+  Dialogs, ComCtrls, ExtCtrls, StdCtrls, ufrmlog,
 
   //uses TDPE
-  tdpe.lib.engine, tdpe.lib.force, tdpe.lib.vector, tdpe.lib.render.gdi,
-  tdpe.lib.structures.bridge, tdpe.lib.particle.box, tdpe.lib.structures.surface.static,
+  tdpe.lib.force, tdpe.lib.render.gdi,
+  tdpe.lib.structures.bridge, tdpe.lib.structures.surface.static,
   tdpe.lib.structures.dispenser.box, tdpe.lib.structures.dispenser.circle,
-  StdCtrls, tdpe.lib.richedit.writer, Direct2D, tdpe.lib.particle.circle.solid,
-  tdpe.lib.writer.contract, tdpe.lib.structures.cloth, tdpe.lib.structures.car,
+  tdpe.lib.richedit.writer, tdpe.lib.writer.contract,
+  tdpe.lib.structures.cloth, tdpe.lib.structures.car,
   tdpe.lib.structures.box.simulation, tdpe.lib.engine.wrapper;
 
 type
@@ -64,7 +64,6 @@ type
     render: TGDIRenderer;
     bridge: TCustomBridge;
     surface: TSurfaces;
-    rigidCircle: TSolidCircle;
     BoxDispenser: TBoxDispenser;
     CircleDispenser: TCircleDispenser;
     richEditwriter: IWriter;
@@ -72,6 +71,7 @@ type
     cloth : TCloth;
     car : TCar;
     brick : TBrick;
+    LogDisplay : TFLog;
   end;
 
 var
@@ -80,7 +80,7 @@ var
 implementation
 
 uses
-  ufrmlog, D2D1;
+  D2D1, Graphics, Direct2D;
 
 {$R *.dfm}
 
@@ -89,10 +89,10 @@ begin
   if not TDirect2DCanvas.Supported then
     ShowMessage('Direct2D is not supported in your system!');
 
-  FLog := TFLog.Create(Self);
+  LogDisplay := TFLog.Create(Self);
 
   ActiveDirect2D := false;
-  richEditwriter := TRichEditWriter.Create(FLog.reLog);
+  richEditwriter := TRichEditWriter.Create(LogDisplay.reLog);
 
   engine := TFluentEngine.New(1 / 4)
     .AddInitialForce(TForce.Create(false, 0, 1))
@@ -101,7 +101,7 @@ begin
 
   render := TGDIRenderer.Create(fBalls.Canvas, ClientRect);
 
-  surface := TSurfaces.Create(render, engine, richEditwriter);
+  surface := TSurfaces.Create(render, engine, nil);
 
   BoxDispenser := TBoxDispenser.Create(render, engine, 800, 200, clred);
   BoxDispenser.setLog(richEditwriter);
@@ -144,7 +144,7 @@ begin
   car.AddCollidable(surface);
 
   DoubleBuffered := True;
-  FLog.Show;
+  LogDisplay.Show;
 end;
 
 procedure TfBalls.FormDestroy(Sender: TObject);
@@ -159,8 +159,8 @@ begin
   FreeAndNil(cloth);
   FreeAndNil(car);
   richEditwriter := nil;
-  if Assigned(FLog) then
-    FLog.Free;
+  if Assigned(LogDisplay) then
+    LogDisplay.Free;
 end;
 
 procedure TfBalls.FormKeyPress(Sender: TObject; var Key: Char);

@@ -46,11 +46,9 @@ type
     { Public declarations }
   end;
 
-var
-  FLog: TFLog;
-
 implementation
 
 {$R *.dfm}
 
 end.
+
