@@ -2,12 +2,7 @@
 
 = Introduction =
 
-Add your content here.
+Check out the latest source code from:
+svn checkout https://thundax-delphi-physics-engine.googlecode.com/svn/trunk/ thundax-delphi-physics-engine
 
-
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+Go to engine folder and run build.bat to build the library and the projects using Delphi 2010 or Delphi XE.
