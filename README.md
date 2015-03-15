@@ -39,3 +39,8 @@ This project is based on the idea [(ActionScript Physics Engine)](http://www.cov
 - [ThundaxObjectDemo v2.0](https://app.box.com/s/uulaspi8175sj27tslcuq47wztzjyv50)
 - [ThundaxSimulationPlant v2.0](https://app.box.com/s/3dl657hhbz8vyuj3r0l4sgpx7ejxerj3)
 - [ThundaxBallsDemo v2.0](https://app.box.com/s/0yxk2arbcgzzx7mhyks6uh5lzmsontf0)
+
+## Sponsors
+No sponsors yet! Will you be the first?
+
+[![PayPayl donate button](https://img.shields.io/badge/paypal-donate-yellow.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=L5FCF6LX5C9AW "Donate once-off to this project using Paypal")
