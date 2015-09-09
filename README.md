@@ -25,10 +25,12 @@ The project is still ongoing and you can stay tuned following the articles below
   * [Thundax Physics Engine Article](http://www.pascalgamedevelopment.com/content.php?215-Jordi-Coll-s-Thundax-Physics-Engine)
 
 **Examples:**
-  - Implementing Jansen Mechanism:
+- Implementing Jansen Mechanism:
+
   ![](http://4.bp.blogspot.com/_nWD8gSvCXFk/TQELaHM16UI/AAAAAAAACqE/bgpz1HAOZf8/s1600/new.jpeg)
 
-  - Cloth Simulation:
+- Cloth Simulation:
+
 ![](http://2.bp.blogspot.com/_nWD8gSvCXFk/TUyYiQ-0fWI/AAAAAAAACsE/mj9ZG0GfCSk/s1600/cloth1.jpeg)
 
   * Interaction Examples:
