@@ -2,7 +2,9 @@ Delphi - 2D simple physics engine
 ==============
 TDPE provides an approximate simulation of certain simple physical systems, such as rigid body dynamics (including collision detection) and soft body dynamics. The aim of the project is to provide a **software system for simulating physical phenomena**.
 --------------
-Tested under Delphi 2010/XE.
+Developed under Delphi 2010/XE.
+
+[![Downloads](https://img.shields.io/badge/downloads-1k-blue.svg)](https://app.box.com/s/p7hwuaic1qsm14juf3pmuojv0ko98ok5) [![Stable Release](https://img.shields.io/badge/version-2.0-blue.svg)](https://app.box.com/s/p7hwuaic1qsm14juf3pmuojv0ko98ok5) [![License](https://img.shields.io/badge/license-BSD-blue.svg)](https://app.box.com/s/p7hwuaic1qsm14juf3pmuojv0ko98ok5) [![Delphi version](https://img.shields.io/badge/delphi-xe-red.svg)](https://app.box.com/s/p7hwuaic1qsm14juf3pmuojv0ko98ok5)
 
 ![](http://1.bp.blogspot.com/-oAtBFK7IZng/Tbyy9egtjXI/AAAAAAAACt8/VrhEthPC63E/s320/TDPE.jpg)
 
@@ -24,7 +26,7 @@ The project is still ongoing and you can stay tuned following the articles below
 
 **Examples:**
   - Implementing Jansen Mechanism:
-![](http://4.bp.blogspot.com/_nWD8gSvCXFk/TQELaHM16UI/AAAAAAAACqE/bgpz1HAOZf8/s1600/new.jpeg)
+  ![](http://4.bp.blogspot.com/_nWD8gSvCXFk/TQELaHM16UI/AAAAAAAACqE/bgpz1HAOZf8/s1600/new.jpeg)
 
   - Cloth Simulation:
 ![](http://2.bp.blogspot.com/_nWD8gSvCXFk/TUyYiQ-0fWI/AAAAAAAACsE/mj9ZG0GfCSk/s1600/cloth1.jpeg)
