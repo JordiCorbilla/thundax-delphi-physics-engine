@@ -36,8 +36,6 @@ The project is still ongoing and you can stay tuned following the articles below
   * Interaction Examples:
 [Video](http://www.youtube.com/embed/VWm-adq_HSk)
 
-This project is based on the idea [(ActionScript Physics Engine)](http://www.cove.org/ape/ APE) and developed under Delphi.
-
 **Examples:**
 - [ThundaxJansenMechanism v2.0](https://app.box.com/s/p7hwuaic1qsm14juf3pmuojv0ko98ok5)
 - [ThundaxObjectDemo v2.0](https://app.box.com/s/uulaspi8175sj27tslcuq47wztzjyv50)
