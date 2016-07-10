@@ -30,9 +30,14 @@ The project is still ongoing and you can stay tuned following the articles below
   ![](http://4.bp.blogspot.com/_nWD8gSvCXFk/TQELaHM16UI/AAAAAAAACqE/bgpz1HAOZf8/s1600/new.jpeg)
   ![](https://cloud.githubusercontent.com/assets/7347994/16712333/2b86dbea-467c-11e6-88e6-336d4e3ec80a.gif)
 
+- Factory Simulation:
+ 
+  ![](https://cloud.githubusercontent.com/assets/7347994/16712368/66f27c1a-467d-11e6-8def-399c48b7a315.gif)
+
 - Cloth Simulation:
 
-![](http://2.bp.blogspot.com/_nWD8gSvCXFk/TUyYiQ-0fWI/AAAAAAAACsE/mj9ZG0GfCSk/s1600/cloth1.jpeg)
+  ![](http://2.bp.blogspot.com/_nWD8gSvCXFk/TUyYiQ-0fWI/AAAAAAAACsE/mj9ZG0GfCSk/s1600/cloth1.jpeg)
+  ![](https://cloud.githubusercontent.com/assets/7347994/16712418/c532579a-467e-11e6-911d-fbe77187e6a9.gif)
 
   * Interaction Examples:
 [Video](http://www.youtube.com/embed/VWm-adq_HSk)
