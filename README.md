@@ -28,6 +28,7 @@ The project is still ongoing and you can stay tuned following the articles below
 - Implementing Jansen Mechanism:
 
   ![](http://4.bp.blogspot.com/_nWD8gSvCXFk/TQELaHM16UI/AAAAAAAACqE/bgpz1HAOZf8/s1600/new.jpeg)
+  ![](https://cloud.githubusercontent.com/assets/7347994/16712333/2b86dbea-467c-11e6-88e6-336d4e3ec80a.gif)
 
 - Cloth Simulation:
 
