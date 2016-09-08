@@ -44,8 +44,6 @@ uses
 type
   TForm1 = class(TForm)
     tmr1: TTimer;
-    Image1: TImage;
-    Image2: TImage;
     Label1: TLabel;
     Label2: TLabel;
     procedure FormCreate(Sender: TObject);
@@ -112,15 +110,12 @@ begin
 
   FGround := TScenery.Create(Render, Engine, clblue);
 
-  Frobot := TRobot.Create(Render, Engine, 1050, 400, 2, 0.02);
+  Frobot := TRobot.Create(Render, Engine, 1050, 400, 2, 0.01);
 
   Engine.AddGroups(FGround)
     .AddGroups(Frobot);
 
   FGround.AddCollidable(Frobot);
-
-  Image1.Visible := false;
-  Image2.Visible := false;
 
   Frobot.togglePower();
   DoubleBuffered := true;

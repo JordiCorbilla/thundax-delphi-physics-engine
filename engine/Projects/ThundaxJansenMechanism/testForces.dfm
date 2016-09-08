@@ -11056,18 +11056,6 @@ object Form1: TForm1
   OnPaint = FormPaint
   PixelsPerInch = 96
   TextHeight = 13
-  object Image1: TImage
-    Left = 544
-    Top = 216
-    Width = 217
-    Height = 81
-  end
-  object Image2: TImage
-    Left = 920
-    Top = 547
-    Width = 273
-    Height = 71
-  end
   object Label1: TLabel
     Left = 872
     Top = 24

@@ -1,0 +1,35 @@
+object Form2: TForm2
+  Left = 0
+  Top = 0
+  Caption = 'Form2'
+  ClientHeight = 653
+  ClientWidth = 1242
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  OnKeyUp = FormKeyUp
+  OnPaint = FormPaint
+  DesignerMasterStyle = 0
+  object Timer1: TTimer
+    Interval = 1
+    OnTimer = Timer1Timer
+    Left = 520
+    Top = 40
+  end
+  object Layout1: TLayout
+    Position.X = 8.000000000000000000
+    Position.Y = 8.000000000000000000
+    Size.Width = 1233.000000000000000000
+    Size.Height = 601.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+  end
+  object Button1: TButton
+    Position.X = 1152.000000000000000000
+    Position.Y = 616.000000000000000000
+    TabOrder = 2
+    Text = 'Button1'
+    OnClick = Button1Click
+  end
+end

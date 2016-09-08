@@ -73,21 +73,19 @@ constructor TJansenMechanism.Create(Render: TAbstractRenderer; aEngine: TEngine)
 var
     P1, P2, P3: TSolidCircle;
     S1, S2, S3: TSpringRestriction;
-    P4, p5, p6, p7: TSolidCircle;
-    n1, n2, n3, n4, n5, n6: TSpringRestriction;
+    P4, p5, p6: TSolidCircle;
+    n1, n2, n3, n4, n5: TSpringRestriction;
     ms1, ms2: TSpringRestriction;
 
     // Second part
     P11, P21, P31: TSolidCircle;
     S11, S21, S31: TSpringRestriction;
-    P41, p51, p61, p71: TSolidCircle;
-    n11, n21, n31, n41, n51, n61: TSpringRestriction;
+    P41, p51, p61: TSolidCircle;
+    n11, n21, n31, n41, n51: TSpringRestriction;
     ms11, ms21: TSpringRestriction;
     radius: integer;
     height: integer;
     stiffness: double;
-    t1, t2, t3, t4, t5, t6: TSpringRestriction;
-    r : TSpringRestriction;
 begin
     inherited Create(False);
     collideInternal := true;

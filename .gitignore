@@ -6,3 +6,9 @@
 *.dcu
 *.res
 *.exe
+/engine/Lib/Array/__history
+/engine/Lib/Jansen/__history
+/engine/Lib/Render/__history
+/engine/Package/__history
+/engine/Projects/ThundaxJansenMechanism/__history
+/engine/Projects/ThundaxTDPEDemo/__history
