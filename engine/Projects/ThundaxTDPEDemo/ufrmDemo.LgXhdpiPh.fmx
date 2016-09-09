@@ -1,7 +1,12 @@
 inherited Form2_LgXhdpiPh: TForm2_LgXhdpiPh
   ClientHeight = 425
   ClientWidth = 720
+  FormFactor.Orientations = [Landscape]
+  FullScreen = True
   DesignerMasterStyle = 0
+  inherited Timer1: TTimer
+    Interval = 36
+  end
   inherited Layout1: TLayout
     Position.Y = 8.000000000000000000
     Size.Width = 705.000000000000000000

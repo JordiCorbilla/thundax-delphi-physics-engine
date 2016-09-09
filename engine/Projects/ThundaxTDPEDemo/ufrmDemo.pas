@@ -94,15 +94,15 @@ end;
 
 procedure TForm2.FormCreate(Sender: TObject);
 begin
-  Engine := TFluentEngine.New(1 / 4).AddInitialForce(TForce.Create(false, 0, 2)).AddDamping(0).AddRestrictionCollitionCycles(10);
-  Layout1.Canvas.BeginScene();
-  Render := TFMXRenderer.Create(Layout1.Canvas);
-  FGround := TScenery.Create(Render, Engine, clablue);
-  Frobot := TRobot.Create(Render, Engine, 1050, 400, 1.3, 0.02);
-  Engine.AddGroups(FGround).AddGroups(Frobot);
-  FGround.AddCollidable(Frobot);
-  Frobot.togglePower();
-  Layout1.Canvas.EndScene;
+//  Engine := TFluentEngine.New(1 / 4).AddInitialForce(TForce.Create(false, 0, 2)).AddDamping(0).AddRestrictionCollitionCycles(10);
+//  Layout1.Canvas.BeginScene();
+//  Render := TFMXRenderer.Create(Layout1.Canvas);
+//  FGround := TScenery.Create(Render, Engine, clablue);
+//  Frobot := TRobot.Create(Render, Engine, 1050, 400, 1.3, 0.02);
+//  Engine.AddGroups(FGround).AddGroups(Frobot);
+//  FGround.AddCollidable(Frobot);
+//  Frobot.togglePower();
+//  Layout1.Canvas.EndScene;
 
   //DoubleBuffered := true;
 end;
@@ -126,17 +126,17 @@ end;
 procedure TForm2.FormPaint(Sender: TObject; Canvas: TCanvas;
   const [Ref] ARect: TRectF);
 begin
-  Engine.Paint;
+//  Engine.Paint;
 end;
 
 procedure TForm2.Timer1Timer(Sender: TObject);
 begin
-  Engine.Run;
-  Frobot.Run();
-  Layout1.Canvas.BeginScene();
-  Layout1.Canvas.Clear(claWhite);
-  Engine.Paint;
-  Layout1.Canvas.EndScene();
+//  Engine.Run;
+//  Frobot.Run();
+//  Layout1.Canvas.BeginScene();
+//  Layout1.Canvas.Clear(claWhite);
+//  Engine.Paint;
+//  Layout1.Canvas.EndScene();
 end;
 
 procedure TForm2.ToggleClick(Sender: TObject);
