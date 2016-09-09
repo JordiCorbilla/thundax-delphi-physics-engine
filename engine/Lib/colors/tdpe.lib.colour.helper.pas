@@ -34,7 +34,7 @@ unit tdpe.lib.colour.helper;
 interface
 
 uses
-    Windows, Graphics;
+  FMX.Graphics, System.UITypes, System.Types, System.UIConsts;
 
 type
     TRandomColor = class(TObject)
@@ -46,8 +46,14 @@ implementation
 { TRandomColor }
 
 class function TRandomColor.getRandomColor: TColor;
+var
+  aColor: TAlphaColor;
 begin
-    result := rgb(Random(255), Random(255), Random(255));
+  aColor:= TAlphaColorRec.Brown;
+  TAlphaColorRec(aColor).R:= Random(255);
+  TAlphaColorRec(aColor).G:= Random(255);
+  TAlphaColorRec(aColor).B:= Random(255);
+  result := aColor;
 end;
 
 end.

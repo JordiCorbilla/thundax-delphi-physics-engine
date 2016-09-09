@@ -34,8 +34,9 @@ unit tdpe.lib.jansen.leg;
 interface
 
 Uses tdpe.lib.particle.group, tdpe.lib.particle.spring.restriction,
-  tdpe.lib.engine, tdpe.lib.render, Graphics,
-  tdpe.lib.particle.circle, tdpe.lib.particle.abstractparticle, tdpe.lib.particle.pattern.composite;
+  tdpe.lib.engine, tdpe.lib.render, FMX.Graphics,
+  tdpe.lib.particle.circle, tdpe.lib.particle.abstractparticle, tdpe.lib.particle.pattern.composite,
+  System.UITypes, System.Types, System.UIConsts;
 
 type
   TLeg = class(TComposite)
@@ -85,7 +86,7 @@ begin
   _DrawTrace := false;
   // top triangle -- pa is the attach point to the body
   os := orientation * scale;
-  pa := TCircleParticle.Create(px + 31 * os, py - 8 * scale, 5, false, 1, 0.3, 0, clred);
+  pa := TCircleParticle.Create(px + 31 * os, py - 8 * scale, 5, false, 1, 0.3, 0, clared);
   pa.SetRenderer(aRenderer);
   pb := TCircleParticle.Create(px + 25 * os, py - 37 * scale, 5, false);
   pb.SetRenderer(aRenderer);
@@ -101,7 +102,7 @@ begin
   pf.SetRenderer(aRenderer);
 
   // strut attach point particle
-  ph := TCircleParticle.Create(px, py, 3, false, 1, 0.3, 0, clyellow);
+  ph := TCircleParticle.Create(px, py, 3, false, 1, 0.3, 0, clayellow);
   ph.SetRenderer(aRenderer);
   ph.visible := false;
 
@@ -175,7 +176,7 @@ begin
   FRenderer.FilledTriangle(pa.px, pa.py, pb.px, pb.py, pc.px, pc.py, Self.fillColor, Self.lineWeight);
   FRenderer.FilledTriangle(pd.px, pd.py, pe.px, pe.py, pf.px, pf.py, Self.fillColor, Self.lineWeight);
   if _DrawTrace then
-    FRenderer.DrawPoint(pf.px, pf.py, clLime);
+    FRenderer.DrawPoint(pf.px, pf.py, claLime);
 end;
 
 function TLeg.fix(): TCircleParticle;

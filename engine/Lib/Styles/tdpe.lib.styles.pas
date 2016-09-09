@@ -34,7 +34,7 @@ unit tdpe.lib.styles;
 interface
 
 uses
-  tdpe.lib.styles.contract, Graphics;
+  tdpe.lib.styles.contract, FMX.Graphics, System.UITypes, System.Types, System.UIConsts;
 
 type
   TStyle = class(TInterfacedObject, IStyle)
@@ -63,8 +63,8 @@ implementation
 constructor TStyle.Create;
 begin
   inherited;
-  SetBrushColor(clBlue);
-  SetPenColor(clWhite);
+  SetBrushColor(claBlue);
+  SetPenColor(claWhite);
   SetPenWidth(1);
 end;
 

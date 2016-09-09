@@ -34,8 +34,8 @@ unit tdpe.lib.particle.circle.mass;
 interface
 
 uses
-  tdpe.lib.particle.circle, tdpe.lib.vector, Graphics, tdpe.lib.force.contract,
-  tdpe.lib.force.list;
+  tdpe.lib.particle.circle, tdpe.lib.vector, FMX.Graphics, tdpe.lib.force.contract,
+  tdpe.lib.force.list, System.UITypes, System.Types, SYstem.UICOnsts;
 
 type
   TCircleMass = class(TCircleParticle)
@@ -60,7 +60,7 @@ type
     property Inertia: Double read FInertia write SetInertia;
     property radian: Double read Fradian write Setradian;
     property angle: Double read getangle write Setangle;
-    constructor Create(x: Double; y: Double; radius: Double; fixedPosition: Boolean = false; mass: Double = 1; elasticity: Double = 0.15; friction: Double = 0.1; color: TColor = clWhite); reintroduce;
+    constructor Create(x: Double; y: Double; radius: Double; fixedPosition: Boolean = false; mass: Double = 1; elasticity: Double = 0.15; friction: Double = 0.1; color: TColor = claWhite); reintroduce;
     Procedure CleanUp; Override;
     Procedure Init; Override;
     Procedure Paint; OVerride;

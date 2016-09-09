@@ -34,7 +34,7 @@ unit tdpe.lib.automation.silo;
 interface
 
 Uses tdpe.lib.particle.group, tdpe.lib.engine, tdpe.lib.render,
-  tdpe.lib.particle.box.solid, Graphics, SysUtils;
+  tdpe.lib.particle.box.solid, FMX.Graphics, SysUtils, System.UITypes, System.Types, System.UIConsts;
 
 type
   TSilo = class(TGroup)

@@ -35,9 +35,9 @@ interface
 
 Uses
   tdpe.lib.vector, tdpe.lib.math.interval, tdpe.lib.collision, tdpe.lib.particle.abstractElement,
-  tdpe.lib.render, Graphics, tdpe.lib.styles, tdpe.lib.styles.contract, Classes, tdpe.lib.force.contract,
+  tdpe.lib.render, FMX.Graphics, tdpe.lib.styles, tdpe.lib.styles.contract, Classes, tdpe.lib.force.contract,
   tdpe.lib.writer.contract, tdpe.lib.particle.physicElement, tdpe.lib.force.list,
-  tdpe.lib.collision.contract, Generics.Collections;
+  tdpe.lib.collision.contract, Generics.Collections, System.UITypes, System.Types;
 
 Type
   TAbstractParticle = Class(TAbstractElement)

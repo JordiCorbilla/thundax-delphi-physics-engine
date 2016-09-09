@@ -34,7 +34,7 @@ unit tdpe.lib.particle.body.solid;
 interface
 
 uses
-    tdpe.lib.particle.item.solid, Graphics, tdpe.lib.vector, tdpe.lib.math.interval;
+    tdpe.lib.particle.item.solid, FMX.Graphics, tdpe.lib.vector, tdpe.lib.math.interval;
 
 type
     TSolidBody = class(TSolidItem)

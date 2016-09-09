@@ -34,7 +34,7 @@ unit tdpe.lib.particle.circle;
 interface
 
 Uses
-  tdpe.lib.particle.abstractparticle, tdpe.lib.vector, tdpe.lib.math.interval, Graphics;
+  tdpe.lib.particle.abstractparticle, tdpe.lib.vector, tdpe.lib.math.interval, FMX.Graphics, System.UITypes, System.Types, System.UIConsts;
 
 Type
   TCircleParticle = class(TAbstractParticle)
@@ -48,7 +48,7 @@ Type
     procedure SetDensity(const Value: Double);
     function CalculateMass: Double;
   Public
-    Constructor Create(x, y, radius: Double; Fixed: Boolean = False; Mass: Double = 1; Elasticity: Double = 0.3; Friction: Double = 0; color: TColor = clBlue); Reintroduce;
+    Constructor Create(x, y, radius: Double; Fixed: Boolean = False; Mass: Double = 1; Elasticity: Double = 0.3; Friction: Double = 0; color: TColor = claBlue); Reintroduce;
     Procedure CleanUp; Override;
     Procedure Init; Override;
     Procedure Paint; OVerride;
@@ -136,12 +136,12 @@ begin
   if Self.Visible then
   begin
     Renderer.CircleApproximation(current.x, current.y, FRadius, 0, Style);
-    Renderer.Line(Self.Previous.x, Previous.y, Self.current.x, Self.current.y, clred, 1);
+    Renderer.Line(Self.Previous.x, Previous.y, Self.current.x, Self.current.y, clared, 1);
     vec := TVector.New.SetPoint(Self.current.x + 20 * mtdres.x, current.y + 20 * mtdres.y);
-    Renderer.Line(Self.current.x, current.y, vec.x, vec.y, clBlue, 1);
+    Renderer.Line(Self.current.x, current.y, vec.x, vec.y, claBlue, 1);
     Renderer.drawArrow(current, vec);
     if FPrintTrace then
-      Renderer.DrawPoint(px, py, clred);
+      Renderer.DrawPoint(px, py, clared);
   end;
 end;
 

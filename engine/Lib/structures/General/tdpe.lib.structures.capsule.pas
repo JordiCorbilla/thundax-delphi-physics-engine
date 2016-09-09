@@ -50,7 +50,7 @@ Type
 implementation
 
 uses
-  SysUtils, Graphics;
+  SysUtils, FMX.Graphics, System.UITypes, System.Types, System.UIConsts;
 
 { TCapsule }
 
@@ -58,12 +58,12 @@ constructor TCapsule.Create(render: TAbstractRenderer; aEngine: TEngine);
 begin
   inherited Create;
   capsuleP1 := TSolidCircle.Create(300, 10, 14, false, 1.3, 0.4);
-  capsuleP1.SetParticleColor(clRed);
+  capsuleP1.SetParticleColor(claRed);
   capsuleP1.SetRenderer(render);
   addParticle(capsuleP1);
 
   capsuleP2 := TSolidCircle.Create(325, 35, 14, false, 1.3, 0.4);
-  capsuleP2.SetParticleColor(clRed);
+  capsuleP2.SetParticleColor(claRed);
   capsuleP2.SetRenderer(render);
   addParticle(capsuleP2);
 

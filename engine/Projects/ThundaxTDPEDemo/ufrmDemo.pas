@@ -9,7 +9,7 @@ uses
   tdpe.lib.jansen.scenery, tdpe.lib.engine.wrapper,
   tdpe.lib.particle.group, tdpe.lib.particle.pattern.composite,
   tdpe.lib.particle.circle, tdpe.lib.particle.spring.restriction,
-  tdpe.lib.jansen.mechanism, tdpe.lib.jansen.robot, tdpe.lib.particle.box, Windows,
+  tdpe.lib.jansen.mechanism, tdpe.lib.jansen.robot, tdpe.lib.particle.box,
   FMX.Layouts, System.UIConsts, FMX.Controls.Presentation, FMX.StdCtrls;
 
 type
@@ -17,6 +17,8 @@ type
     Timer1: TTimer;
     Layout1: TLayout;
     Button1: TButton;
+    Toggle: TButton;
+    Direction: TButton;
     procedure Timer1Timer(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Button1Click(Sender: TObject);
@@ -24,6 +26,8 @@ type
       const [Ref] ARect: TRectF);
     procedure FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
       Shift: TShiftState);
+    procedure ToggleClick(Sender: TObject);
+    procedure DirectionClick(Sender: TObject);
   private
     procedure DrawBackground;
   public
@@ -42,6 +46,7 @@ uses
   tdpe.lib.force;
 
 {$R *.fmx}
+{$R *.LgXhdpiPh.fmx ANDROID}
 
 procedure TForm2.Button1Click(Sender: TObject);
 var pt0,pt1 : TPointF;
@@ -53,12 +58,17 @@ begin
   Layout1.Canvas.EndScene;
 end;
 
+procedure TForm2.DirectionClick(Sender: TObject);
+begin
+  Frobot.toggleDirection();
+end;
+
 procedure TForm2.DrawBackground;
-var
-  DC: HDC;
-  Rect: TRect;
-  X, Y: integer;
-  DotColor: integer;
+//var
+//  DC: HDC;
+//  Rect: TRect;
+//  X, Y: integer;
+//  DotColor: integer;
 begin
   //Self.Canvas.Brush.Style := bsSolid;
   //Self.Canvas.Brush.color := clgray;
@@ -88,7 +98,7 @@ begin
   Layout1.Canvas.BeginScene();
   Render := TFMXRenderer.Create(Layout1.Canvas);
   FGround := TScenery.Create(Render, Engine, clablue);
-  Frobot := TRobot.Create(Render, Engine, 1050, 400, 2, 0.02);
+  Frobot := TRobot.Create(Render, Engine, 1050, 400, 1.3, 0.02);
   Engine.AddGroups(FGround).AddGroups(Frobot);
   FGround.AddCollidable(Frobot);
   Frobot.togglePower();
@@ -127,6 +137,11 @@ begin
   Layout1.Canvas.Clear(claWhite);
   Engine.Paint;
   Layout1.Canvas.EndScene();
+end;
+
+procedure TForm2.ToggleClick(Sender: TObject);
+begin
+  Frobot.togglePower();
 end;
 
 end.

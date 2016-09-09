@@ -3,7 +3,7 @@ unit tdpe.lib.particle.physicElement;
 interface
 
 uses
-  tdpe.lib.vector, Graphics, tdpe.lib.styles.contract, tdpe.lib.writer.contract;
+  tdpe.lib.vector, FMX.Graphics, tdpe.lib.styles.contract, tdpe.lib.writer.contract, System.UITypes, System.Types;
 
 type
   TPhysicElement = class(TObject)

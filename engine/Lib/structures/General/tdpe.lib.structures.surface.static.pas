@@ -62,13 +62,13 @@ Type
 implementation
 
 uses
-  Graphics, SysUtils, tdpe.lib.colour.helper;
+  FMX.Graphics, SysUtils, tdpe.lib.colour.helper, System.UITypes, System.Types, System.UIConsts;
 
 { TSurfaces }
 
 procedure TSurfaces.AddSurface;
 begin
-  Floor := TSolidBox.Create(410, 550, 360, 20, 0, true, 1, 0.3, 0.3, 0, clBlue);
+  Floor := TSolidBox.Create(410, 550, 360, 20, 0, true, 1, 0.3, 0.3, 0, claBlue);
   Floor.setLog(FLog);
   Floor.SetRenderer(FRender);
   addParticle(Floor);
@@ -85,32 +85,32 @@ begin
   rampx := 200;
   rampy := 650;
 
-  Floor := TSolidBox.Create(rampx+370, rampy-100, 360, 10, 0, true, 1, 0.3, 0.3, 0, clFuchsia);
+  Floor := TSolidBox.Create(rampx+370, rampy-100, 360, 10, 0, true, 1, 0.3, 0.3, 0, claFuchsia);
   Floor.setLog(FLog);
   Floor.SetRenderer(render);
   addParticle(Floor);
 
-  RampRight := TSolidBox.Create(rampx+700, rampy-185, 350, 10, -0.5, true, 1, 0.3, 0.3, 0, clFuchsia);
+  RampRight := TSolidBox.Create(rampx+700, rampy-185, 350, 10, -0.5, true, 1, 0.3, 0.3, 0, claFuchsia);
   RampRight.setLog(FLog);
   RampRight.SetRenderer(render);
   addParticle(RampRight);
 
-  FloorLeftDown := TSolidBox.Create(rampx+250, rampy, 750, 10, 0, true, 1, 0.3, 0.3, 0, clFuchsia);
+  FloorLeftDown := TSolidBox.Create(rampx+250, rampy, 750, 10, 0, true, 1, 0.3, 0.3, 0, claFuchsia);
   FloorLeftDown.setLog(FLog);
   FloorLeftDown.SetRenderer(render);
   addParticle(FloorLeftDown);
 
-  FloorRightTop := TSolidBox.Create(rampx+975, rampy-268, 250, 10, 0, true, 1, 0.3, 0.3, 0, clFuchsia);
+  FloorRightTop := TSolidBox.Create(rampx+975, rampy-268, 250, 10, 0, true, 1, 0.3, 0.3, 0, claFuchsia);
   FloorRightTop.setLog(FLog);
   FloorRightTop.SetRenderer(render);
   addParticle(FloorRightTop);
 
-  RampLeft := TSolidBox.Create(rampx+170, rampy-110, 50, 10, 0.5, true, 1, 0.3, 0.3, 0, clFuchsia);
+  RampLeft := TSolidBox.Create(rampx+170, rampy-110, 50, 10, 0.5, true, 1, 0.3, 0.3, 0, claFuchsia);
   RampLeft.setLog(FLog);
   RampLeft.SetRenderer(render);
   addParticle(RampLeft);
 
-  RampLeftTop := TSolidBox.Create(rampx-165, rampy-24, 100, 10, 0.5, true, 1, 0.3, 0.3, 0, clFuchsia);
+  RampLeftTop := TSolidBox.Create(rampx-165, rampy-24, 100, 10, 0.5, true, 1, 0.3, 0.3, 0, claFuchsia);
   RampLeftTop.setLog(FLog);
   RampLeftTop.SetRenderer(render);
   addParticle(RampLeftTop);

@@ -56,7 +56,7 @@ Type
 implementation
 
 uses
-  SysUtils, Graphics;
+  SysUtils, FMX.Graphics, System.UITypes, System.Types, System.UIConsts;
 
 { TBoxComposite }
 
@@ -69,20 +69,20 @@ begin
   rh := 18;
   rad := 4;
 
-  CpA := TCircleParticle.Create(Ctr.x - rw / 2, Ctr.y - rh / 2, rad, true, 1, 0.3, 0, clwhite);
-  cpB := TCircleParticle.Create(Ctr.x + rw / 2, Ctr.y - rh / 2, rad, true, 1, 0.3, 0, clwhite);
-  CpC := TCircleParticle.Create(Ctr.x + rw / 2, Ctr.y + rh / 2, rad, true, 1, 0.3, 0, clwhite);
-  cpD := TCircleParticle.Create(Ctr.x - rw / 2, Ctr.y + rh / 2, rad, true, 1, 0.3, 0, clwhite);
+  CpA := TCircleParticle.Create(Ctr.x - rw / 2, Ctr.y - rh / 2, rad, true, 1, 0.3, 0, clawhite);
+  cpB := TCircleParticle.Create(Ctr.x + rw / 2, Ctr.y - rh / 2, rad, true, 1, 0.3, 0, clawhite);
+  CpC := TCircleParticle.Create(Ctr.x + rw / 2, Ctr.y + rh / 2, rad, true, 1, 0.3, 0, clawhite);
+  cpD := TCircleParticle.Create(Ctr.x - rw / 2, Ctr.y + rh / 2, rad, true, 1, 0.3, 0, clawhite);
 
   CpA.SetRenderer(render);
   cpB.SetRenderer(render);
   CpC.SetRenderer(render);
   cpD.SetRenderer(render);
 
-  spra := TSpringRestriction.Create(CpA, cpB, 0.5, true, rad * 2, 1, true, clBlue, 3);
-  sprb := TSpringRestriction.Create(cpB, CpC, 0.5, true, rad * 2, 1, False, clBlue, 3);
-  sprc := TSpringRestriction.Create(CpC, cpD, 0.5, true, rad * 2, 1, False, clBlue, 3);
-  sprd := TSpringRestriction.Create(cpD, CpA, 0.5, true, rad * 2, 1, False, clBlue, 3);
+  spra := TSpringRestriction.Create(CpA, cpB, 0.5, true, rad * 2, 1, true, claBlue, 3);
+  sprb := TSpringRestriction.Create(cpB, CpC, 0.5, true, rad * 2, 1, False, claBlue, 3);
+  sprc := TSpringRestriction.Create(CpC, cpD, 0.5, true, rad * 2, 1, False, claBlue, 3);
+  sprd := TSpringRestriction.Create(cpD, CpA, 0.5, true, rad * 2, 1, False, claBlue, 3);
 
   spra.SetRenderer(render);
   sprb.SetRenderer(render);

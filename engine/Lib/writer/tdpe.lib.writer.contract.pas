@@ -34,13 +34,13 @@ unit tdpe.lib.writer.contract;
 interface
 
 uses
-  Graphics;
+  FMX.Graphics, System.UITypes, System.Types, System.UIConsts;
 
 type
 
   IWriter = interface(IInterface)
     ['{DCA52B08-1E4A-4485-991B-7C0F96D0A6EE}']
-    procedure AddText(s: string; const colour: TColor = clBlack);
+    procedure AddText(s: string; const colour: TColor = claBlack);
   end;
 
 implementation

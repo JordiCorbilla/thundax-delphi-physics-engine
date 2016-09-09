@@ -42,7 +42,8 @@ type
 implementation
 
 uses
-  SysUtils, Windows;
+  SysUtils;
+//  , Windows;
 
 class procedure TLogger.LogFile(s: string);
 var
@@ -62,7 +63,7 @@ end;
 
 class procedure TLogger.LogDebug(s: string);
 begin
-  OutputDebugString(PChar(Format('%s %s', [DateTimeToStr(Now), s])));
+  //OutputDebugString(PChar(Format('%s %s', [DateTimeToStr(Now), s])));
 end;
 
 end.

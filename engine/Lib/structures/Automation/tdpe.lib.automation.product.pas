@@ -34,7 +34,7 @@ unit tdpe.lib.automation.product;
 interface
 
 Uses tdpe.lib.particle.group, tdpe.lib.particle.circle.solid, tdpe.lib.particle.spring.restriction,
-  tdpe.lib.engine, tdpe.lib.render, Contnrs, Generics.Collections, Graphics;
+  tdpe.lib.engine, tdpe.lib.render, Generics.Collections, FMX.Graphics, System.UITypes, System.Types, System.UIConsts;
 
 type
   TProduct = class(TGroup)

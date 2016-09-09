@@ -53,8 +53,8 @@ type
 
 implementation
 
-uses
-  Windows;
+//uses
+//  Windows;
 
 { TGroupList }
 
@@ -68,14 +68,14 @@ end;
 
 function TGroupList._AddRef: Integer;
 begin
-  Result := InterlockedIncrement(FRefCount);
+  //Result := InterlockedIncrement(FRefCount);
 end;
 
 function TGroupList._Release: Integer;
 begin
-  Result := InterlockedDecrement(FRefCount);
-  if Result = 0 then
-    Destroy;
+  //Result := InterlockedDecrement(FRefCount);
+  //if Result = 0 then
+  //  Destroy;
 end;
 
 procedure TGroupList.CheckCollisions;

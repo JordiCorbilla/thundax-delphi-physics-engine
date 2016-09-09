@@ -34,8 +34,8 @@ unit tdpe.lib.particle.circle.solid;
 interface
 
 uses
-  tdpe.lib.particle.item.solid, Graphics, tdpe.lib.styles, tdpe.lib.structures,
-  tdpe.lib.math.interval, tdpe.lib.vector, tdpe.lib.styles.contract;
+  tdpe.lib.particle.item.solid, FMX.Graphics, tdpe.lib.styles, tdpe.lib.structures,
+  tdpe.lib.math.interval, tdpe.lib.vector, tdpe.lib.styles.contract, System.UITypes, System.Types, System.UIConsts;
 
 type
   TSolidCircle = class(TSolidItem)
@@ -47,7 +47,7 @@ type
     procedure SetStartDrag(const Value: Boolean);
   public
     Constructor Create(x, y, radius: double; isFixed: Boolean; Mass: double = -1; Elasticity: double = 0.3; Friction: double = 0; radian: double = 0; angularVelocity: double = 0;
-      color: TColor = clBlack); reintroduce;
+      color: TColor = claBlack); reintroduce;
     function radius(): double;
     Procedure Paint; override;
     Destructor Destroy(); override;

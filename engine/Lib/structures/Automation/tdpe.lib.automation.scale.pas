@@ -33,7 +33,7 @@ unit tdpe.lib.automation.scale;
 
 interface
 
-Uses tdpe.lib.particle.group, tdpe.lib.engine, tdpe.lib.render, tdpe.lib.particle.box.solid, Graphics;
+Uses tdpe.lib.particle.group, tdpe.lib.engine, tdpe.lib.render, tdpe.lib.particle.box.solid, FMX.Graphics, System.UITypes, System.Types, System.UIConsts;
 
 type
   TScale = class(TGroup)

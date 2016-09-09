@@ -34,7 +34,7 @@ unit tdpe.lib.render;
 interface
 
 uses
-  tdpe.lib.vector, Graphics, tdpe.lib.styles, tdpe.lib.styles.contract;
+  tdpe.lib.vector, FMX.Graphics, tdpe.lib.styles, tdpe.lib.styles.contract, System.UITypes, System.Types;
 
 Type
 

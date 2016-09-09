@@ -60,6 +60,9 @@ const
 
 implementation
 
+uses
+  system.Math.Vectors;
+
 { TFMXRenderer }
 
 procedure TFMXRenderer.Circle(const xcenter, ycenter, Radius, Rotate: Double;  const style: IStyle);
@@ -122,18 +125,52 @@ begin
 
 end;
 
-procedure TFMXRenderer.FilledBox(const x, y, x1, y1, x2, y2, x3, y3: Double;
-  const color: TColor);
+procedure TFMXRenderer.FilledBox(const x, y, x1, y1, x2, y2, x3, y3: Double;  const color: TColor);
+var
+  polygon : TPolygon;
 begin
-  inherited;
-
+FCanvas.Stroke.Thickness := 1.5;
+      FCanvas.Stroke.Kind := TBrushKind.bkSolid;
+      FCanvas.Fill.Color := TAlphaColorRec.Black;
+      FCanvas.Fill.Kind := TBrushKind.bkSolid;
+//    FCanvas.Pen.color := clWhite;
+//    FCanvas.Pen.Width := 2;
+//    beforeColor := FCanvas.Brush.color;
+//    FCanvas.Brush.color := color;
+    setlength(polygon, 4);
+    polygon[0] := Point(Round(x), Round(y));
+    polygon[1] := Point(Round(x1), Round(y1));
+    polygon[2] := Point(Round(x2), Round(y2));
+    polygon[3] := Point(Round(x3), Round(y3));
+    FCanvas.DrawPolygon(polygon, 1);
+    //FCanvas.Brush.color := beforeColor;
 end;
 
 procedure TFMXRenderer.FilledTriangle(const x, y, x1, y1, x2, y2: Double;
   const color: TColor; const penWidth: integer);
+var
+  beforeColor: TColor;
+  beforePen: integer;
+  rec: array [0 .. 2] of TPoint;
+  polygon : TPolygon;
 begin
-  inherited;
+//  beforeColor := FCanvas.Brush.color;
+//  beforePen := FCanvas.Pen.Width;
+//
+//  FCanvas.Brush.color := color;
+//  FCanvas.Pen.Width := penWidth;
+FCanvas.Stroke.Thickness := 1.5;
+      FCanvas.Stroke.Kind := TBrushKind.bkSolid;
+      FCanvas.Fill.Color := TAlphaColorRec.Black;
+      FCanvas.Fill.Kind := TBrushKind.bkSolid;
+  setlength(polygon, 3);
 
+  polygon[0] := Point(Round(x), Round(y));
+  polygon[1] := Point(Round(x1), Round(y1));
+  polygon[2] := Point(Round(x2), Round(y2));
+  FCanvas.DrawPolygon(polygon, 1);
+//  FCanvas.Brush.color := beforeColor;
+//  FCanvas.Pen.Width := beforePen;
 end;
 
 procedure TFMXRenderer.Line(const x, y, x1, y1: Double; const color: TColor; const penWidth: integer);
@@ -151,9 +188,9 @@ FCanvas.Stroke.Thickness := 1.5;
       FCanvas.Fill.Color := TAlphaColorRec.Black;
       FCanvas.Fill.Kind := TBrushKind.bkSolid;
     point1.X :=Round(x);
-    point1.X :=Round(y);
+    point1.Y :=Round(y);
     point2.X :=Round(x1);
-    point2.X :=Round(y1);
+    point2.Y :=Round(y1);
     FCanvas.DrawLine(point1, point2, 1);
 //    FCanvas.Pen.color := beforeColor;
 //    FCanvas.Pen.Width := beforePenWidth;

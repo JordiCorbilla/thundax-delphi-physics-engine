@@ -34,7 +34,7 @@ unit tdpe.lib.particle.box.solid;
 interface
 
 uses
-  tdpe.lib.particle.item.solid, tdpe.lib.particle.box, Graphics, tdpe.lib.vector, tdpe.lib.math.interval;
+  tdpe.lib.particle.item.solid, tdpe.lib.particle.box, FMX.Graphics, tdpe.lib.vector, tdpe.lib.math.interval, System.UITypes, System.Types, System.UIConsts;
 
 type
   TSolidBox = class(TSolidItem)
@@ -53,7 +53,7 @@ type
     procedure SetWidth(const Value: double);
   Public
     Constructor Create(x, y, awidth, aheight, rotation: double; Fixed: Boolean; Mass: double = 1; Elasticity: double = 0.3; Friction: double = 0; angularVelocity: double = 0;
-      color: TColor = clBlack); reintroduce;
+      color: TColor = claBlack); reintroduce;
     Destructor Destroy(); override;
     Procedure Init; Override;
     Procedure Paint; OVerride;
@@ -72,7 +72,7 @@ type
     function isInside(x, y: Integer): Boolean;
     procedure Move(x, y: Integer);
     function Captures(vertex: IVector): Boolean; override;
-    class function New(x, y, awidth, aheight, rotation: double; Fixed: Boolean; Mass: double = 1; Elasticity: double = 0.3; Friction: double = 0; angularVelocity: double = 0; color: TColor = clBlack)
+    class function New(x, y, awidth, aheight, rotation: double; Fixed: Boolean; Mass: double = 1; Elasticity: double = 0.3; Friction: double = 0; angularVelocity: double = 0; color: TColor = claBlack)
         : TSolidBox;
   end;
 

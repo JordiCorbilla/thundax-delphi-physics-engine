@@ -35,7 +35,7 @@ interface
 
 uses
   tdpe.lib.particle.abstractparticle, tdpe.lib.math.helper, tdpe.lib.vector,
-  tdpe.lib.math.interval, tdpe.lib.render, sysUtils, Graphics;
+  tdpe.lib.math.interval, tdpe.lib.render, sysUtils, FMX.Graphics, System.UITypes, System.Types, System.UIConsts;
 
 Type
   TRctTypeDouble = Array [0 .. 1] of Double;
@@ -59,7 +59,7 @@ Type
     procedure SetWidth(const Value: Double);
     procedure SetStartDrag(const Value: Boolean);
   Public
-    Constructor Create(x, y, width, height, rotation: Double; Fixed: Boolean; Mass: Double = 1; Elasticity: Double = 0.3; Friction: Double = 0; color: TColor = clBlack); reintroduce;
+    Constructor Create(x, y, width, height, rotation: Double; Fixed: Boolean; Mass: Double = 1; Elasticity: Double = 0.3; Friction: Double = 0; color: TColor = claBlack); reintroduce;
     Destructor Destroy(); override;
     Procedure Init; Override;
     Procedure Paint; OVerride;
@@ -88,7 +88,7 @@ begin
 
 end;
 
-constructor TBoxParticle.Create(x, y, width, height, rotation: Double; Fixed: Boolean; Mass: Double = 1; Elasticity: Double = 0.3; Friction: Double = 0; color: TColor = clBlack);
+constructor TBoxParticle.Create(x, y, width, height, rotation: Double; Fixed: Boolean; Mass: Double = 1; Elasticity: Double = 0.3; Friction: Double = 0; color: TColor = claBlack);
 begin
   inherited Create(x, y, Mass, Elasticity, Friction, Fixed, color);
   Fextents[0] := width / 2;

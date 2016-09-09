@@ -34,9 +34,9 @@ unit tdpe.lib.jansen.motor;
 interface
 
 Uses tdpe.lib.particle.group, tdpe.lib.particle.box.solid, tdpe.lib.particle.spring.restriction,
-  tdpe.lib.engine, tdpe.lib.render, Graphics,
+  tdpe.lib.engine, tdpe.lib.render, FMX.Graphics,
   tdpe.lib.particle.circle.solid, tdpe.lib.particle.abstractparticle,
-  tdpe.lib.particle.wheel, tdpe.lib.particle.pattern.composite;
+  tdpe.lib.particle.wheel, tdpe.lib.particle.pattern.composite, System.UITypes, System.Types, System.UIConsts;
 
 type
   TMotor = class(TComposite)
@@ -168,9 +168,9 @@ end;
 procedure TMotor.Paint;
 begin
   inherited;
-  FRenderer.Line(wheel.px, wheel.py, _rimA.px, _rimA.py, clFuchsia, 2);
-  FRenderer.Line(wheel.px, wheel.py, _rimB.px, _rimB.py, clFuchsia, 2);
-  FRenderer.Line(wheel.px, wheel.py, _rimC.px, _rimC.py, clFuchsia, 2);
+  FRenderer.Line(wheel.px, wheel.py, _rimA.px, _rimA.py, claFuchsia, 2);
+  FRenderer.Line(wheel.px, wheel.py, _rimB.px, _rimB.py, claFuchsia, 2);
+  FRenderer.Line(wheel.px, wheel.py, _rimC.px, _rimC.py, claFuchsia, 2);
 end;
 
 end.

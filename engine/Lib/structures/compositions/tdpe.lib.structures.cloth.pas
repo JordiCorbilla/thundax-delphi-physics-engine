@@ -34,7 +34,7 @@ unit tdpe.lib.structures.cloth;
 interface
 
 Uses tdpe.lib.particle.group, tdpe.lib.particle.circle.solid, tdpe.lib.particle.spring.restriction,
-  tdpe.lib.engine, tdpe.lib.render, Graphics, Contnrs, Generics.Collections;
+  tdpe.lib.engine, tdpe.lib.render, FMX.Graphics, Generics.Collections, system.UIConsts;
 
 Type
   TCloth = class(TGroup)
@@ -98,7 +98,7 @@ begin
       if fixed then
         ParticleSize := 3;
       innerCircle := TSolidCircle.Create(bx, By, ParticleSize, fixed, 1); // 0.2
-      innerCircle.Style.SetStyle(clRed, clWhite, 1);
+      innerCircle.Style.SetStyle(claRed, claWhite, 1);
       addParticle(innerCircle);
       innerCircle.SetRenderer(render);
       FCircles.Add(innerCircle);
@@ -115,7 +115,7 @@ begin
   begin
     for i := 0 to nParticles - 2 do
     begin
-      restriction := TSpringRestriction.Create(FCircles.Items[j], FCircles.Items[j + 1], 0.3, true, 2, 0.8, true, clWhite, 1);
+      restriction := TSpringRestriction.Create(FCircles.Items[j], FCircles.Items[j + 1], 0.3, true, 2, 0.8, true, claWhite, 1);
       if (h = 0) and ((j = 0) or (j = (nParticles - 1))) then
         restriction.FixedEndLimit := 0.25;
       addRestriction(restriction);
@@ -128,7 +128,7 @@ begin
     begin
       if h < (clothDepth - 1) then
       begin
-        restriction := TSpringRestriction.Create(FCircles.Items[k], FCircles.Items[nParticles + k], 0.3, true, 2, 0.8, true, clWhite, 1);
+        restriction := TSpringRestriction.Create(FCircles.Items[k], FCircles.Items[nParticles + k], 0.3, true, 2, 0.8, true, claWhite, 1);
         addRestriction(restriction);
         restriction.SetRenderer(render);
         FSprings.Add(restriction);

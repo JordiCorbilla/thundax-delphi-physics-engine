@@ -34,7 +34,7 @@ unit tdpe.lib.jansen.scenery;
 interface
 
 Uses tdpe.lib.particle.group, tdpe.lib.particle.box, tdpe.lib.particle.spring.restriction,
-  tdpe.lib.engine, tdpe.lib.render, Graphics;
+  tdpe.lib.engine, tdpe.lib.render, FMX.Graphics, System.UITypes, System.Types, System.UIConsts;
 
 type
   TScenery = class(TGroup)

@@ -34,9 +34,10 @@ unit tdpe.lib.jansen.robot;
 interface
 
 Uses tdpe.lib.particle.group, tdpe.lib.particle.box.solid, tdpe.lib.particle.spring.restriction,
-  tdpe.lib.engine, tdpe.lib.render, Graphics,
+  tdpe.lib.engine, tdpe.lib.render, FMX.Graphics,
   tdpe.lib.particle.circle.solid, tdpe.lib.particle.abstractparticle,
-  tdpe.lib.particle.wheel, tdpe.lib.jansen.body, tdpe.lib.jansen.motor, tdpe.lib.jansen.leg;
+  tdpe.lib.particle.wheel, tdpe.lib.jansen.body, tdpe.lib.jansen.motor, tdpe.lib.jansen.leg,
+  System.UITypes, System.Types, System.UIConsts;
 
 type
   TRobot = class(TGroup)
@@ -79,19 +80,19 @@ begin
   // legs
   TEngine := anTEngine;
   legLA := TLeg.Create(aRenderer, px, py, -1, scale, 2, 0, 1, 0, 1);
-  legLA.SetStyle(clBlack, 2, clYellow);
+  legLA.SetStyle(claBlack, 2, claYellow);
   legLA.DrawTrace(true);
   legRA := TLeg.Create(aRenderer, px, py, 1, scale, 2, 0, 1, 0, 1);
-  legRA.SetStyle(clBlack, 2, clYellow);
+  legRA.SetStyle(claBlack, 2, claYellow);
   legRA.DrawTrace(true);
   legLB := TLeg.Create(aRenderer, px, py, -1, scale, 2, 0, 1, 0, 1);
-  legLB.SetStyle(clBlack, 2, clGreen);
+  legLB.SetStyle(claBlack, 2, claGreen);
   legRB := TLeg.Create(aRenderer, px, py, 1, scale, 2, 0, 1, 0, 1);
-  legRB.SetStyle(clBlack, 2, clGreen);
+  legRB.SetStyle(claBlack, 2, claGreen);
   legLC := TLeg.Create(aRenderer, px, py, -1, scale, 2, 0, 1, 0, 1);
-  legLC.SetStyle(clBlack, 2, clGray);
+  legLC.SetStyle(claBlack, 2, claGray);
   legRC := TLeg.Create(aRenderer, px, py, 1, scale, 2, 0, 1, 0, 1);
-  legRC.SetStyle(clBlack, 2, clGray);
+  legRC.SetStyle(claBlack, 2, claGray);
 
   // body
   abody := Tbody.Create(aRenderer, legLA.fix, legRA.fix, 30 * scale, 2, 0, 1);

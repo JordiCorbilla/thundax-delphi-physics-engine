@@ -34,8 +34,8 @@ unit tdpe.lib.structures.box.simulation;
 interface
 
 Uses tdpe.lib.particle.group, tdpe.lib.particle.box.solid, tdpe.lib.particle.spring.restriction,
-  tdpe.lib.engine, tdpe.lib.render, Graphics,
-  tdpe.lib.particle.circle.solid, Contnrs, Generics.Collections;
+  tdpe.lib.engine, tdpe.lib.render, FMX.Graphics,
+  tdpe.lib.particle.circle.solid, Generics.Collections, System.UITypes, System.Types, System.UIConsts;
 
 type
   TBrick = class(TGroup)
@@ -91,46 +91,46 @@ begin
   radius := 5;
   width := 5;
 
-  c1 := TSolidCircle.Create(px, py, radius, false, 0.001, 0.1, 1, clRed);
+  c1 := TSolidCircle.Create(px, py, radius, false, 0.001, 0.1, 1, claRed);
   c1.SetRenderer(aRenderer);
   addParticle(c1);
   Circles.Add(c1);
 
-  c2 := TSolidCircle.Create(px + w, py, radius, false, 0.001, 0.1, 1, clRed);
+  c2 := TSolidCircle.Create(px + w, py, radius, false, 0.001, 0.1, 1, claRed);
   c2.SetRenderer(aRenderer);
   addParticle(c2);
   Circles.Add(c2);
 
-  c3 := TSolidCircle.Create(px + w, py + h, radius, false, 0.001, 0.1, 1, clRed);
+  c3 := TSolidCircle.Create(px + w, py + h, radius, false, 0.001, 0.1, 1, claRed);
   c3.SetRenderer(aRenderer);
   addParticle(c3);
   Circles.Add(c3);
 
-  c4 := TSolidCircle.Create(px, py + h, radius, false, 0.001, 0.1, 1, clRed);
+  c4 := TSolidCircle.Create(px, py + h, radius, false, 0.001, 0.1, 1, claRed);
   c4.SetRenderer(aRenderer);
   addParticle(c4);
   Circles.Add(c4);
 
-  s1 := TSpringRestriction.Create(c1, c2, 1, true, width, 1, false, clgray);
+  s1 := TSpringRestriction.Create(c1, c2, 1, true, width, 1, false, clagray);
   s1.SetRenderer(aRenderer);
   AddRestriction(s1);
 
-  s2 := TSpringRestriction.Create(c2, c3, 1, true, width, 1, false, clgray);
+  s2 := TSpringRestriction.Create(c2, c3, 1, true, width, 1, false, clagray);
   s2.SetRenderer(aRenderer);
   AddRestriction(s2);
 
-  s3 := TSpringRestriction.Create(c3, c4, 1, true, width, 1, false, clgray);
+  s3 := TSpringRestriction.Create(c3, c4, 1, true, width, 1, false, clagray);
   s3.SetRenderer(aRenderer);
   AddRestriction(s3);
-  s4 := TSpringRestriction.Create(c4, c1, 1, true, width, 1, false, clgray);
+  s4 := TSpringRestriction.Create(c4, c1, 1, true, width, 1, false, clagray);
   s4.SetRenderer(aRenderer);
   AddRestriction(s4);
 
-  s5 := TSpringRestriction.Create(c1, c3, 1, true, width, 1, false, clgray);
+  s5 := TSpringRestriction.Create(c1, c3, 1, true, width, 1, false, clagray);
   s5.SetRenderer(aRenderer);
   AddRestriction(s5);
 
-  s6 := TSpringRestriction.Create(c4, c2, 1, true, width, 1, false, clgray);
+  s6 := TSpringRestriction.Create(c4, c2, 1, true, width, 1, false, clagray);
   s6.SetRenderer(aRenderer);
   AddRestriction(s6);
 end;

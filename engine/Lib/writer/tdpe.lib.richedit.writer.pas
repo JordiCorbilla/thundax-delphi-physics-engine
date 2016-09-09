@@ -33,38 +33,38 @@ unit tdpe.lib.richedit.writer;
 
 interface
 
-uses
-  tdpe.lib.writer.contract, ComCtrls, Graphics, tdpe.lib.logging;
+//uses
+//  tdpe.lib.writer.contract, ComCtrls, FMX.Graphics, tdpe.lib.logging;
 
-type
-  TRichEditWriter = class(TInterfacedObject, IWriter)
-  private
-    FRichEdit: TRichEdit;
-  public
-    constructor Create(richedit: TRichEdit);
-    procedure AddText(s: string; const colour: TColor = clBlack);
-  end;
+//type
+//  TRichEditWriter = class(TInterfacedObject, IWriter)
+//  private
+//    FRichEdit: TRichEdit;
+//  public
+//    constructor Create(richedit: TRichEdit);
+//    procedure AddText(s: string; const colour: TColor = clBlack);
+//  end;
 
 implementation
 
-uses
-  Messages, Windows;
-
-{ TRichEditWriter }
-
-procedure TRichEditWriter.AddText(s: string; const colour: TColor);
-begin
-  Exit;
-  Self.FRichEdit.SelAttributes.Color := colour;
-  Self.FRichEdit.SelText := s;
-  Self.FRichEdit.SelAttributes.Color := clWindowText;
-  Self.FRichEdit.SelText := sLineBreak;
-  Self.FRichEdit.Perform(EM_SCROLL, SB_LINEDOWN, 0);
-end;
-
-constructor TRichEditWriter.Create(richedit: TRichEdit);
-begin
-  Self.FRichEdit := richedit;
-end;
+//uses
+//  Messages, Windows;
+//
+//{ TRichEditWriter }
+//
+//procedure TRichEditWriter.AddText(s: string; const colour: TColor);
+//begin
+//  Exit;
+//  Self.FRichEdit.SelAttributes.Color := colour;
+//  Self.FRichEdit.SelText := s;
+//  Self.FRichEdit.SelAttributes.Color := clWindowText;
+//  Self.FRichEdit.SelText := sLineBreak;
+//  Self.FRichEdit.Perform(EM_SCROLL, SB_LINEDOWN, 0);
+//end;
+//
+//constructor TRichEditWriter.Create(richedit: TRichEdit);
+//begin
+//  Self.FRichEdit := richedit;
+//end;
 
 end.

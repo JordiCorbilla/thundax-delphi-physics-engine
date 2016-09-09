@@ -34,7 +34,7 @@ unit tdpe.lib.particle.spring;
 interface
 
 Uses tdpe.lib.particle.box, tdpe.lib.particle.abstractparticle, tdpe.lib.particle.spring.restriction,
-  tdpe.lib.vector, tdpe.lib.math.helper, tdpe.lib.particle.circle, SysUtils, Graphics;
+  tdpe.lib.vector, tdpe.lib.math.helper, tdpe.lib.particle.circle, SysUtils, FMX.Graphics, System.UITypes, System.Types;
 
 Type
   TSpringRestrictionParticle = class(TBoxParticle)

@@ -24,7 +24,7 @@ unit tdpe.lib.structures.bridge;
 interface
 
 Uses tdpe.lib.particle.group, tdpe.lib.particle.circle.solid, tdpe.lib.particle.spring.restriction,
-  tdpe.lib.engine, tdpe.lib.render, Graphics, Contnrs, tdpe.lib.writer.contract, Generics.Collections;
+  tdpe.lib.engine, tdpe.lib.render, FMX.Graphics, tdpe.lib.writer.contract, Generics.Collections, System.UICOnsts;
 
 Type
   TCustomBridge = class(TGroup)
@@ -94,7 +94,7 @@ begin
   // Create the Springs
   for i := 0 to nParticles - 2 do
   begin
-    restriction := TSpringRestriction.Create(FCircles.Items[i], FCircles.Items[i + 1], 0.9, true, 2, 0.8, true, clWhite, 1);
+    restriction := TSpringRestriction.Create(FCircles.Items[i], FCircles.Items[i + 1], 0.9, true, 2, 0.8, true, claWhite, 1);
     if (i = 0) or (i = (nParticles - 1)) then
       restriction.FixedEndLimit := 0.25;
     addRestriction(restriction);

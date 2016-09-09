@@ -35,7 +35,7 @@ interface
 
 Uses tdpe.lib.particle.group,
   tdpe.lib.particle.spring.restriction,
-  tdpe.lib.engine, tdpe.lib.render, Graphics,
+  tdpe.lib.engine, tdpe.lib.render, FMX.Graphics,
   tdpe.lib.particle.circle, tdpe.lib.particle.abstractparticle,
   tdpe.lib.particle.pattern.composite;
 

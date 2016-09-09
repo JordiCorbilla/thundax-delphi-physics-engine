@@ -34,8 +34,8 @@ unit tdpe.lib.particle.item.solid;
 interface
 
 uses
-  tdpe.lib.particle.abstractparticle, tdpe.lib.vector, Graphics, Classes,
-  tdpe.lib.force.contract, Generics.Collections, tdpe.lib.force.list;
+  tdpe.lib.particle.abstractparticle, tdpe.lib.vector, FMX.Graphics, Classes,
+  tdpe.lib.force.contract, Generics.Collections, tdpe.lib.force.list, System.UITypes, System.Types, System.UIConsts;
 
 type
   TSolidItem = class(TAbstractParticle)
@@ -66,7 +66,7 @@ type
     property mi: Double read Fmi write Setmi;
     property Angle: Double read GetAngle write SetAngle;
     constructor Create(x, y, Range: Double; isFixed: Boolean; mass: Double = 1; mi: Double = -1; elasticity: Double = 0.3; friction: Double = 0.2; radian: Double = 0; angularVelocity: Double = 0;
-      color: TColor = clWhite); reintroduce;
+      color: TColor = claWhite); reintroduce;
     Procedure Init; override;
     Procedure Paint; override;
     Procedure CleanUp; override;

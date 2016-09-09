@@ -34,7 +34,7 @@ unit tdpe.lib.particle.spring.restriction;
 interface
 
 uses tdpe.lib.particle.abstract.restriction, tdpe.lib.particle.abstractparticle, tdpe.lib.math.helper,
-  tdpe.lib.vector, math, SysUtils, Graphics;
+  tdpe.lib.vector, math, SysUtils, FMX.Graphics, System.UITypes, System.Types, System.UIConsts;
 
 Type
   TSpringRestriction = Class(TAbstractRestriction)
@@ -59,7 +59,7 @@ Type
     function GetFixed: Boolean;
   Public
     constructor Create(particle1, particle2: TAbstractParticle; Stiffness: Double = 0.5; Collidable: Boolean = False; rectHeight: Double = 1; rectScale: Double = 1; ScaleToLEngth: Boolean = False;
-      color: TColor = clBlack; PenWidth: Integer = 1);
+      color: TColor = claBlack; PenWidth: Integer = 1);
     destructor Destroy(); override;
     procedure SetStyle(color: TColor; PenWidth: Integer);
     Procedure checkParticlesLocation;

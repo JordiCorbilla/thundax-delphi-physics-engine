@@ -34,7 +34,7 @@ unit tdpe.lib.styles.contract;
 interface
 
 uses
-  Graphics;
+  FMX.Graphics, System.UITypes, System.Types;
 
 type
   IStyle = Interface

@@ -34,8 +34,9 @@ unit tdpe.lib.structures.dispenser.circle;
 interface
 
 uses
-  tdpe.lib.particle.group, Contnrs, Generics.Collections, tdpe.lib.render,
-  Graphics, tdpe.lib.engine, tdpe.lib.particle.circle.solid, tdpe.lib.writer.contract;
+  tdpe.lib.particle.group, Generics.Collections, tdpe.lib.render,
+  FMX.Graphics, tdpe.lib.engine, tdpe.lib.particle.circle.solid, tdpe.lib.writer.contract,
+  System.UITypes, System.Types, System.UIConsts;
 
 type
   TCircleDispenser = class(TGroup)

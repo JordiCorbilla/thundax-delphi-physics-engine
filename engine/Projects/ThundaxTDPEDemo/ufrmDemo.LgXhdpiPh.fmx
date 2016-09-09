@@ -1,0 +1,21 @@
+inherited Form2_LgXhdpiPh: TForm2_LgXhdpiPh
+  ClientHeight = 425
+  ClientWidth = 720
+  DesignerMasterStyle = 0
+  inherited Layout1: TLayout
+    Position.Y = 8.000000000000000000
+    Size.Width = 705.000000000000000000
+    Size.Height = 361.000000000000000000
+    inherited Toggle: TButton
+      Position.X = 224.000000000000000000
+      Position.Y = 16.000000000000000000
+    end
+    inherited Direction: TButton
+      Position.X = 352.000000000000000000
+      Position.Y = 16.000000000000000000
+      Size.Width = 113.000000000000000000
+      Size.Height = 44.000000000000000000
+      Size.PlatformDefault = False
+    end
+  end
+end
