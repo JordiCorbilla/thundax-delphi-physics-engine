@@ -8,6 +8,10 @@ Developed under Delphi 2010/XE.
 
 ![](http://1.bp.blogspot.com/-oAtBFK7IZng/Tbyy9egtjXI/AAAAAAAACt8/VrhEthPC63E/s320/TDPE.jpg)
 
+**Roadmap:**
+  - v2.0: Support for VCL only using GDI.
+  - V3.0: Support for FMX. (Still beta and ongoing).
+
 The project is still ongoing and you can stay tuned following the articles below:
 
 **Related Articles:**
