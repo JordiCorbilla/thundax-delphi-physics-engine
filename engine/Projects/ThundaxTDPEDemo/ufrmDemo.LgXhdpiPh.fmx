@@ -1,6 +1,6 @@
 inherited Form2_LgXhdpiPh: TForm2_LgXhdpiPh
-  ClientHeight = 425
-  ClientWidth = 720
+  ClientHeight = 695
+  ClientWidth = 450
   FormFactor.Orientations = [Landscape]
   FullScreen = True
   DesignerMasterStyle = 0
@@ -8,19 +8,17 @@ inherited Form2_LgXhdpiPh: TForm2_LgXhdpiPh
     Interval = 36
   end
   inherited Layout1: TLayout
-    Position.Y = 8.000000000000000000
-    Size.Width = 705.000000000000000000
-    Size.Height = 361.000000000000000000
-    inherited Toggle: TButton
-      Position.X = 224.000000000000000000
-      Position.Y = 16.000000000000000000
-    end
-    inherited Direction: TButton
-      Position.X = 352.000000000000000000
-      Position.Y = 16.000000000000000000
-      Size.Width = 113.000000000000000000
-      Size.Height = 44.000000000000000000
-      Size.PlatformDefault = False
-    end
+    Position.X = 16.000000000000000000
+    Position.Y = 112.000000000000000000
+    Size.Width = 425.000000000000000000
+    Size.Height = 209.000000000000000000
+  end
+  inherited Direction: TButton
+    Position.X = 216.000000000000000000
+    Position.Y = 56.000000000000000000
+  end
+  inherited Toggle: TButton
+    Position.X = 128.000000000000000000
+    Position.Y = 56.000000000000000000
   end
 end
