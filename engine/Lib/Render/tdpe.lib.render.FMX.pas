@@ -41,10 +41,10 @@ Type
 
   TFMXRenderer = Class(TAbstractRenderer)
   Private
-    FCanvas: TCanvas;
+    FBitmap: TBitmap;
   Public
-    Constructor Create(const aCanvas: TCanvas); Reintroduce; overload;
-    Constructor Create(const aCanvas: TCanvas; const rect: TRect); Reintroduce; overload;
+    Constructor Create(const aBitmap: TBitmap); Reintroduce; overload;
+    Constructor Create(const aBitmap: TBitmap; const rect: TRect); Reintroduce; overload;
     procedure DrawArrow(const Source, Target: IVector); Override;
     procedure CircleApproximation(const xcenter, ycenter, Radius, Rotate: Double; const style: IStyle); override;
     Procedure Circle(const xcenter, ycenter, Radius, Rotate: Double; const style: IStyle); Override;
@@ -71,23 +71,23 @@ var
   beforePenWidth: integer;
   rec : TRectF;
 begin
-FCanvas.Stroke.Thickness := 1.5;
-      FCanvas.Stroke.Kind := TBrushKind.bkSolid;
-      FCanvas.Fill.Color := TAlphaColorRec.Black;
-      FCanvas.Fill.Kind := TBrushKind.bkSolid;
-  beforeBrushColor := FCanvas.Fill.Color;
-//  beforePenColor := FCanvas.Pen.color;
-//  beforePenWidth := FCanvas.Pen.Width;
+FBitmap.Canvas.Stroke.Thickness := 1.5;
+      FBitmap.Canvas.Stroke.Kind := TBrushKind.bkSolid;
+      FBitmap.Canvas.Fill.Color := TAlphaColorRec.Black;
+      FBitmap.Canvas.Fill.Kind := TBrushKind.bkSolid;
+  beforeBrushColor := FBitmap.Canvas.Fill.Color;
+//  beforePenColor := FBitmap.Canvas.Pen.color;
+//  beforePenWidth := FBitmap.Canvas.Pen.Width;
 //
-//  FCanvas.Pen.color := clWhite;
-//  FCanvas.Pen.Width := style.penWidth;
-//  FCanvas.Brush.color := style.BrushColor;
+//  FBitmap.Canvas.Pen.color := clWhite;
+//  FBitmap.Canvas.Pen.Width := style.penWidth;
+//  FBitmap.Canvas.Brush.color := style.BrushColor;
 
-    FCanvas.DrawEllipse(TRectF.Create(Round(xcenter - Radius), Round(ycenter - Radius), Round(xcenter + Radius), Round(ycenter + Radius)), 1);
+    FBitmap.Canvas.DrawEllipse(TRectF.Create(Round(xcenter - Radius), Round(ycenter - Radius), Round(xcenter + Radius), Round(ycenter + Radius)), 1);
 //
-//  FCanvas.Brush.color := beforeBrushColor;
-//  FCanvas.Pen.color := beforePenColor;
-//  FCanvas.Pen.Width := beforePenWidth;
+//  FBitmap.Canvas.Brush.color := beforeBrushColor;
+//  FBitmap.Canvas.Pen.color := beforePenColor;
+//  FBitmap.Canvas.Pen.Width := beforePenWidth;
 //
   Line(xcenter, ycenter, xcenter + Radius * cos(Rotate), ycenter + Radius * sin(Rotate), claWhite, 1);
   Line(xcenter, ycenter, xcenter + Radius * cos(Rotate + (pi / 2)), ycenter + Radius * sin(Rotate + (pi / 2)), claWhite, 1);
@@ -102,13 +102,13 @@ begin
 
 end;
 
-constructor TFMXRenderer.Create(const aCanvas: TCanvas);
+constructor TFMXRenderer.Create(const aBitmap: TBitmap);
 begin
-  Assert(Assigned(aCanvas));
-  FCanvas := aCanvas;
+  Assert(Assigned(aBitmap));
+  FBitmap := aBitmap;
 end;
 
-constructor TFMXRenderer.Create(const aCanvas: TCanvas; const rect: TRect);
+constructor TFMXRenderer.Create(const aBitmap: TBitmap; const rect: TRect);
 begin
 
 end;
@@ -129,21 +129,21 @@ procedure TFMXRenderer.FilledBox(const x, y, x1, y1, x2, y2, x3, y3: Double;  co
 var
   polygon : TPolygon;
 begin
-FCanvas.Stroke.Thickness := 1.5;
-      FCanvas.Stroke.Kind := TBrushKind.bkSolid;
-      FCanvas.Fill.Color := TAlphaColorRec.Black;
-      FCanvas.Fill.Kind := TBrushKind.bkSolid;
-//    FCanvas.Pen.color := clWhite;
-//    FCanvas.Pen.Width := 2;
-//    beforeColor := FCanvas.Brush.color;
-//    FCanvas.Brush.color := color;
-    setlength(polygon, 4);
-    polygon[0] := Point(Round(x), Round(y));
-    polygon[1] := Point(Round(x1), Round(y1));
-    polygon[2] := Point(Round(x2), Round(y2));
-    polygon[3] := Point(Round(x3), Round(y3));
-    FCanvas.DrawPolygon(polygon, 1);
-    //FCanvas.Brush.color := beforeColor;
+  FBitmap.Canvas.Stroke.Thickness := 1.5;
+  FBitmap.Canvas.Stroke.Kind := TBrushKind.bkSolid;
+  FBitmap.Canvas.Fill.Color := TAlphaColorRec.Black;
+  FBitmap.Canvas.Fill.Kind := TBrushKind.bkSolid;
+//    FBitmap.Canvas.Pen.color := clWhite;
+//    FBitmap.Canvas.Pen.Width := 2;
+//    beforeColor := FBitmap.Canvas.Brush.color;
+//    FBitmap.Canvas.Brush.color := color;
+  setlength(polygon, 4);
+  polygon[0] := Point(Round(x), Round(y));
+  polygon[1] := Point(Round(x1), Round(y1));
+  polygon[2] := Point(Round(x2), Round(y2));
+  polygon[3] := Point(Round(x3), Round(y3));
+  FBitmap.Canvas.DrawPolygon(polygon, 1);
+    //FBitmap.Canvas.Brush.color := beforeColor;
 end;
 
 procedure TFMXRenderer.FilledTriangle(const x, y, x1, y1, x2, y2: Double;
@@ -154,23 +154,23 @@ var
   rec: array [0 .. 2] of TPoint;
   polygon : TPolygon;
 begin
-//  beforeColor := FCanvas.Brush.color;
-//  beforePen := FCanvas.Pen.Width;
+//  beforeColor := FBitmap.Canvas.Brush.color;
+//  beforePen := FBitmap.Canvas.Pen.Width;
 //
-//  FCanvas.Brush.color := color;
-//  FCanvas.Pen.Width := penWidth;
-FCanvas.Stroke.Thickness := 1.5;
-      FCanvas.Stroke.Kind := TBrushKind.bkSolid;
-      FCanvas.Fill.Color := TAlphaColorRec.Black;
-      FCanvas.Fill.Kind := TBrushKind.bkSolid;
+//  FBitmap.Canvas.Brush.color := color;
+//  FBitmap.Canvas.Pen.Width := penWidth;
+  FBitmap.Canvas.Stroke.Thickness := 1.5;
+  FBitmap.Canvas.Stroke.Kind := TBrushKind.bkSolid;
+  FBitmap.Canvas.Fill.Color := TAlphaColorRec.Black;
+  FBitmap.Canvas.Fill.Kind := TBrushKind.bkSolid;
   setlength(polygon, 3);
 
   polygon[0] := Point(Round(x), Round(y));
   polygon[1] := Point(Round(x1), Round(y1));
   polygon[2] := Point(Round(x2), Round(y2));
-  FCanvas.DrawPolygon(polygon, 1);
-//  FCanvas.Brush.color := beforeColor;
-//  FCanvas.Pen.Width := beforePen;
+  FBitmap.Canvas.DrawPolygon(polygon, 1);
+//  FBitmap.Canvas.Brush.color := beforeColor;
+//  FBitmap.Canvas.Pen.Width := beforePen;
 end;
 
 procedure TFMXRenderer.Line(const x, y, x1, y1: Double; const color: TColor; const penWidth: integer);
@@ -179,21 +179,21 @@ var
   beforePenWidth: integer;
   point1, point2 : tpointf;
 begin
-    //beforeColor := FCanvas.Pen.color;
-    //beforePenWidth := FCanvas.Pen.Width;
-    //FCanvas.Pen.color := color;
-    //FCanvas.Pen.Width := penWidth;
-FCanvas.Stroke.Thickness := 1.5;
-      FCanvas.Stroke.Kind := TBrushKind.bkSolid;
-      FCanvas.Fill.Color := TAlphaColorRec.Black;
-      FCanvas.Fill.Kind := TBrushKind.bkSolid;
-    point1.X :=Round(x);
-    point1.Y :=Round(y);
-    point2.X :=Round(x1);
-    point2.Y :=Round(y1);
-    FCanvas.DrawLine(point1, point2, 1);
-//    FCanvas.Pen.color := beforeColor;
-//    FCanvas.Pen.Width := beforePenWidth;
+    //beforeColor := FBitmap.Canvas.Pen.color;
+    //beforePenWidth := FBitmap.Canvas.Pen.Width;
+    //FBitmap.Canvas.Pen.color := color;
+    //FBitmap.Canvas.Pen.Width := penWidth;
+  FBitmap.Canvas.Stroke.Thickness := 1.5;
+  FBitmap.Canvas.Stroke.Kind := TBrushKind.bkSolid;
+  FBitmap.Canvas.Fill.Color := TAlphaColorRec.Black;
+  FBitmap.Canvas.Fill.Kind := TBrushKind.bkSolid;
+  point1.X :=Round(x);
+  point1.Y :=Round(y);
+  point2.X :=Round(x1);
+  point2.Y :=Round(y1);
+  FBitmap.Canvas.DrawLine(point1, point2, 1);
+//    FBitmap.Canvas.Pen.color := beforeColor;
+//    FBitmap.Canvas.Pen.Width := beforePenWidth;
 end;
 
 procedure TFMXRenderer.Text(const x, y: Double; const Text: String;

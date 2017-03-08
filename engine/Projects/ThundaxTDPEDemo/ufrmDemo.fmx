@@ -17,34 +17,28 @@ object Form2: TForm2
     Left = 536
     Top = 64
   end
-  object Layout1: TLayout
-    HitTest = True
-    Position.X = 120.000000000000000000
-    Position.Y = 168.000000000000000000
-    Size.Width = 953.000000000000000000
-    Size.Height = 465.000000000000000000
-    Size.PlatformDefault = False
-    TabOrder = 1
-  end
-  object Button1: TButton
-    Position.X = 496.000000000000000000
-    Position.Y = 16.000000000000000000
-    TabOrder = 2
-    Text = 'Button1'
-    OnClick = Button1Click
-  end
   object Direction: TButton
     Position.X = 384.000000000000000000
     Position.Y = 16.000000000000000000
-    TabOrder = 4
+    TabOrder = 2
     Text = 'Direction'
     OnClick = DirectionClick
   end
   object Toggle: TButton
     Position.X = 288.000000000000000000
     Position.Y = 16.000000000000000000
-    TabOrder = 5
+    TabOrder = 3
     Text = 'Toggle'
     OnClick = ToggleClick
+  end
+  object Image1: TImage
+    MultiResBitmap = <
+      item
+      end>
+    Position.X = 32.000000000000000000
+    Position.Y = 128.000000000000000000
+    Size.Width = 1129.000000000000000000
+    Size.Height = 529.000000000000000000
+    Size.PlatformDefault = False
   end
 end

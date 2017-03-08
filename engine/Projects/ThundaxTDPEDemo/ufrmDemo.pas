@@ -42,22 +42,19 @@ uses
   tdpe.lib.particle.group, tdpe.lib.particle.pattern.composite,
   tdpe.lib.particle.circle, tdpe.lib.particle.spring.restriction,
   tdpe.lib.jansen.mechanism, tdpe.lib.jansen.robot, tdpe.lib.particle.box,
-  FMX.Layouts, System.UIConsts, FMX.Controls.Presentation, FMX.StdCtrls;
+  FMX.Layouts, System.UIConsts, FMX.Controls.Presentation, FMX.StdCtrls,
+  FMX.Objects;
 
 type
   TForm2 = class(TForm)
     Timer1: TTimer;
-    Layout1: TLayout;
-    Button1: TButton;
     Toggle: TButton;
     Direction: TButton;
+    Image1: TImage;
     procedure Timer1Timer(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
-    procedure FormPaint(Sender: TObject; Canvas: TCanvas;
-      const [Ref] ARect: TRectF);
-    procedure FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
-      Shift: TShiftState);
+    procedure FormPaint(Sender: TObject; Canvas: TCanvas; const [Ref] ARect: TRectF);
+    procedure FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
     procedure ToggleClick(Sender: TObject);
     procedure DirectionClick(Sender: TObject);
   private
@@ -67,6 +64,7 @@ type
     Render: TFMXRenderer;
     FGround: TScenery;
     FRobot: TRobot;
+    FBitmap : TBitmap;
   end;
 
 var
@@ -79,16 +77,6 @@ uses
 
 {$R *.fmx}
 {$R *.LgXhdpiPh.fmx ANDROID}
-
-procedure TForm2.Button1Click(Sender: TObject);
-var pt0,pt1 : TPointF;
-begin
-  pt0.Create(0,0);
-  pt1.Create(100,50);
-  Layout1.Canvas.BeginScene;
-  Layout1.Canvas.DrawLine(pt0,pt1,1);
-  Layout1.Canvas.EndScene;
-end;
 
 procedure TForm2.DirectionClick(Sender: TObject);
 begin
@@ -127,16 +115,13 @@ end;
 procedure TForm2.FormCreate(Sender: TObject);
 begin
   Engine := TFluentEngine.New(1 / 4).AddInitialForce(TForce.Create(false, 0, 2)).AddDamping(0).AddRestrictionCollitionCycles(10);
-  Layout1.Canvas.BeginScene();
-  Render := TFMXRenderer.Create(Layout1.Canvas);
+  FBitmap := TBitmap.Create(Round(image1.Width), Round(image1.Height));
+  Render := TFMXRenderer.Create(FBitmap);
   FGround := TScenery.Create(Render, Engine, clablue);
   Frobot := TRobot.Create(Render, Engine, 1050, 400, 1.3, 0.02);
   Engine.AddGroups(FGround).AddGroups(Frobot);
   FGround.AddCollidable(Frobot);
   Frobot.togglePower();
-  Layout1.Canvas.EndScene;
-
-  //DoubleBuffered := true;
 end;
 
 procedure TForm2.FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
@@ -162,13 +147,24 @@ begin
 end;
 
 procedure TForm2.Timer1Timer(Sender: TObject);
+var
+  bitmap : TBitmap;
 begin
   Engine.Run;
   Frobot.Run();
-  Layout1.Canvas.BeginScene();
-  Layout1.Canvas.Clear(claWhite);
+
+  bitmap := TBitmap.Create;
+  bitmap.SetSize(round(Image1.Width), round(Image1.Height));
+  Image1.MultiResBitmap.Bitmaps[1].Assign(bitmap);
+  Image1.Bitmap := Image1.MultiResBitmap.Bitmaps[1];
+  Image1.Bitmap.Clear(TAlphaColorRec.White);
+
+  Fbitmap.Canvas.BeginScene;
+  Fbitmap.Clear(TAlphaColorRec.White);
   Engine.Paint;
-  Layout1.Canvas.EndScene();
+  Fbitmap.Canvas.EndScene;
+  image1.MultiResBitmap.Bitmaps[1].Assign(Fbitmap);
+  image1.Bitmap := image1.MultiResBitmap.Bitmaps[1];
 end;
 
 procedure TForm2.ToggleClick(Sender: TObject);

@@ -7,18 +7,24 @@ inherited Form2_LgXhdpiPh: TForm2_LgXhdpiPh
   inherited Timer1: TTimer
     Interval = 36
   end
-  inherited Layout1: TLayout
-    Position.X = 16.000000000000000000
-    Position.Y = 112.000000000000000000
-    Size.Width = 425.000000000000000000
-    Size.Height = 209.000000000000000000
-  end
   inherited Direction: TButton
     Position.X = 216.000000000000000000
     Position.Y = 56.000000000000000000
+    Size.Width = 129.000000000000000000
+    Size.Height = 44.000000000000000000
+    Size.PlatformDefault = False
   end
   inherited Toggle: TButton
-    Position.X = 128.000000000000000000
+    Position.X = 80.000000000000000000
     Position.Y = 56.000000000000000000
+    Size.Width = 121.000000000000000000
+    Size.Height = 44.000000000000000000
+    Size.PlatformDefault = False
+  end
+  inherited Image1: TImage
+    Position.X = 8.000000000000000000
+    Position.Y = 176.000000000000000000
+    Size.Width = 433.000000000000000000
+    Size.Height = 513.000000000000000000
   end
 end

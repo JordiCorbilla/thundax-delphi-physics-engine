@@ -3,6 +3,12 @@
     <ProjectExtensions>
         <ProjectFileVersion>12</ProjectFileVersion>
     </ProjectExtensions>
+    <PropertyGroup>
+        <DeviceId Condition="'$(Platform)'=='Android'">ZY223PNH2N</DeviceId>
+    </PropertyGroup>
+    <ItemGroup Condition="'$(Platform)'=='iOSDevice64'"/>
+    <ItemGroup Condition="'$(Platform)'=='Win64'"/>
+    <ItemGroup Condition="'$(Platform)'=='iOSDevice32'"/>
     <ItemGroup Condition="'$(Platform)'=='Win32'">
         <DeployFile Include="Win32\Debug\TDPEDemo.exe" Condition="'$(Config)'=='Debug'">
             <RemoteDir>TDPEDemo\</RemoteDir>
@@ -15,7 +21,26 @@
             <Required>True</Required>
         </DeployFile>
     </ItemGroup>
-    <ItemGroup Condition="'$(Platform)'=='Win64'"/>
+    <ItemGroup Condition="'$(Platform)'=='OSX32'">
+        <DeployFile Include="$(BDS)\Redist\osx32\libcgunwind.1.0.dylib">
+            <RemoteDir>TDPEDemo.app\Contents\MacOS\</RemoteDir>
+            <RemoteName>libcgunwind.1.0.dylib</RemoteName>
+            <DeployClass>DependencyModule</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\Redist\osx32\libcgsqlite3.dylib">
+            <RemoteDir>TDPEDemo.app\Contents\MacOS\</RemoteDir>
+            <RemoteName>libcgsqlite3.dylib</RemoteName>
+            <DeployClass>DependencyModule</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+    </ItemGroup>
     <ItemGroup Condition="'$(Platform)'=='Android'">
         <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_36x36.png" Condition="'$(Config)'=='Debug'">
             <RemoteDir>TDPEDemo\res\drawable-ldpi\</RemoteDir>
@@ -145,10 +170,10 @@
             <Overwrite>True</Overwrite>
         </DeployFile>
         <DeployFile Include="$(BDS)\lib\android\debug\x86\libnative-activity.so" Condition="'$(Config)'=='Debug'">
-            <RemoteDir>TDPEDemo\library\lib\x86\</RemoteDir>
+            <RemoteDir>TDPEDemo\</RemoteDir>
             <RemoteName>libTDPEDemo.so</RemoteName>
             <DeployClass>AndroidLibnativeX86File</DeployClass>
-            <Operation>1</Operation>
+            <Operation>0</Operation>
             <LocalCommand/>
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
@@ -175,6 +200,26 @@
             <RemoteDir>TDPEDemo\classes\</RemoteDir>
             <RemoteName>classes.dex</RemoteName>
             <DeployClass>AndroidClassesDexFile</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+    </ItemGroup>
+    <ItemGroup Condition="'$(Platform)'=='iOSSimulator'">
+        <DeployFile Include="$(BDS)\Redist\iossimulator\libcgunwind.1.0.dylib">
+            <RemoteDir>TDPEDemo.app\</RemoteDir>
+            <RemoteName>libcgunwind.1.0.dylib</RemoteName>
+            <DeployClass>DependencyModule</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\Redist\iossimulator\libPCRE.dylib">
+            <RemoteDir>TDPEDemo.app\</RemoteDir>
+            <RemoteName>libPCRE.dylib</RemoteName>
+            <DeployClass>DependencyModule</DeployClass>
             <Operation>1</Operation>
             <LocalCommand/>
             <RemoteCommand/>
