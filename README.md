@@ -2,9 +2,9 @@ Delphi - 2D simple physics engine
 ==============
 TDPE provides an approximate simulation of certain simple physical systems, such as rigid body dynamics (including collision detection) and soft body dynamics. The aim of the project is to provide a **software system for simulating physical phenomena**.
 --------------
-Developed under Delphi 2010/XE.
+Developed under Delphi Berlin 10.1 Update 2.
 
-[![Downloads](https://img.shields.io/badge/downloads-1k-blue.svg)](https://app.box.com/s/p7hwuaic1qsm14juf3pmuojv0ko98ok5) [![Stable Release](https://img.shields.io/badge/version-2.0-blue.svg)](https://app.box.com/s/p7hwuaic1qsm14juf3pmuojv0ko98ok5) [![License](https://img.shields.io/badge/license-BSD-blue.svg)](https://app.box.com/s/p7hwuaic1qsm14juf3pmuojv0ko98ok5) [![Delphi version](https://img.shields.io/badge/delphi-xe-red.svg)](https://app.box.com/s/p7hwuaic1qsm14juf3pmuojv0ko98ok5)
+[![Downloads](https://img.shields.io/badge/downloads-1k-blue.svg)](https://app.box.com/s/p7hwuaic1qsm14juf3pmuojv0ko98ok5) [![Stable Release](https://img.shields.io/badge/version-2.0-blue.svg)](https://app.box.com/s/p7hwuaic1qsm14juf3pmuojv0ko98ok5) [![License](https://img.shields.io/badge/license-BSD-blue.svg)](https://app.box.com/s/p7hwuaic1qsm14juf3pmuojv0ko98ok5) [![Delphi version](https://img.shields.io/badge/delphi-Berlin10.1-red.svg)](https://app.box.com/s/p7hwuaic1qsm14juf3pmuojv0ko98ok5)
 
 ![](http://1.bp.blogspot.com/-oAtBFK7IZng/Tbyy9egtjXI/AAAAAAAACt8/VrhEthPC63E/s320/TDPE.jpg)
 
