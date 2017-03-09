@@ -57,7 +57,7 @@ type
     TEngine: TEngine;
     connLA, connRA, connLB, connRB, connLC, connRC, connLAA, connRAA, connLBB, connRBB, connLCC, connRCC: TSpringRestriction;
   public
-    Constructor Create(aRenderer: TAbstractRenderer; anTEngine: TEngine; px: Double; py: Double; scale: Double; power: Double); Reintroduce;
+    Constructor Create(aRenderer: TAbstractRenderer; anTEngine: TEngine; px: Double; py: Double; scale: Double; power: Double; xFactor, yFactor : double); Reintroduce;
     function px(): Double;
     function py(): Double;
     procedure run();
@@ -74,24 +74,24 @@ uses tdpe.lib.particle.abstract.collection, SysUtils;
 
 { TRobot }
 
-constructor TRobot.Create(aRenderer: TAbstractRenderer; anTEngine: TEngine; px: Double; py: Double; scale: Double; power: Double);
+constructor TRobot.Create(aRenderer: TAbstractRenderer; anTEngine: TEngine; px: Double; py: Double; scale: Double; power: Double; xFactor, yFactor : double);
 begin
   inherited Create(true);
   // legs
   TEngine := anTEngine;
-  legLA := TLeg.Create(aRenderer, px, py, -1, scale, 2, 0, 1, 0, 1);
+  legLA := TLeg.Create(aRenderer, px * xFactor, py * yFactor, -1, scale, 2, 0, 1, 0, 1);
   legLA.SetStyle(claBlack, 2, claYellow);
   legLA.DrawTrace(true);
-  legRA := TLeg.Create(aRenderer, px, py, 1, scale, 2, 0, 1, 0, 1);
+  legRA := TLeg.Create(aRenderer, px * xFactor, py * yFactor, 1, scale, 2, 0, 1, 0, 1);
   legRA.SetStyle(claBlack, 2, claYellow);
   legRA.DrawTrace(true);
-  legLB := TLeg.Create(aRenderer, px, py, -1, scale, 2, 0, 1, 0, 1);
+  legLB := TLeg.Create(aRenderer, px * xFactor, py * yFactor, -1, scale, 2, 0, 1, 0, 1);
   legLB.SetStyle(claBlack, 2, claGreen);
-  legRB := TLeg.Create(aRenderer, px, py, 1, scale, 2, 0, 1, 0, 1);
+  legRB := TLeg.Create(aRenderer, px * xFactor, py * yFactor, 1, scale, 2, 0, 1, 0, 1);
   legRB.SetStyle(claBlack, 2, claGreen);
-  legLC := TLeg.Create(aRenderer, px, py, -1, scale, 2, 0, 1, 0, 1);
+  legLC := TLeg.Create(aRenderer, px * xFactor, py * yFactor, -1, scale, 2, 0, 1, 0, 1);
   legLC.SetStyle(claBlack, 2, claGray);
-  legRC := TLeg.Create(aRenderer, px, py, 1, scale, 2, 0, 1, 0, 1);
+  legRC := TLeg.Create(aRenderer, px * xFactor, py * yFactor, 1, scale, 2, 0, 1, 0, 1);
   legRC.SetStyle(claBlack, 2, claGray);
 
   // body

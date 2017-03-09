@@ -43,7 +43,7 @@ type
     limit0, limit1: TBoxParticle;
     box0, box1, box2, box3, box4, box5: TBoxParticle;
   public
-    Constructor Create(aRenderer: TAbstractRenderer; anTEngine: TEngine; color: TColor); Reintroduce;
+    Constructor Create(aRenderer: TAbstractRenderer; anTEngine: TEngine; color: TColor; xFactor, yFactor : double); Reintroduce;
     Destructor Destroy(); override;
   end;
 
@@ -53,42 +53,80 @@ uses tdpe.lib.particle.abstract.collection, SysUtils;
 
 { TScenery }
 
-constructor TScenery.Create(aRenderer: TAbstractRenderer; anTEngine: TEngine; color: TColor);
+constructor TScenery.Create(aRenderer: TAbstractRenderer; anTEngine: TEngine; color: TColor; xFactor, yFactor : double);
+var
+  x, y, width, height : double;
 begin
   inherited Create(true);
-  rec := TBoxParticle.Create(450, 590, 1700, 100, 0, true, 1000, 0.3, 0.3, color);
+  x := 450 * xFactor;
+  y := 590 * yFactor;
+  width := 1700 * xFactor;
+  height := 100 * yFactor;
+  rec := TBoxParticle.Create(x, y, width, height, 0, true, 1000, 0.3, 0.3, color);
   rec.SetRenderer(aRenderer);
   addParticle(rec);
 
-  limit0 := TBoxParticle.Create(0, 500, 10, 100, 0, true, 1000, 0.3, 0.3, color);
+  x := 0 * xFactor;
+  y := 500 * yFactor;
+  width := 10 * xFactor;
+  height := 100 * yFactor;
+  limit0 := TBoxParticle.Create(x, y, width, height, 0, true, 1000, 0.3, 0.3, color);
   limit0.SetRenderer(aRenderer);
   addParticle(limit0);
 
-  limit1 := TBoxParticle.Create(1250, 500, 10, 100, 0, true, 1000, 0.3, 0.3, color);
+  x := 1250 * xFactor;
+  y := 500 * yFactor;
+  width := 10 * xFactor;
+  height := 100 * yFactor;
+  limit1 := TBoxParticle.Create(x, y, width, height, 0, true, 1000, 0.3, 0.3, color);
   limit1.SetRenderer(aRenderer);
   addParticle(limit1);
 
-  box0 := TBoxParticle.Create(600, 537, 600, 7, 0, true, 1000, 0.3, 0.3, color);
+  x := 600 * xFactor;
+  y := 537 * yFactor;
+  width := 600 * xFactor;
+  height := 7 * yFactor;
+  box0 := TBoxParticle.Create(x, y, width, height, 0, true, 1000, 0.3, 0.3, color);
   box0.SetRenderer(aRenderer);
   addParticle(box0);
 
-  box1 := TBoxParticle.Create(600, 530, 500, 7, 0, true, 1000, 0.3, 0.3, color);
+  x := 600 * xFactor;
+  y := 530 * yFactor;
+  width := 500 * xFactor;
+  height := 7 * yFactor;
+  box1 := TBoxParticle.Create(x, y, width, height, 0, true, 1000, 0.3, 0.3, color);
   box1.SetRenderer(aRenderer);
   addParticle(box1);
 
-  box2 := TBoxParticle.Create(600, 523, 400, 7, 0, true, 10, 0.3, 0.3, color);
+  x := 600 * xFactor;
+  y := 523 * yFactor;
+  width := 400 * xFactor;
+  height := 7 * yFactor;
+  box2 := TBoxParticle.Create(x, y, width, height, 0, true, 10, 0.3, 0.3, color);
   box2.SetRenderer(aRenderer);
   addParticle(box2);
 
-  box3 := TBoxParticle.Create(600, 516, 300, 7, 0, true, 10, 0.3, 0.3, color);
+  x := 600 * xFactor;
+  y := 516 * yFactor;
+  width := 300 * xFactor;
+  height := 7 * yFactor;
+  box3 := TBoxParticle.Create(x, y, width, height, 0, true, 10, 0.3, 0.3, color);
   box3.SetRenderer(aRenderer);
   addParticle(box3);
 
-  box4 := TBoxParticle.Create(600, 509, 200, 7, 0, true, 10, 0.3, 0.3, color);
+  x := 600 * xFactor;
+  y := 509 * yFactor;
+  width := 200 * xFactor;
+  height := 7 * yFactor;
+  box4 := TBoxParticle.Create(x, y, width, height, 0, true, 10, 0.3, 0.3, color);
   box4.SetRenderer(aRenderer);
   addParticle(box4);
 
-  box5 := TBoxParticle.Create(600, 502, 100, 7, 0, true, 10, 0.3, 0.3, color);
+  x := 600 * xFactor;
+  y := 502 * yFactor;
+  width := 100 * xFactor;
+  height := 7 * yFactor;
+  box5 := TBoxParticle.Create(x, y, width, height, 0, true, 10, 0.3, 0.3, color);
   box5.SetRenderer(aRenderer);
   addParticle(box5);
 end;

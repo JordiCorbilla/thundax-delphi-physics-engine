@@ -70,6 +70,10 @@ type
 var
   Form2: TForm2;
 
+const
+  FullHeight = 623;
+  FullWidth = 1252;
+
 implementation
 
 uses
@@ -113,12 +117,20 @@ begin
 end;
 
 procedure TForm2.FormCreate(Sender: TObject);
+var
+  xFactor : double;
+  yFactor : double;
 begin
   Engine := TFluentEngine.New(1 / 4).AddInitialForce(TForce.Create(false, 0, 2)).AddDamping(0).AddRestrictionCollitionCycles(10);
   FBitmap := TBitmap.Create(Round(image1.Width), Round(image1.Height));
   Render := TFMXRenderer.Create(FBitmap);
-  FGround := TScenery.Create(Render, Engine, clablue);
-  Frobot := TRobot.Create(Render, Engine, 1050, 400, 1.3, 0.02);
+
+  //Calculate x,y factor according to the new height and width
+  xFactor := Image1.Width / FullWidth;
+  yFactor := Image1.Height / FullHeight;
+
+  FGround := TScenery.Create(Render, Engine, clablue, xFactor, yFactor);
+  Frobot := TRobot.Create(Render, Engine, 1050, 400, 1.3, 0.02, xFactor, yFactor);
   Engine.AddGroups(FGround).AddGroups(Frobot);
   FGround.AddCollidable(Frobot);
   Frobot.togglePower();
