@@ -23,7 +23,7 @@ inherited Form2_LgXhdpiPh: TForm2_LgXhdpiPh
   end
   inherited Image1: TImage
     Position.Y = 56.000000000000000000
-    Size.Width = 585.000000000000000000
-    Size.Height = 281.000000000000000000
+    Size.Width = 625.000000000000000000
+    Size.Height = 297.000000000000000000
   end
 end

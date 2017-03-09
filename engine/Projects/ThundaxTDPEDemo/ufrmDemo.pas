@@ -130,7 +130,7 @@ begin
   yFactor := Image1.Height / FullHeight;
 
   FGround := TScenery.Create(Render, Engine, clablue, xFactor, yFactor);
-  Frobot := TRobot.Create(Render, Engine, 1050, 400, 1.3, 0.02, xFactor, yFactor);
+  Frobot := TRobot.Create(Render, Engine, 1050, 400, 1, 0.02, xFactor, yFactor);
   Engine.AddGroups(FGround).AddGroups(Frobot);
   FGround.AddCollidable(Frobot);
   Frobot.togglePower();
