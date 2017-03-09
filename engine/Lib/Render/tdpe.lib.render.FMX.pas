@@ -71,7 +71,7 @@ var
   beforePenWidth: integer;
   rec : TRectF;
 begin
-FBitmap.Canvas.Stroke.Thickness := 1.5;
+FBitmap.Canvas.Stroke.Thickness := 1;
       FBitmap.Canvas.Stroke.Kind := TBrushKind.bkSolid;
       FBitmap.Canvas.Fill.Color := TAlphaColorRec.Black;
       FBitmap.Canvas.Fill.Kind := TBrushKind.bkSolid;
@@ -129,7 +129,7 @@ procedure TFMXRenderer.FilledBox(const x, y, x1, y1, x2, y2, x3, y3: Double;  co
 var
   polygon : TPolygon;
 begin
-  FBitmap.Canvas.Stroke.Thickness := 1.5;
+  FBitmap.Canvas.Stroke.Thickness := 1;
   FBitmap.Canvas.Stroke.Kind := TBrushKind.bkSolid;
   FBitmap.Canvas.Fill.Color := TAlphaColorRec.Black;
   FBitmap.Canvas.Fill.Kind := TBrushKind.bkSolid;
@@ -159,7 +159,7 @@ begin
 //
 //  FBitmap.Canvas.Brush.color := color;
 //  FBitmap.Canvas.Pen.Width := penWidth;
-  FBitmap.Canvas.Stroke.Thickness := 1.5;
+  FBitmap.Canvas.Stroke.Thickness := 1;
   FBitmap.Canvas.Stroke.Kind := TBrushKind.bkSolid;
   FBitmap.Canvas.Fill.Color := TAlphaColorRec.Black;
   FBitmap.Canvas.Fill.Kind := TBrushKind.bkSolid;
@@ -183,7 +183,7 @@ begin
     //beforePenWidth := FBitmap.Canvas.Pen.Width;
     //FBitmap.Canvas.Pen.color := color;
     //FBitmap.Canvas.Pen.Width := penWidth;
-  FBitmap.Canvas.Stroke.Thickness := 1.5;
+  FBitmap.Canvas.Stroke.Thickness := 1;
   FBitmap.Canvas.Stroke.Kind := TBrushKind.bkSolid;
   FBitmap.Canvas.Fill.Color := TAlphaColorRec.Black;
   FBitmap.Canvas.Fill.Kind := TBrushKind.bkSolid;
