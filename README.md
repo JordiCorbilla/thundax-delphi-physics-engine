@@ -2,11 +2,10 @@ Delphi - 2D simple physics engine
 ==============
 TDPE provides an approximate simulation of certain simple physical systems, such as rigid body dynamics (including collision detection) and soft body dynamics. The aim of the project is to provide a **software system for simulating physical phenomena**.
 --------------
-Developed under Delphi Berlin 10.1 Update 2.
 
 [![Downloads](https://img.shields.io/badge/downloads-1k-blue.svg)](https://app.box.com/s/p7hwuaic1qsm14juf3pmuojv0ko98ok5) [![Stable Release](https://img.shields.io/badge/version-2.0-blue.svg)](https://app.box.com/s/p7hwuaic1qsm14juf3pmuojv0ko98ok5) [![License](https://img.shields.io/badge/license-BSD-blue.svg)](https://app.box.com/s/p7hwuaic1qsm14juf3pmuojv0ko98ok5) [![Delphi version](https://img.shields.io/badge/delphi-Tokyo10.2-red.svg)](https://app.box.com/s/p7hwuaic1qsm14juf3pmuojv0ko98ok5)
 
-![](http://1.bp.blogspot.com/-oAtBFK7IZng/Tbyy9egtjXI/AAAAAAAACt8/VrhEthPC63E/s320/TDPE.jpg)
+![](https://github.com/JordiCorbilla/thundax-delphi-physics-engine/raw/master/engine/images/Logo.png)
 
 **Roadmap:**
   - v2.0: Support for VCL only using GDI.
@@ -29,16 +28,16 @@ The project is still ongoing and you can stay tuned following the articles below
   * [Thundax Physics Engine Article](http://www.pascalgamedevelopment.com/content.php?215-Jordi-Coll-s-Thundax-Physics-Engine)
 
 **Examples:**
-- Implementing Jansen Mechanism:
+- Implementing Jansen Mechanism (VCL):
 
   ![](http://4.bp.blogspot.com/_nWD8gSvCXFk/TQELaHM16UI/AAAAAAAACqE/bgpz1HAOZf8/s1600/new.jpeg)
   ![](https://cloud.githubusercontent.com/assets/7347994/16712333/2b86dbea-467c-11e6-88e6-336d4e3ec80a.gif)
 
-- Factory Simulation:
+- Factory Simulation (VCL):
  
   ![](https://cloud.githubusercontent.com/assets/7347994/16712368/66f27c1a-467d-11e6-8def-399c48b7a315.gif)
 
-- Cloth Simulation:
+- Cloth Simulation (VCL):
 
   ![](http://2.bp.blogspot.com/_nWD8gSvCXFk/TUyYiQ-0fWI/AAAAAAAACsE/mj9ZG0GfCSk/s1600/cloth1.jpeg)
   ![](https://cloud.githubusercontent.com/assets/7347994/16712418/c532579a-467e-11e6-911d-fbe77187e6a9.gif)
