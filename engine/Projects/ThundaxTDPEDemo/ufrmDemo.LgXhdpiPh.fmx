@@ -5,7 +5,7 @@ inherited Form2_LgXhdpiPh: TForm2_LgXhdpiPh
   FullScreen = True
   DesignerMasterStyle = 0
   inherited Timer1: TTimer
-    Interval = 50
+    Interval = 36
     Left = 504
   end
   inherited Image1: TImage

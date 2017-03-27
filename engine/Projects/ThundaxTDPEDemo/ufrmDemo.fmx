@@ -12,7 +12,7 @@ object Form2: TForm2
   OnPaint = FormPaint
   DesignerMasterStyle = 0
   object Timer1: TTimer
-    Interval = 1
+    Interval = 30
     OnTimer = Timer1Timer
     Left = 488
     Top = 16
@@ -31,18 +31,18 @@ object Form2: TForm2
     Size.Width = 763.000000000000000000
     Size.Height = 57.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 4
+    TabOrder = 3
     object Toggle: TButton
       Position.X = 288.000000000000000000
       Position.Y = 16.000000000000000000
-      TabOrder = 3
+      TabOrder = 2
       Text = 'Start/Stop'
       OnClick = ToggleClick
     end
     object Direction: TButton
       Position.X = 384.000000000000000000
       Position.Y = 16.000000000000000000
-      TabOrder = 2
+      TabOrder = 1
       Text = 'Switch'
       OnClick = DirectionClick
     end

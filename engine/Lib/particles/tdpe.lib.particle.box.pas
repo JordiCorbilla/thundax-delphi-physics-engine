@@ -168,8 +168,8 @@ var
   vec: IVector;
 begin
   FRenderer.box(px, py, width, height, Angle, ParticleColor);
-  vec := TVector.New.SetPoint(Self.current.x + 20 * mtdres.x, current.y + 20 * mtdres.y);
-  Renderer.drawArrow(current, vec);
+//  vec := TVector.New.SetPoint(Self.current.x + 20 * mtdres.x, current.y + 20 * mtdres.y);
+//  Renderer.drawArrow(current, vec);
 end;
 
 procedure TBoxParticle.SetAngle(const Value: Double);
