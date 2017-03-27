@@ -135,6 +135,7 @@ begin
   Engine.AddGroups(FGround).AddGroups(Frobot);
   FGround.AddCollidable(Frobot);
   Frobot.togglePower();
+  Timer1.Enabled := true;
 end;
 
 procedure TForm2.FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
