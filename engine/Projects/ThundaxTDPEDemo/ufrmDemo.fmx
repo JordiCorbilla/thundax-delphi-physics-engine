@@ -17,28 +17,34 @@ object Form2: TForm2
     Left = 488
     Top = 16
   end
-  object Direction: TButton
-    Position.X = 384.000000000000000000
-    Position.Y = 16.000000000000000000
-    TabOrder = 2
-    Text = 'Switch'
-    OnClick = DirectionClick
-  end
-  object Toggle: TButton
-    Position.X = 288.000000000000000000
-    Position.Y = 16.000000000000000000
-    TabOrder = 3
-    Text = 'Start/Stop'
-    OnClick = ToggleClick
-  end
   object Image1: TImage
     MultiResBitmap = <
       item
       end>
-    Position.X = 8.000000000000000000
-    Position.Y = 72.000000000000000000
-    Size.Width = 745.000000000000000000
-    Size.Height = 449.000000000000000000
+    Align = Client
+    Size.Width = 763.000000000000000000
+    Size.Height = 474.000000000000000000
     Size.PlatformDefault = False
+  end
+  object Panel1: TPanel
+    Align = MostTop
+    Size.Width = 763.000000000000000000
+    Size.Height = 57.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 4
+    object Toggle: TButton
+      Position.X = 288.000000000000000000
+      Position.Y = 16.000000000000000000
+      TabOrder = 3
+      Text = 'Start/Stop'
+      OnClick = ToggleClick
+    end
+    object Direction: TButton
+      Position.X = 384.000000000000000000
+      Position.Y = 16.000000000000000000
+      TabOrder = 2
+      Text = 'Switch'
+      OnClick = DirectionClick
+    end
   end
 end

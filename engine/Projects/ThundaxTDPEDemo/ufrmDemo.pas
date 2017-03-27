@@ -48,9 +48,10 @@ uses
 type
   TForm2 = class(TForm)
     Timer1: TTimer;
+    Image1: TImage;
+    Panel1: TPanel;
     Toggle: TButton;
     Direction: TButton;
-    Image1: TImage;
     procedure Timer1Timer(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormPaint(Sender: TObject; Canvas: TCanvas; const [Ref] ARect: TRectF);
