@@ -1,7 +1,7 @@
 inherited Form2_LgXhdpiPh: TForm2_LgXhdpiPh
   ClientHeight = 425
   ClientWidth = 720
-  FormFactor.Orientations = [Landscape]
+  FormFactor.Devices = [Desktop, iPhone, iPad]
   FullScreen = True
   DesignerMasterStyle = 0
   inherited Timer1: TTimer

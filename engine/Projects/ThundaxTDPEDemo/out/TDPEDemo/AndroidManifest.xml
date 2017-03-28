@@ -26,7 +26,7 @@
         android:debuggable="True" 
         android:largeHeap="False"
         android:icon="@drawable/ic_launcher"
-        android:theme="@style/AppTheme"
+        android:theme="@android:style/Theme.NoTitleBar"
         android:hardwareAccelerated="true">
 
 

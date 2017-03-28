@@ -154,8 +154,7 @@ begin
     Frobot.Run();
 end;
 
-procedure TForm2.FormPaint(Sender: TObject; Canvas: TCanvas;
-  const [Ref] ARect: TRectF);
+procedure TForm2.FormPaint(Sender: TObject; Canvas: TCanvas; const [Ref] ARect: TRectF);
 begin
 //  Engine.Paint;
 end;

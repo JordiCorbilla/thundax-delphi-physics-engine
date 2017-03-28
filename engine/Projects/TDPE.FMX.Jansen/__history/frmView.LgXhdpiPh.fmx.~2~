@@ -1,0 +1,31 @@
+inherited mainView_LgXhdpiPh: TmainView_LgXhdpiPh
+  ClientHeight = 425
+  ClientWidth = 720
+  DesignerMasterStyle = 0
+  inherited Panel1: TPanel
+    Size.Width = 720.000000000000000000
+    inherited Toggle: TButton
+      Position.X = 32.000000000000000000
+      Position.Y = 8.000000000000000000
+      Size.Width = 153.000000000000000000
+      Size.Height = 44.000000000000000000
+      Size.PlatformDefault = False
+      OnClick = nil
+    end
+    inherited Direction: TButton
+      Position.X = 192.000000000000000000
+      Position.Y = 8.000000000000000000
+      Size.Width = 153.000000000000000000
+      Size.Height = 44.000000000000000000
+      Size.PlatformDefault = False
+      OnClick = nil
+    end
+    inherited Timer1: TTimer
+      OnTimer = nil
+    end
+  end
+  inherited Image1: TImage
+    Size.Width = 720.000000000000000000
+    Size.Height = 368.000000000000000000
+  end
+end

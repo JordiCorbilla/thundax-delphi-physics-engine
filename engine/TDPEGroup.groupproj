@@ -24,6 +24,9 @@
         <Projects Include="Projects\ThundaxTDPEDemo\TDPEDemo.dproj">
             <Dependencies>Package\TDPhysics.dproj</Dependencies>
         </Projects>
+        <Projects Include="Projects\TDPE.FMX.Jansen\TDPE.FMX.Jansen.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -95,14 +98,23 @@
     <Target Name="TDPEDemo:Make" DependsOnTargets="TDPhysics:Make">
         <MSBuild Projects="Projects\ThundaxTDPEDemo\TDPEDemo.dproj" Targets="Make"/>
     </Target>
+    <Target Name="TDPE_FMX_Jansen">
+        <MSBuild Projects="Projects\TDPE.FMX.Jansen\TDPE.FMX.Jansen.dproj"/>
+    </Target>
+    <Target Name="TDPE_FMX_Jansen:Clean">
+        <MSBuild Projects="Projects\TDPE.FMX.Jansen\TDPE.FMX.Jansen.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TDPE_FMX_Jansen:Make">
+        <MSBuild Projects="Projects\TDPE.FMX.Jansen\TDPE.FMX.Jansen.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="TDPhysics;ThundaxBallsDemo;ThundaxJansenMechanism;ThundaxSimulationPlant;ThundaxObjectDemo;TDPETests_Seattle;TDPEDemo"/>
+        <CallTarget Targets="TDPhysics;ThundaxBallsDemo;ThundaxJansenMechanism;ThundaxSimulationPlant;ThundaxObjectDemo;TDPETests_Seattle;TDPEDemo;TDPE_FMX_Jansen"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="TDPhysics:Clean;ThundaxBallsDemo:Clean;ThundaxJansenMechanism:Clean;ThundaxSimulationPlant:Clean;ThundaxObjectDemo:Clean;TDPETests_Seattle:Clean;TDPEDemo:Clean"/>
+        <CallTarget Targets="TDPhysics:Clean;ThundaxBallsDemo:Clean;ThundaxJansenMechanism:Clean;ThundaxSimulationPlant:Clean;ThundaxObjectDemo:Clean;TDPETests_Seattle:Clean;TDPEDemo:Clean;TDPE_FMX_Jansen:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="TDPhysics:Make;ThundaxBallsDemo:Make;ThundaxJansenMechanism:Make;ThundaxSimulationPlant:Make;ThundaxObjectDemo:Make;TDPETests_Seattle:Make;TDPEDemo:Make"/>
+        <CallTarget Targets="TDPhysics:Make;ThundaxBallsDemo:Make;ThundaxJansenMechanism:Make;ThundaxSimulationPlant:Make;ThundaxObjectDemo:Make;TDPETests_Seattle:Make;TDPEDemo:Make;TDPE_FMX_Jansen:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
