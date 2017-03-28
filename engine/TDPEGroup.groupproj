@@ -25,7 +25,7 @@
             <Dependencies>Package\TDPhysics.dproj</Dependencies>
         </Projects>
         <Projects Include="Projects\TDPE.FMX.Jansen\TDPE.FMX.Jansen.dproj">
-            <Dependencies/>
+            <Dependencies>Package\TDPhysics.dproj</Dependencies>
         </Projects>
     </ItemGroup>
     <ProjectExtensions>
@@ -98,13 +98,13 @@
     <Target Name="TDPEDemo:Make" DependsOnTargets="TDPhysics:Make">
         <MSBuild Projects="Projects\ThundaxTDPEDemo\TDPEDemo.dproj" Targets="Make"/>
     </Target>
-    <Target Name="TDPE_FMX_Jansen">
+    <Target Name="TDPE_FMX_Jansen" DependsOnTargets="TDPhysics">
         <MSBuild Projects="Projects\TDPE.FMX.Jansen\TDPE.FMX.Jansen.dproj"/>
     </Target>
-    <Target Name="TDPE_FMX_Jansen:Clean">
+    <Target Name="TDPE_FMX_Jansen:Clean" DependsOnTargets="TDPhysics:Clean">
         <MSBuild Projects="Projects\TDPE.FMX.Jansen\TDPE.FMX.Jansen.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="TDPE_FMX_Jansen:Make">
+    <Target Name="TDPE_FMX_Jansen:Make" DependsOnTargets="TDPhysics:Make">
         <MSBuild Projects="Projects\TDPE.FMX.Jansen\TDPE.FMX.Jansen.dproj" Targets="Make"/>
     </Target>
     <Target Name="Build">

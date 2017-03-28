@@ -31,7 +31,7 @@ object mainView: TmainView
     end
     object Timer1: TTimer
       Enabled = False
-      Interval = 30
+      Interval = 50
       OnTimer = Timer1Timer
       Left = 416
       Top = 16

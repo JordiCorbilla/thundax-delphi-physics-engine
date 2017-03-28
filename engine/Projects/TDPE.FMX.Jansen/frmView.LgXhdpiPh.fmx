@@ -19,9 +19,6 @@ inherited mainView_LgXhdpiPh: TmainView_LgXhdpiPh
       Size.PlatformDefault = False
       OnClick = nil
     end
-    inherited Timer1: TTimer
-      Interval = 50
-    end
   end
   inherited Image1: TImage
     Size.Width = 720.000000000000000000
