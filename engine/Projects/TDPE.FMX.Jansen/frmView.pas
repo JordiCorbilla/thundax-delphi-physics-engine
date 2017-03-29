@@ -46,6 +46,21 @@ uses
   FMX.Objects, System.Threading;
 
 type
+  TDrawingThread = class(TThread)
+  private
+    FEngine: TFluentEngine;
+    FRobot: TRobot;
+    FTickEvent: THandle;
+  protected
+    procedure Execute; override;
+  public
+    constructor Create(CreateSuspended: Boolean);
+    procedure SetEngine(Engine : TFluentEngine);
+    procedure SetRobot(Robot : TRobot);
+    destructor Destroy; override;
+    procedure FinishThreadExecution;
+  end;
+
   TmainView = class(TForm)
     Panel1: TPanel;
     Toggle: TButton;
@@ -56,19 +71,21 @@ type
     procedure DirectionClick(Sender: TObject);
     procedure ToggleClick(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
   private
-    { Private declarations }
+    FDrawingThread: TDrawingThread;
   public
     Engine: TFluentEngine;
     Render: TFMXRenderer;
     FGround: TScenery;
     FRobot: TRobot;
-    FBitmap : TBitmap;
     FBusy : boolean;
   end;
 
 var
   mainView: TmainView;
+  StopDrawing : boolean;
+  FBitmap : TBitmap;
 
 const
   FullHeight = 623;
@@ -92,6 +109,7 @@ var
   xFactor : double;
   yFactor : double;
 begin
+  StopDrawing := false;
   Engine := TFluentEngine.New(1 / 4).AddInitialForce(TForce.Create(false, 0, 2)).AddDamping(0).AddRestrictionCollitionCycles(10);
   FBitmap := TBitmap.Create(Round(image1.Width), Round(image1.Height));
   Render := TFMXRenderer.Create(FBitmap);
@@ -105,6 +123,11 @@ begin
   Engine.AddGroups(FGround).AddGroups(Frobot);
   FGround.AddCollidable(Frobot);
   Frobot.togglePower();
+end;
+
+procedure TmainView.FormDestroy(Sender: TObject);
+begin
+  FDrawingThread.FinishThreadExecution;
 end;
 
 procedure TmainView.Timer1Timer(Sender: TObject);
@@ -228,8 +251,91 @@ end;
 
 procedure TmainView.ToggleClick(Sender: TObject);
 begin
-  Timer1.Enabled := not Timer1.Enabled;
+  //Timer1.Enabled := not Timer1.Enabled;
+  if not StopDrawing then
+  begin
+    FDrawingThread := TDrawingThread.Create(true);
+    FDrawingThread.SetEngine(Engine);
+    FDrawingThread.SetRobot(FRobot);
+    FDrawingThread.Start;
+  end
+  else
+  begin
+    StopDrawing := true;
+    FDrawingThread.Free;
+    StopDrawing := false;
+  end;
   Frobot.togglePower();
+end;
+
+{ TDrawingThread }
+
+constructor TDrawingThread.Create(CreateSuspended: Boolean);
+begin
+  inherited;
+  FreeOnTerminate := True;
+end;
+
+destructor TDrawingThread.Destroy;
+begin
+
+  inherited;
+end;
+
+procedure TDrawingThread.Execute;
+var
+  bitmap : TBitmap;
+begin
+  while not Terminated do
+  begin
+    FEngine.Run();
+    Frobot.Run();
+
+    bitmap := TBitmap.Create;
+    try
+      TThread.Synchronize(TThread.CurrentThread, procedure
+      begin
+          bitmap.SetSize(round(mainView.Image1.Width), round(mainView.Image1.Height));
+          mainView.Image1.MultiResBitmap.Bitmaps[1].Assign(bitmap);
+          mainView.Image1.Bitmap := mainView.Image1.MultiResBitmap.Bitmaps[1];
+          mainView.Image1.Bitmap.Clear(TAlphaColorRec.White);
+      end);
+
+
+
+      TThread.Synchronize(TThread.CurrentThread, procedure
+      begin
+      Fbitmap.Canvas.BeginScene;
+      Fbitmap.Clear(TAlphaColorRec.White);
+      FEngine.Paint;
+      Fbitmap.Canvas.EndScene;
+
+        mainView.image1.MultiResBitmap.Bitmaps[1].Assign(Fbitmap);
+        mainView.image1.Bitmap := mainView.image1.MultiResBitmap.Bitmaps[1];
+      end);
+
+    finally
+      bitmap.Free;
+    end;
+    Sleep(50);
+    if StopDrawing then
+      Exit;
+  end;
+end;
+
+procedure TDrawingThread.FinishThreadExecution;
+begin
+  Terminate;
+end;
+
+procedure TDrawingThread.SetEngine(Engine: TFluentEngine);
+begin
+  FEngine := Engine;
+end;
+
+procedure TDrawingThread.SetRobot(Robot: TRobot);
+begin
+  FRobot := Robot;
 end;
 
 end.
