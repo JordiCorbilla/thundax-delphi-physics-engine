@@ -43,7 +43,7 @@ uses
   tdpe.lib.particle.circle, tdpe.lib.particle.spring.restriction,
   tdpe.lib.jansen.mechanism, tdpe.lib.jansen.robot, tdpe.lib.particle.box,
   FMX.Layouts, System.UIConsts, FMX.Controls.Presentation, FMX.StdCtrls,
-  FMX.Objects, System.Threading;
+  FMX.Objects;
 
 type
   TmainView = class(TForm)
@@ -64,7 +64,6 @@ type
     FGround: TScenery;
     FRobot: TRobot;
     FBitmap : TBitmap;
-    FBusy : boolean;
   end;
 
 var
@@ -113,39 +112,26 @@ var
   value: Integer;
   bitmap : TBitmap;
 begin
-//  Setlength (tasks ,1);
-//  tasks[0] := TTask.Create (procedure ()
-//  begin
-    Engine.Run;
-    Frobot.Run();
+  Engine.Run;
+  Frobot.Run();
 
-//    TThread.Synchronize(TThread.CurrentThread, procedure
-//    begin
-//
-//    end);
+  bitmap := TBitmap.Create;
+  try
+    bitmap.SetSize(round(Image1.Width), round(Image1.Height));
+    Image1.MultiResBitmap.Bitmaps[1].Assign(bitmap);
+    Image1.Bitmap := Image1.MultiResBitmap.Bitmaps[1];
+    Image1.Bitmap.Clear(TAlphaColorRec.White);
 
-      bitmap := TBitmap.Create;
-      try
-        bitmap.SetSize(round(Image1.Width), round(Image1.Height));
-        Image1.MultiResBitmap.Bitmaps[1].Assign(bitmap);
-        Image1.Bitmap := Image1.MultiResBitmap.Bitmaps[1];
-        Image1.Bitmap.Clear(TAlphaColorRec.White);
-
-        Fbitmap.Canvas.BeginScene;
-        Fbitmap.Clear(TAlphaColorRec.White);
-        Engine.Paint;
-        Fbitmap.Canvas.EndScene;
-        image1.MultiResBitmap.Bitmaps[1].Assign(Fbitmap);
-        image1.Bitmap := image1.MultiResBitmap.Bitmaps[1];
-      finally
-        bitmap.Free;
-      end;
-    sleep(10);
-//  end);
-//  tasks[0].Start;
-//  TTask.WaitForAll(tasks);
-
-  //Application.ProcessMessages;
+    Fbitmap.Canvas.BeginScene;
+    Fbitmap.Clear(TAlphaColorRec.White);
+    Engine.Paint;
+    Fbitmap.Canvas.EndScene;
+    image1.MultiResBitmap.Bitmaps[1].Assign(Fbitmap);
+    image1.Bitmap := image1.MultiResBitmap.Bitmaps[1];
+  finally
+    bitmap.Free;
+  end;
+  Application.ProcessMessages;
 
 
 //    TThread.CreateAnonymousThread(procedure

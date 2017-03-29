@@ -20,7 +20,7 @@ inherited mainView_LgXhdpiPh: TmainView_LgXhdpiPh
       OnClick = nil
     end
     inherited Timer1: TTimer
-      Interval = 100
+      Interval = 500
     end
   end
   inherited Image1: TImage
