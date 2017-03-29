@@ -262,7 +262,7 @@ begin
   else
   begin
     StopDrawing := true;
-    FDrawingThread.Free;
+    FDrawingThread.Terminate;
     StopDrawing := false;
   end;
   Frobot.togglePower();
@@ -300,14 +300,16 @@ begin
           mainView.Image1.Bitmap := mainView.Image1.MultiResBitmap.Bitmaps[1];
           mainView.Image1.Bitmap.Clear(TAlphaColorRec.White);
       end);
-
       Fbitmap.Canvas.BeginScene;
       Fbitmap.Clear(TAlphaColorRec.White);
       FEngine.Paint;
       Fbitmap.Canvas.EndScene;
 
+
       TThread.Synchronize(TThread.CurrentThread, procedure
       begin
+
+
         mainView.image1.MultiResBitmap.Bitmaps[1].Assign(Fbitmap);
         mainView.image1.Bitmap := mainView.image1.MultiResBitmap.Bitmaps[1];
       end);
@@ -315,7 +317,7 @@ begin
     finally
       bitmap.Free;
     end;
-    Sleep(20);
+    Sleep(50);
     if StopDrawing then
       Exit;
   end;

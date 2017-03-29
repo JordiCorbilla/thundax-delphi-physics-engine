@@ -252,8 +252,19 @@ end;
 procedure TmainView.ToggleClick(Sender: TObject);
 begin
   //Timer1.Enabled := not Timer1.Enabled;
-  FDrawingThread := TDrawingThread.Create(False);
-  FDrawingThread.Start;
+  if not StopDrawing then
+  begin
+    FDrawingThread := TDrawingThread.Create(true);
+    FDrawingThread.SetEngine(Engine);
+    FDrawingThread.SetRobot(FRobot);
+    FDrawingThread.Start;
+  end
+  else
+  begin
+    StopDrawing := true;
+    FDrawingThread.Terminate;
+    StopDrawing := false;
+  end;
   Frobot.togglePower();
 end;
 
@@ -290,13 +301,15 @@ begin
           mainView.Image1.Bitmap.Clear(TAlphaColorRec.White);
       end);
 
+
+
+      TThread.Synchronize(TThread.CurrentThread, procedure
+      begin
       Fbitmap.Canvas.BeginScene;
       Fbitmap.Clear(TAlphaColorRec.White);
       FEngine.Paint;
       Fbitmap.Canvas.EndScene;
 
-      TThread.Synchronize(TThread.CurrentThread, procedure
-      begin
         mainView.image1.MultiResBitmap.Bitmaps[1].Assign(Fbitmap);
         mainView.image1.Bitmap := mainView.image1.MultiResBitmap.Bitmaps[1];
       end);
@@ -304,7 +317,7 @@ begin
     finally
       bitmap.Free;
     end;
-    Sleep(30);
+    Sleep(50);
     if StopDrawing then
       Exit;
   end;

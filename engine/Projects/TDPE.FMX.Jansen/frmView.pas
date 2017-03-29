@@ -109,7 +109,7 @@ var
   xFactor : double;
   yFactor : double;
 begin
-  StopDrawing := false;
+  StopDrawing := true;
   Engine := TFluentEngine.New(1 / 4).AddInitialForce(TForce.Create(false, 0, 2)).AddDamping(0).AddRestrictionCollitionCycles(10);
   FBitmap := TBitmap.Create(Round(image1.Width), Round(image1.Height));
   Render := TFMXRenderer.Create(FBitmap);
@@ -252,8 +252,9 @@ end;
 procedure TmainView.ToggleClick(Sender: TObject);
 begin
   //Timer1.Enabled := not Timer1.Enabled;
-  if not StopDrawing then
+  if StopDrawing then
   begin
+    StopDrawing := false;
     FDrawingThread := TDrawingThread.Create(true);
     FDrawingThread.SetEngine(Engine);
     FDrawingThread.SetRobot(FRobot);
@@ -262,8 +263,7 @@ begin
   else
   begin
     StopDrawing := true;
-    FDrawingThread.Free;
-    StopDrawing := false;
+    //FDrawingThread.Terminate;
   end;
   Frobot.togglePower();
 end;
@@ -291,32 +291,35 @@ begin
     FEngine.Run();
     Frobot.Run();
 
+    TThread.Synchronize(TThread.CurrentThread, procedure
+      begin
     bitmap := TBitmap.Create;
     try
-      TThread.Synchronize(TThread.CurrentThread, procedure
-      begin
+//      TThread.Synchronize(TThread.CurrentThread, procedure
+//      begin
           bitmap.SetSize(round(mainView.Image1.Width), round(mainView.Image1.Height));
           mainView.Image1.MultiResBitmap.Bitmaps[1].Assign(bitmap);
           mainView.Image1.Bitmap := mainView.Image1.MultiResBitmap.Bitmaps[1];
           mainView.Image1.Bitmap.Clear(TAlphaColorRec.White);
-      end);
-
-
-
-      TThread.Synchronize(TThread.CurrentThread, procedure
-      begin
+//      end);
       Fbitmap.Canvas.BeginScene;
       Fbitmap.Clear(TAlphaColorRec.White);
       FEngine.Paint;
       Fbitmap.Canvas.EndScene;
 
+
+//      TThread.Synchronize(TThread.CurrentThread, procedure
+//      begin
+
+
         mainView.image1.MultiResBitmap.Bitmaps[1].Assign(Fbitmap);
         mainView.image1.Bitmap := mainView.image1.MultiResBitmap.Bitmaps[1];
-      end);
+//      end);
 
     finally
       bitmap.Free;
     end;
+end);
     Sleep(50);
     if StopDrawing then
       Exit;
@@ -325,7 +328,7 @@ end;
 
 procedure TDrawingThread.FinishThreadExecution;
 begin
-  Terminate;
+  //Terminate;
 end;
 
 procedure TDrawingThread.SetEngine(Engine: TFluentEngine);
