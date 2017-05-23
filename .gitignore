@@ -27,3 +27,6 @@
 /engine/Projects/ThundaxTDPEDemo/out/TDPEDemo/debug
 /engine/Projects/TDPE.FMX.Jansen/Android/Debug
 *.rsm
+__history/
+__recovery/
+*.~*
