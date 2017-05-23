@@ -136,122 +136,29 @@ var
   value: Integer;
   bitmap : TBitmap;
 begin
-//  Setlength (tasks ,1);
-//  tasks[0] := TTask.Create (procedure ()
-//  begin
-    Engine.Run;
-    Frobot.Run();
+  Engine.Run;
+  Frobot.Run();
+  bitmap := TBitmap.Create;
+  try
+    bitmap.SetSize(round(Image1.Width), round(Image1.Height));
+    Image1.MultiResBitmap.Bitmaps[1].Assign(bitmap);
+    Image1.Bitmap := Image1.MultiResBitmap.Bitmaps[1];
+    Image1.Bitmap.Clear(TAlphaColorRec.White);
 
-//    TThread.Synchronize(TThread.CurrentThread, procedure
-//    begin
-//
-//    end);
-
-      bitmap := TBitmap.Create;
-      try
-        bitmap.SetSize(round(Image1.Width), round(Image1.Height));
-        Image1.MultiResBitmap.Bitmaps[1].Assign(bitmap);
-        Image1.Bitmap := Image1.MultiResBitmap.Bitmaps[1];
-        Image1.Bitmap.Clear(TAlphaColorRec.White);
-
-        Fbitmap.Canvas.BeginScene;
-        Fbitmap.Clear(TAlphaColorRec.White);
-        Engine.Paint;
-        Fbitmap.Canvas.EndScene;
-        image1.MultiResBitmap.Bitmaps[1].Assign(Fbitmap);
-        image1.Bitmap := image1.MultiResBitmap.Bitmaps[1];
-      finally
-        bitmap.Free;
-      end;
-    sleep(10);
-//  end);
-//  tasks[0].Start;
-//  TTask.WaitForAll(tasks);
-
-  //Application.ProcessMessages;
-
-
-//    TThread.CreateAnonymousThread(procedure
-//    begin
-//          Engine.Run();
-//          Frobot.Run();
-//        TThread.Synchronize(TThread.CurrentThread, procedure
-//        begin
-//          bitmap := TBitmap.Create;
-//          try
-//            bitmap.SetSize(round(Image1.Width), round(Image1.Height));
-//
-//            Image1.MultiResBitmap.Bitmaps[1].Assign(bitmap);
-//            Image1.Bitmap := Image1.MultiResBitmap.Bitmaps[1];
-//            Image1.Bitmap.Clear(TAlphaColorRec.White);
-//
-//
-//
-//            Fbitmap.Canvas.BeginScene;
-//            try
-//              Image1.Bitmap.Clear(TAlphaColorRec.White);
-//
-//              Engine.Paint;
-//
-//            finally
-//              Fbitmap.Canvas.EndScene;
-//            end;
-//            image1.MultiResBitmap.Bitmaps[1].Assign(Fbitmap);
-//            image1.Bitmap := image1.MultiResBitmap.Bitmaps[1];
-//
-//          finally
-//            bitmap.Free;
-//          end;
-//        end);
-//    end).Start;
-
-
-
-
-
-//  bitmap := TBitmap.Create;
-//  try
-//    bitmap.SetSize(round(Image1.Width), round(Image1.Height));
-//    Image1.MultiResBitmap.Bitmaps[1].Assign(bitmap);
-//    Image1.Bitmap := Image1.MultiResBitmap.Bitmaps[1];
-//    Image1.Bitmap.Clear(TAlphaColorRec.White);
-////    TThread.CreateAnonymousThread(procedure
-////    begin
-////        TThread.Synchronize(nil, procedure
-////        begin
-////          Engine.Paint;
-////        end);
-////
-////    end).Start;
-//
-//    Fbitmap.Canvas.BeginScene;
-//    try
-//      Image1.Bitmap.Clear(TAlphaColorRec.White);
-//      Engine.Paint;
-//
-////     CanvasThread := TThread.CreateAnonymousThread(procedure ()
-////     begin
-////      TThread.Synchronize(TThread.CurrentThread, procedure
-////        begin
-////            Fbitmap.Clear(TAlphaColorRec.White);
-////            Engine.Paint;
-////        end);
-////      end);
-////      CanvasThread.FreeOnTerminate := true;
-////      CanvasThread.Start;
-//    finally
-//      Fbitmap.Canvas.EndScene;
-//    end;
-//    image1.MultiResBitmap.Bitmaps[1].Assign(Fbitmap);
-//    image1.Bitmap := image1.MultiResBitmap.Bitmaps[1];
-//  finally
-//    bitmap.Free;
-//  end;
+    Fbitmap.Canvas.BeginScene;
+    Fbitmap.Clear(TAlphaColorRec.White);
+    Engine.Paint;
+    Fbitmap.Canvas.EndScene;
+    image1.MultiResBitmap.Bitmaps[1].Assign(Fbitmap);
+    image1.Bitmap := image1.MultiResBitmap.Bitmaps[1];
+  finally
+    bitmap.Free;
+  end;
+  sleep(10);
 end;
 
 procedure TmainView.ToggleClick(Sender: TObject);
 begin
-  //Timer1.Enabled := not Timer1.Enabled;
   if StopDrawing then
   begin
     StopDrawing := false;
@@ -261,10 +168,7 @@ begin
     FDrawingThread.Start;
   end
   else
-  begin
     StopDrawing := true;
-    //FDrawingThread.Terminate;
-  end;
   Frobot.togglePower();
 end;
 
@@ -293,33 +197,22 @@ begin
 
     TThread.Synchronize(TThread.CurrentThread, procedure
       begin
-    bitmap := TBitmap.Create;
-    try
-//      TThread.Synchronize(TThread.CurrentThread, procedure
-//      begin
+        bitmap := TBitmap.Create;
+        try
           bitmap.SetSize(round(mainView.Image1.Width), round(mainView.Image1.Height));
           mainView.Image1.MultiResBitmap.Bitmaps[1].Assign(bitmap);
           mainView.Image1.Bitmap := mainView.Image1.MultiResBitmap.Bitmaps[1];
           mainView.Image1.Bitmap.Clear(TAlphaColorRec.White);
-//      end);
-      Fbitmap.Canvas.BeginScene;
-      Fbitmap.Clear(TAlphaColorRec.White);
-      FEngine.Paint;
-      Fbitmap.Canvas.EndScene;
-
-
-//      TThread.Synchronize(TThread.CurrentThread, procedure
-//      begin
-
-
-        mainView.image1.MultiResBitmap.Bitmaps[1].Assign(Fbitmap);
-        mainView.image1.Bitmap := mainView.image1.MultiResBitmap.Bitmaps[1];
-//      end);
-
-    finally
-      bitmap.Free;
-    end;
-end);
+          Fbitmap.Canvas.BeginScene;
+          Fbitmap.Clear(TAlphaColorRec.White);
+          FEngine.Paint;
+          Fbitmap.Canvas.EndScene;
+          mainView.image1.MultiResBitmap.Bitmaps[1].Assign(Fbitmap);
+          mainView.image1.Bitmap := mainView.image1.MultiResBitmap.Bitmaps[1];
+        finally
+          bitmap.Free;
+        end;
+    end);
     Sleep(50);
     if StopDrawing then
       Exit;
