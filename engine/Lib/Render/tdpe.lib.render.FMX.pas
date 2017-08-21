@@ -128,33 +128,33 @@ end;
 procedure TFMXRenderer.FilledBox(const x, y, x1, y1, x2, y2, x3, y3: Double;  const color: TColor);
 var
   polygon : TPolygon;
+  beforeColor : TColor;
 begin
   FBitmap.Canvas.Stroke.Thickness := 1;
   FBitmap.Canvas.Stroke.Kind := TBrushKind.bkSolid;
   FBitmap.Canvas.Fill.Color := TAlphaColorRec.Black;
   FBitmap.Canvas.Fill.Kind := TBrushKind.bkSolid;
-//    FBitmap.Canvas.Pen.color := clWhite;
-//    FBitmap.Canvas.Pen.Width := 2;
-//    beforeColor := FBitmap.Canvas.Brush.color;
-//    FBitmap.Canvas.Brush.color := color;
+  //FBitmap.Canvas.Stroke.Color := claWhite;
+  //FBitmap.Canvas.Stroke.Thickness := 2;
+  beforeColor := FBitmap.Canvas.Fill.Color;
+  FBitmap.Canvas.Fill.color := color;
   setlength(polygon, 4);
   polygon[0] := Point(Round(x), Round(y));
   polygon[1] := Point(Round(x1), Round(y1));
   polygon[2] := Point(Round(x2), Round(y2));
   polygon[3] := Point(Round(x3), Round(y3));
-  FBitmap.Canvas.DrawPolygon(polygon, 1);
-    //FBitmap.Canvas.Brush.color := beforeColor;
+  FBitmap.Canvas.FillPolygon(polygon, 0.7);
+  FBitmap.Canvas.Fill.color := beforeColor;
 end;
 
-procedure TFMXRenderer.FilledTriangle(const x, y, x1, y1, x2, y2: Double;
-  const color: TColor; const penWidth: integer);
+procedure TFMXRenderer.FilledTriangle(const x, y, x1, y1, x2, y2: Double;  const color: TColor; const penWidth: integer);
 var
   beforeColor: TColor;
   beforePen: integer;
   rec: array [0 .. 2] of TPoint;
   polygon : TPolygon;
 begin
-//  beforeColor := FBitmap.Canvas.Brush.color;
+  beforeColor := FBitmap.Canvas.Fill.Color;
 //  beforePen := FBitmap.Canvas.Pen.Width;
 //
 //  FBitmap.Canvas.Brush.color := color;
@@ -164,12 +164,12 @@ begin
   FBitmap.Canvas.Fill.Color := TAlphaColorRec.Black;
   FBitmap.Canvas.Fill.Kind := TBrushKind.bkSolid;
   setlength(polygon, 3);
-
+  FBitmap.Canvas.Fill.color := color;
   polygon[0] := Point(Round(x), Round(y));
   polygon[1] := Point(Round(x1), Round(y1));
   polygon[2] := Point(Round(x2), Round(y2));
-  FBitmap.Canvas.DrawPolygon(polygon, 1);
-//  FBitmap.Canvas.Brush.color := beforeColor;
+  FBitmap.Canvas.FillPolygon(polygon, 0.8);
+  FBitmap.Canvas.Fill.color := beforeColor;
 //  FBitmap.Canvas.Pen.Width := beforePen;
 end;
 
