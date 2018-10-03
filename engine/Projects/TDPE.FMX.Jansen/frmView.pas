@@ -154,7 +154,7 @@ begin
   finally
     bitmap.Free;
   end;
-  sleep(10);
+  sleep(3);
 end;
 
 procedure TmainView.ToggleClick(Sender: TObject);
@@ -213,7 +213,7 @@ begin
           bitmap.Free;
         end;
     end);
-    Sleep(50);
+    Sleep(10);
     if StopDrawing then
       Exit;
   end;
