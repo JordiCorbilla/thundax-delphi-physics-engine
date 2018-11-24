@@ -49,8 +49,8 @@ package TDPhysics;
 {$IMPLICITBUILD ON}
 
 requires
-  rtl;//,
-  //vcl;
+  rtl,
+  fmx;
 
 contains
   tdpe.lib.force.contract in '..\Lib\Array\tdpe.lib.force.contract.pas',

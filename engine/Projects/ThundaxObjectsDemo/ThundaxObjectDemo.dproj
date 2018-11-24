@@ -4,7 +4,7 @@
         <MainSource>ThundaxObjectDemo.dpr</MainSource>
         <Config Condition="'$(Config)'==''">Debug</Config>
         <DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
-        <ProjectVersion>18.2</ProjectVersion>
+        <ProjectVersion>18.5</ProjectVersion>
         <Base>True</Base>
         <AppType>Application</AppType>
         <FrameworkType>VCL</FrameworkType>
@@ -79,7 +79,7 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
-        <AppEnableHighDPI>true</AppEnableHighDPI>
+        <AppDPIAwarenessMode>PerMonitor</AppDPIAwarenessMode>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <DCC_MapFile>3</DCC_MapFile>
@@ -89,7 +89,7 @@
     <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
         <BT_BuildType>Debug</BT_BuildType>
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
-        <AppEnableHighDPI>true</AppEnableHighDPI>
+        <AppDPIAwarenessMode>PerMonitor</AppDPIAwarenessMode>
     </PropertyGroup>
     <ItemGroup>
         <DelphiCompile Include="$(MainSource)">

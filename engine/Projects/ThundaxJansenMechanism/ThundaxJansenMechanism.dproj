@@ -1,7 +1,7 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
         <ProjectGuid>{7FB83195-ECC4-44FE-B592-21B1B3CE982C}</ProjectGuid>
-        <ProjectVersion>18.2</ProjectVersion>
+        <ProjectVersion>18.5</ProjectVersion>
         <MainSource>ThundaxJansenMechanism.dpr</MainSource>
         <Config Condition="'$(Config)'==''">Debug</Config>
         <DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
@@ -98,11 +98,11 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
-        <AppEnableHighDPI>true</AppEnableHighDPI>
+        <AppDPIAwarenessMode>PerMonitor</AppDPIAwarenessMode>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
-        <AppEnableHighDPI>true</AppEnableHighDPI>
+        <AppDPIAwarenessMode>PerMonitor</AppDPIAwarenessMode>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <DCC_MapFile>3</DCC_MapFile>
@@ -112,12 +112,12 @@
     <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
         <BT_BuildType>Debug</BT_BuildType>
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
-        <AppEnableHighDPI>true</AppEnableHighDPI>
+        <AppDPIAwarenessMode>PerMonitor</AppDPIAwarenessMode>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win64)'!=''">
         <BT_BuildType>Debug</BT_BuildType>
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
-        <AppEnableHighDPI>true</AppEnableHighDPI>
+        <AppDPIAwarenessMode>PerMonitor</AppDPIAwarenessMode>
     </PropertyGroup>
     <ItemGroup>
         <DelphiCompile Include="$(MainSource)">
