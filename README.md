@@ -5,7 +5,7 @@ TDPE provides an approximate simulation of certain simple physical systems, such
 
 [![Downloads](https://img.shields.io/badge/downloads-1k-blue.svg)](https://app.box.com/s/p7hwuaic1qsm14juf3pmuojv0ko98ok5) [![Stable Release](https://img.shields.io/badge/version-2.0-blue.svg)](https://app.box.com/s/p7hwuaic1qsm14juf3pmuojv0ko98ok5) [![License](https://img.shields.io/badge/license-BSD-blue.svg)](https://app.box.com/s/p7hwuaic1qsm14juf3pmuojv0ko98ok5) [![Delphi version](https://img.shields.io/badge/delphi-Tokyo10.2-red.svg)](https://app.box.com/s/p7hwuaic1qsm14juf3pmuojv0ko98ok5)
 
-![](https://github.com/JordiCorbilla/thundax-delphi-physics-engine/raw/master/engine/images/Logo.png)
+![](engine/images/Logo.png)
 
 **Roadmap:**
   - v2.0: Support for VCL only using GDI.
