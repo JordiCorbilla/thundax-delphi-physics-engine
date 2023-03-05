@@ -1,6 +1,6 @@
 Delphi - 2D simple physics engine
 ==============
-TDPE provides an approximate simulation of certain simple physical systems, such as rigid body dynamics (including collision detection) and soft body dynamics. The aim of the project is to provide a **software system for simulating physical phenomena**.
+The TDPE project aims to provide a versatile software system that can **simulate physical phenomena** with a focus on rigid body dynamics and soft body dynamics. By leveraging advanced algorithms and techniques, TDPE offers an approximate simulation of simple physical systems, including collision detection. The goal is to enable users to model and visualize physical systems in a virtual environment, allowing for a better understanding of how they behave in the real world..
 --------------
 
 [![Downloads](https://img.shields.io/badge/downloads-1k-blue.svg)](https://app.box.com/s/p7hwuaic1qsm14juf3pmuojv0ko98ok5) [![Stable Release](https://img.shields.io/badge/version-2.0-blue.svg)](https://app.box.com/s/p7hwuaic1qsm14juf3pmuojv0ko98ok5) [![License](https://img.shields.io/badge/license-BSD-blue.svg)](https://app.box.com/s/p7hwuaic1qsm14juf3pmuojv0ko98ok5) [![Delphi version](https://img.shields.io/badge/delphi-Tokyo10.2-red.svg)](https://app.box.com/s/p7hwuaic1qsm14juf3pmuojv0ko98ok5)
